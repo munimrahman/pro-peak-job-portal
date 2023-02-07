@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRouteError } from 'react-router-dom';
+import { Link, useRouteError } from 'react-router-dom';
 
 function DisplayError() {
     const error = useRouteError();
@@ -8,6 +8,9 @@ function DisplayError() {
             <h1>Something Went Wrong!!!</h1>
             <p>{error.statusText}</p>
             <p>{error.message}</p>
+            <Link to="/" className="btn btn-primary">
+                Go Home
+            </Link>
         </div>
     );
 }

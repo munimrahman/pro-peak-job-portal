@@ -1,6 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Main from '../../Layout/Main';
 import About from '../../Pages/About/About/About';
+import Blog from '../../Pages/Blog/Blog/Blog';
+import BlogDetails from '../../Pages/BlogDetails/BlogDetails/BlogDetails';
 import CandidateDetails from '../../Pages/CandidateDetails/CandidateDetails/CandidateDetails';
 import CandidateList from '../../Pages/CandidateList/CandidateList/CandidateList';
 import CompanyDetails from '../../Pages/CompanyDetails/CompanyDetails/CompanyDetails';
@@ -28,11 +30,11 @@ const router = createBrowserRouter([
                 element: <About />,
             },
             {
-                path: '/jobs',
+                path: '/find-jobs',
                 element: <JobList />,
             },
             {
-                path: 'job-details',
+                path: '/job-details',
                 element: <JobDetails />,
             },
             {
@@ -40,11 +42,11 @@ const router = createBrowserRouter([
                 element: <CompanyList />,
             },
             {
-                path: 'company-details',
+                path: '/company-details',
                 element: <CompanyDetails />,
             },
             {
-                path: 'recruiters',
+                path: '/recruiters',
                 element: <RecruiterList />,
             },
             {
@@ -52,12 +54,20 @@ const router = createBrowserRouter([
                 element: <RecruiterDetails />,
             },
             {
-                path: 'candidate-list',
+                path: '/candidate-list',
                 element: <CandidateList />,
             },
             {
-                path: 'candidate-details',
+                path: '/candidate-details',
                 element: <CandidateDetails />,
+            },
+            {
+                path: '/blogs',
+                element: <Blog />,
+            },
+            {
+                path: '/blog-details',
+                element: <BlogDetails />,
             },
         ],
     },

@@ -1,55 +1,82 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import logo from '../../../assets/ProPeak.png';
+import ButtonPrimary from '../../../Components/ButtonPrimary/ButtonPrimary';
 
-function Navbar() {
-    const [stickyNav, setStickyNav] = useState(false);
-
-    useEffect(() => {
-        window.onscroll = () => {
-            setStickyNav(window.pageYOffset !== 0);
-            // eslint-disable-next-line no-return-assign
-            return () => (window.onscroll = null);
-        };
-    }, [setStickyNav]);
+function Navbar({ stickyNav }) {
+    const activeClassName = 'text-sm bg-info text-primary active:text-secondary';
+    const inActiveClassName =
+        'text-sm text-secondary active:bg-info active:text-secondary hover:bg-info';
     const menuItems = (
         <>
             <li>
-                <Link to="/">Home</Link>
+                <NavLink
+                    className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
+                    to="/"
+                >
+                    Home
+                </NavLink>
             </li>
             <li>
-                <Link to="/">Find Jobs</Link>
+                <NavLink
+                    className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
+                    to="/find-jobs"
+                >
+                    Find Jobs
+                </NavLink>
             </li>
             <li>
-                <Link to="/">Companies</Link>
+                <NavLink
+                    className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
+                    to="/company-list"
+                >
+                    Companies
+                </NavLink>
             </li>
             <li>
-                <Link to="/">Recruiters</Link>
+                <NavLink
+                    className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
+                    to="/recruiters"
+                >
+                    Recruiters
+                </NavLink>
             </li>
             <li>
-                <Link to="/">Candidates</Link>
+                <NavLink
+                    className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
+                    to="/candidate-list"
+                >
+                    Candidates
+                </NavLink>
             </li>
             <li>
-                <Link to="/">Blogs</Link>
+                <NavLink
+                    className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
+                    to="/blogs"
+                >
+                    Blogs
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
+                    to="/blogs"
+                >
+                    Pricing
+                </NavLink>
             </li>
         </>
     );
     return (
-        <div
-            className={`navbar px-20 ${
-                stickyNav
-                    ? 'fixed shadow-md top-0 bg-white transition-all duration-1000 ease-in-out'
-                    : 'py-10'
-            }`}
-        >
+        <div className={`navbar md:px-10 ${stickyNav || 'sticky shadow-md top-0 bg-white'}`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
+                            className="h-7 w-7"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -69,17 +96,23 @@ function Navbar() {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to="/">
+                <NavLink to="/">
                     <img src={logo} className="w-56" alt="logo" />
-                </Link>
+                </NavLink>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">{menuItems}</ul>
             </div>
             <div className="navbar-end">
-                <Link to="/" className="btn">
-                    Get started
-                </Link>
+                <NavLink className="mr-3 sm:hidden" to="/">
+                    <ButtonPrimary className="btn-outline btn-md">Get Started</ButtonPrimary>
+                </NavLink>
+                <NavLink className="mr-3 hidden sm:block" to="/">
+                    <ButtonPrimary className="btn-outline">Register</ButtonPrimary>
+                </NavLink>
+                <NavLink className="hidden sm:block" to="/">
+                    <ButtonPrimary>LogIn</ButtonPrimary>
+                </NavLink>
             </div>
         </div>
     );
