@@ -17,18 +17,14 @@ function Hero() {
             <Navbar
                 stickyNav={
                     stickyNav
-                        ? 'fixed shadow-md top-0 bg-white transition-all duration-1000 ease-in-out'
-                        : 'py-10'
+                        ? 'fixed w-full shadow-md top-0 bg-white transition-all duration-1000 ease-in-out'
+                        : 'py-6'
                 }
             />
-            <h1 className="text-3xl text-secondary text-center my-10 border border-fuchsia-400">
-                This is Hero Section
-            </h1>
-            <h1 className="text-3xl text-secondary text-center my-10 underline-offset-4">
-                This is Hero Section
-            </h1>
-            <h1 className="text-3xl text-secondary text-center my-10">This is Hero Section</h1>
-            <h1 className="text-3xl text-secondary text-center my-10">This is Hero Section</h1>
+            <div className="max-w-[1115px] mx-auto">
+                <h1 className="my-10 border border-red-500">Hero Section</h1>
+                <h1 className="my-10">Hero Section</h1>
+            </div>
         </div>
     );
 }

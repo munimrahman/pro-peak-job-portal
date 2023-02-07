@@ -6,7 +6,6 @@ function Home() {
     return (
         <section>
             <Hero />
-
             <h1 className="text-3xl text-secondary text-center">This is Home Page</h1>
             <div className="flex flex-col">
                 <div className="text-primary text-5xl p-10 m-5">
