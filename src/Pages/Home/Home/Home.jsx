@@ -4,16 +4,17 @@ import job from '../../../assets/job-search-bar.svg';
 import key from '../../../assets/key-search-bar.svg';
 import loc from '../../../assets/location-search-bar.svg';
 import Footer from '../../Shared/Footer/Footer';
+import CategorySlide from '../CategorySlide/CategorySlide/CategorySlide';
 import Hero from '../Hero/Hero';
 
 function Home() {
     return (
         <section>
             <Hero />
-            <h1 className="text-4xl text-secondary text-center font-bold">Browse by Category</h1>
-            <p className="text-lg text-neutral text-center">
-                Find the job that’s perfect for you. about 800+ new jobs everyday
-            </p>
+            <div className="max-w-[1115px] mx-auto">
+                <CategorySlide />
+            </div>
+
             <div className="border border-red-600 bg-purple-400 p-2 w-full mx-auto">
                 {/* <form className="flex justify-between p-3 border border-primary">
                     <label className="flex">
