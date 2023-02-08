@@ -4,6 +4,7 @@ import React from 'react';
 import Footer from '../../Shared/Footer/Footer';
 import CategorySlide from '../CategorySlide/CategorySlide/CategorySlide';
 import Hero from '../Hero/Hero';
+import ImageFeatureBox from '../ImageFeatureBox/ImageFeatureBox/ImageFeatureBox';
 import LatestJobs from '../LatestJobs/LatestJobs/LatestJobs';
 import WeHiringBox from '../WeHiringBox/WeHiringBox';
 
@@ -24,6 +25,7 @@ function Home() {
                     <CategorySlide />
                     <WeHiringBox />
                     <LatestJobs />
+                    <ImageFeatureBox />
                 </div>
             </div>
             <Footer />

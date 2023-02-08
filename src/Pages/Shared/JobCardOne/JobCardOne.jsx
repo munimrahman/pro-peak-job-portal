@@ -4,10 +4,17 @@ import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 
 function JobCardOne() {
     return (
-        <div className="border rounded-xl p-2">
-            <img src={img} alt="" className="rounded-xl w-full" />
+        <div className="border rounded-xl p-2 bg-[#F8FAFF] shadow-md">
+            <div className="relative">
+                <img src={img} alt="" className="rounded-xl w-full" />
+                <div className="absolute top-0 m-2">
+                    <span className="capitalize text-xs bg-primary text-white hover:cursor-pointer px-2 py-1 rounded">
+                        Full Time
+                    </span>
+                </div>
+            </div>
             <h2 className="text-secondary hover:text-primary text-xl hover:cursor-pointer font-bold mt-4">
-                React Native Web Developer
+                React Native Web Developer Salary $4000 Per Month
             </h2>
             <div className="mt-1">
                 <span className="text-xs text-[#a0abb8]">
