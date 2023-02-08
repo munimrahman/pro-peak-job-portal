@@ -64,7 +64,7 @@ const categories = [
 ];
 function CategorySlide() {
     return (
-        <div className="mt-14">
+        <div className="mt-16">
             <h1 className="text-4xl text-secondary text-center font-bold">Browse by Category</h1>
             <p className="text-lg text-neutral text-center my-2">
                 Find the job that’s perfect for you. about 800+ new jobs everyday

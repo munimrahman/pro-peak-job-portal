@@ -4,6 +4,7 @@ import React from 'react';
 import Footer from '../../Shared/Footer/Footer';
 import CategorySlide from '../CategorySlide/CategorySlide/CategorySlide';
 import Hero from '../Hero/Hero';
+import LatestJobs from '../LatestJobs/LatestJobs/LatestJobs';
 import WeHiringBox from '../WeHiringBox/WeHiringBox';
 
 function Home() {
@@ -22,6 +23,7 @@ function Home() {
                 <div className="max-w-[1115px] mx-auto">
                     <CategorySlide />
                     <WeHiringBox />
+                    <LatestJobs />
                 </div>
             </div>
             <Footer />
