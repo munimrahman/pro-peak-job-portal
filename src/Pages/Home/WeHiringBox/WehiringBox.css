@@ -1,6 +1,16 @@
-.hiring-box {
-  background-image: url("../../../assets/bg-left-hiring.svg"),
-    url("../../../assets/bg-right-hiring.svg");
-  background-repeat: no-repeat, no-repeat;
-  background-position: left 20px bottom 5px, right 20px bottom 5px;
+@media (max-width: 768px) {
+  .hiring-box {
+    background-image: url("../../../assets/bg-right-hiring.svg");
+    background-repeat: no-repeat;
+    background-position: right 5px bottom 5px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hiring-box {
+    background-image: url("../../../assets/bg-left-hiring.svg"),
+      url("../../../assets/bg-right-hiring.svg");
+    background-repeat: no-repeat, no-repeat;
+    background-position: left 20px bottom 5px, right 20px bottom 5px;
+  }
 }
