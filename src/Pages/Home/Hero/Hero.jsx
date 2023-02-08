@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import banner1 from '../../../assets/banner1.png';
 import banner2 from '../../../assets/banner2.png';
-import heroBg from '../../../assets/hero-bg.svg';
 import Navbar from '../../Shared/Navbar/Navbar';
 import './Hero.css';
 
-const styleObj = {
-    backgroundImage: `url(${heroBg})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    minHeight: '750px',
-    width: '100%',
-};
+// const styleObj = {
+//     backgroundImage: `url(${heroBg})`,
+//     backgroundRepeat: 'no-repeat',
+//     backgroundSize: 'cover',
+//     minHeight: '750px',
+//     width: '100%',
+// };
 
 function Hero() {
     const [stickyNav, setStickyNav] = useState(false);
@@ -24,7 +23,7 @@ function Hero() {
         };
     }, [setStickyNav]);
     return (
-        <div style={styleObj}>
+        <div className="hero-bg">
             <Navbar
                 stickyNav={
                     stickyNav
@@ -32,14 +31,14 @@ function Hero() {
                         : 'py-6'
                 }
             />
-            <div className="max-w-[1115px] mx-auto mt-12">
-                <div className="grid grid-cols-2">
-                    <div className="px-14">
-                        <h1 className="text-5xl text-secondary font-bold">
+            <div className="max-w-[1115px] mx-auto mt-5 md:mt-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 flex-row-reverse">
+                    <div className="px-5 sm:px-14">
+                        <h1 className="text-3xl sm:text-5xl text-secondary font-bold">
                             The <span className="text-primary">Easiest Way</span> to Get Your New
                             Job
                         </h1>
-                        <p className="text-accent text-lg mt-6">
+                        <p className="text-accent text-base sm:text-lg mt-6">
                             Each month, more than 3 million job seekers turn to website in their
                             search for work, making over 140,000 applications every single day
                         </p>
@@ -63,7 +62,7 @@ function Hero() {
                             <span className="underline underline-offset-2">PHP,</span>{' '}
                         </p>
                     </div>
-                    <div className="mt-3">
+                    <div className="mt-3 hidden lg:block">
                         <div className="flex justify-center object">
                             <img src={banner1} alt="" />
                         </div>

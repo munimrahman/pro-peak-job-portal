@@ -11,27 +11,27 @@ function LatestJobs() {
                 you.
             </p>
             <div className="flex flex-wrap md:justify-center mt-5">
-                <div className="flex items-center border hover:border-primary rounded-lg py-2 px-3 mx-1 hover:cursor-pointer hover:text-primary hover:shadow">
+                <div className="flex items-center border hover:border-primary rounded-lg py-2 px-3 mx-1 my-1 hover:cursor-pointer hover:text-primary hover:shadow">
                     <img src={img} alt="" className="w-5" />
                     <span className="ml-2 text-xs font-bold">Management</span>
                 </div>
-                <div className="flex items-center border hover:border-primary rounded-lg py-2 px-3 mx-1 hover:cursor-pointer hover:text-primary hover:shadow">
+                <div className="flex items-center border hover:border-primary rounded-lg py-2 px-3 mx-1 my-1 hover:cursor-pointer hover:text-primary hover:shadow">
                     <img src={img} alt="" className="w-5" />
                     <span className="ml-2 text-xs font-bold">Marketing & Sales</span>
                 </div>
-                <div className="flex items-center border hover:border-primary rounded-lg p-3 mx-1 hover:cursor-pointer hover:text-primary hover:shadow">
+                <div className="flex items-center border hover:border-primary rounded-lg py-2 px-3 mx-1 my-1 hover:cursor-pointer hover:text-primary hover:shadow">
                     <img src={img} alt="" className="w-5" />
                     <span className="ml-2 text-xs font-bold">Finance</span>
                 </div>
-                <div className="flex items-center border hover:border-primary rounded-lg p-3 mx-1 hover:cursor-pointer hover:text-primary hover:shadow">
+                <div className="flex items-center border hover:border-primary rounded-lg py-2 px-3 mx-1 my-1 hover:cursor-pointer hover:text-primary hover:shadow">
                     <img src={img} alt="" className="w-5" />
                     <span className="ml-2 text-xs font-bold">Humane Resource</span>
                 </div>
-                <div className="flex items-center border hover:border-primary rounded-lg p-3 mx-1 hover:cursor-pointer hover:text-primary hover:shadow">
+                <div className="flex items-center border hover:border-primary rounded-lg py-2 px-3 mx-1 my-1 hover:cursor-pointer hover:text-primary hover:shadow">
                     <img src={img} alt="" className="w-5" />
                     <span className="ml-2 text-xs font-bold">Retail & Products</span>
                 </div>
-                <div className="flex items-center border hover:border-primary rounded-lg p-3 mx-1 hover:cursor-pointer hover:text-primary hover:shadow">
+                <div className="flex items-center border hover:border-primary rounded-lg py-2 px-3 mx-1 my-1 hover:cursor-pointer hover:text-primary hover:shadow">
                     <img src={img} alt="" className="w-5" />
                     <span className="ml-2 text-xs font-bold">Content Writer</span>
                 </div>

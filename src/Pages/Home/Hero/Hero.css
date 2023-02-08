@@ -1,34 +1,48 @@
-.object {
-  animation: MoveUpDown 4s linear infinite;
-  /* position: absolute; */
-  z-index: 0;
-  /* left: 0; */
-  /* bottom: 0; */
-}
-
-@keyframes MoveUpDown {
-  0%,
-  100% {
-    transform: translateY(0);
+/* @media (max-width: 768px) {
+  .hero-bg {
+    background-image: url("../../../assets/hero-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 500px;
+    width: 100%;
   }
-  50% {
-    transform: translateY(-25px);
-  }
-}
+} */
 
-.object1 {
-  animation: MoveRightLeft 5s linear infinite;
-  /* position: absolute; */
-  /* left: 0; */
-  /* bottom: 0; */
-}
-
-@keyframes MoveRightLeft {
-  0%,
-  100% {
-    transform: translateX(0);
+@media (min-width: 1024px) {
+  .hero-bg {
+    background-image: url("../../../assets/hero-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 750px;
+    width: 100%;
   }
-  50% {
-    transform: translateX(-80px);
+
+  .object {
+    animation: MoveUpDown 4s linear infinite;
+    z-index: 0;
+  }
+
+  @keyframes MoveUpDown {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-25px);
+    }
+  }
+
+  .object1 {
+    animation: MoveRightLeft 5s linear infinite;
+  }
+
+  @keyframes MoveRightLeft {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-80px);
+    }
   }
 }
