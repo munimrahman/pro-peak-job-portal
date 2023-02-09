@@ -1,8 +1,8 @@
 import React from 'react';
-import rightBottom from '../../../../assets/controlcard.png';
-import leftTop from '../../../../assets/img-chart.png';
-import img from '../../../../assets/img-feature-box.png';
-import ButtonPrimary from '../../../../Components/ButtonPrimary/ButtonPrimary';
+import rightBottom from '../../../assets/controlcard.png';
+import leftTop from '../../../assets/img-chart.png';
+import img from '../../../assets/img-feature-box.png';
+import ButtonPrimary from '../../../Components/ButtonPrimary/ButtonPrimary';
 
 function ImageFeatureBox() {
     return (

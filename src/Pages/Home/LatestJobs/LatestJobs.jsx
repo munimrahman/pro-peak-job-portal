@@ -1,6 +1,6 @@
 import React from 'react';
-import img from '../../../../assets/human.svg';
-import JobCardOne from '../../../Shared/JobCardOne/JobCardOne';
+import img from '../../../assets/human.svg';
+import JobCardOne from '../../Shared/JobCardOne/JobCardOne';
 
 function LatestJobs() {
     return (

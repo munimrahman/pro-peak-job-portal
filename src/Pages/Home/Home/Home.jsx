@@ -4,8 +4,10 @@ import React from 'react';
 import Footer from '../../Shared/Footer/Footer';
 import CategorySlide from '../CategorySlide/CategorySlide/CategorySlide';
 import Hero from '../Hero/Hero';
-import ImageFeatureBox from '../ImageFeatureBox/ImageFeatureBox/ImageFeatureBox';
-import LatestJobs from '../LatestJobs/LatestJobs/LatestJobs';
+import HomeStats from '../HomeStats/HomeStats';
+import ImageFeatureBox from '../ImageFeatureBox/ImageFeatureBox';
+import LatestJobs from '../LatestJobs/LatestJobs';
+import TopRecruiters from '../TopRecruiters/TopRecruiters/TopRecruiters';
 import WeHiringBox from '../WeHiringBox/WeHiringBox';
 
 function Home() {
@@ -26,6 +28,8 @@ function Home() {
                     <WeHiringBox />
                     <LatestJobs />
                     <ImageFeatureBox />
+                    <HomeStats />
+                    <TopRecruiters />
                 </div>
             </div>
             <Footer />
