@@ -8,6 +8,7 @@ import HomeStats from '../HomeStats/HomeStats';
 import ImageFeatureBox from '../ImageFeatureBox/ImageFeatureBox';
 import JobsByLocation from '../JobsByLocation/JobsByLocation';
 import LatestJobs from '../LatestJobs/LatestJobs';
+import NewsBlogs from '../News&Blogs/News&Blogs';
 import TopRecruiters from '../TopRecruiters/TopRecruiters/TopRecruiters';
 import WeHiringBox from '../WeHiringBox/WeHiringBox';
 
@@ -32,6 +33,7 @@ function Home() {
                     <HomeStats />
                     <TopRecruiters />
                     <JobsByLocation />
+                    <NewsBlogs />
                 </div>
             </div>
             <Footer />

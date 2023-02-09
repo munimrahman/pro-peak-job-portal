@@ -26,7 +26,7 @@ function JobCardOne() {
                     <i className="far fa-clock mr-1" />3 mins ago
                 </span>
             </div>
-            <div className="mt-2 flex flex-wrap">
+            <div className="mt-1 flex flex-wrap">
                 <span className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
                     JavaScript
                 </span>
@@ -40,7 +40,7 @@ function JobCardOne() {
                     Express
                 </span>
             </div>
-            <p className="text-sm my-4">
+            <p className="text-sm text-accent my-3">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto
                 eveniet, dolor quo repellendus pariatur
             </p>
