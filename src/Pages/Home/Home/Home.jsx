@@ -2,6 +2,7 @@
 import React from 'react';
 
 import Footer from '../../Shared/Footer/Footer';
+import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
 import CategorySlide from '../CategorySlide/CategorySlide/CategorySlide';
 import Hero from '../Hero/Hero';
 import HomeStats from '../HomeStats/HomeStats';
@@ -34,6 +35,7 @@ function Home() {
                     <TopRecruiters />
                     <JobsByLocation />
                     <NewsBlogs />
+                    <SubscribeBox />
                 </div>
             </div>
             <Footer />

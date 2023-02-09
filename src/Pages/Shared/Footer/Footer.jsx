@@ -1,110 +1,156 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import google from '../../../assets/android.png';
+import apple from '../../../assets/app-store.png';
+import logo from '../../../assets/ProPeak1.png';
 
 function Footer() {
     return (
-        <>
-            <footer className="footer mt-10 p-10 bg-base-200 text-base-content">
-                <div>
-                    <span className="footer-title">Services</span>
-                    <Link to="/job-details" className="link link-hover">
-                        Job Details
-                    </Link>
-                    <Link to="/company-details" className="link link-hover">
-                        Company Details
-                    </Link>
-                    <Link to="/recruiter-details" className="link link-hover">
-                        Recruiter Details
-                    </Link>
-                    <Link to="/candidate-details" className="link link-hover">
-                        Candidate Details
-                    </Link>
-                </div>
-                <div>
-                    <span className="footer-title">Company</span>
-                    <Link to="/about" className="link link-hover">
-                        About us
-                    </Link>
-                    <Link to="/blog-details" className="link link-hover">
-                        Blog Details
-                    </Link>
-                    <Link to="/" className="link link-hover">
-                        Jobs
-                    </Link>
-                    <Link to="/" className="link link-hover">
-                        Press kit
-                    </Link>
-                </div>
-                <div>
-                    <span className="footer-title">Legal</span>
-                    <Link to="/" className="link link-hover">
-                        Terms of use
-                    </Link>
-                    <Link to="/" className="link link-hover">
-                        Privacy policy
-                    </Link>
-                    <Link to="/" className="link link-hover">
-                        Cookie policy
-                    </Link>
-                </div>
-            </footer>
-            <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
-                <div className="items-center grid-flow-col">
-                    <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        className="fill-current"
-                    >
-                        <path d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z" />
-                    </svg>
-                    <p>
-                        ACME Industries Ltd. <br />
-                        Providing reliable tech since 1992
+        <footer className="mt-16 max-w-[1115px] mx-auto">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-12">
+                <div className="col-span-3">
+                    <img src={logo} alt="" className="w-44" />
+
+                    <p className="text-sm my-4 text-neutral">
+                        JobBox is the heart of the design community and the best resource to
+                        discover and connect with designers and jobs worldwide.
                     </p>
+                    <span className="inline-flex lg:ml-auto lg:mt-0 mt-6 w-full justify-center md:justify-start md:w-auto">
+                        <Link to="/" className="text-accent hover:text-primary">
+                            <svg
+                                fill="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                className="w-5 h-5"
+                                viewBox="0 0 24 24"
+                            >
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                            </svg>
+                        </Link>
+                        <Link to="/" className="ml-3 text-accent hover:text-primary">
+                            <svg
+                                fill="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                className="w-5 h-5"
+                                viewBox="0 0 24 24"
+                            >
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+                            </svg>
+                        </Link>
+                        <Link to="/" className="ml-3 text-accent hover:text-primary">
+                            <svg
+                                fill="none"
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                className="w-5 h-5"
+                                viewBox="0 0 24 24"
+                            >
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01" />
+                            </svg>
+                        </Link>
+                        <Link to="/" className="ml-3 text-accent hover:text-primary">
+                            <svg
+                                fill="currentColor"
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="0"
+                                className="w-5 h-5"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke="none"
+                                    d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+                                />
+                                <circle cx="4" cy="4" r="2" stroke="none" />
+                            </svg>
+                        </Link>
+                    </span>
                 </div>
-                <div className="md:place-self-center md:justify-self-end">
-                    <div className="grid grid-flow-col gap-4">
-                        <Link to="/">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                className="fill-current"
-                            >
-                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                            </svg>
-                        </Link>
-                        <Link to="/">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                className="fill-current"
-                            >
-                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                            </svg>
-                        </Link>
-                        <Link to="/">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                className="fill-current"
-                            >
-                                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-                            </svg>
-                        </Link>
+                <div className="col-span-2">
+                    <h4 className="font-bold text-secondary">Resources</h4>
+                    <div className="flex flex-col mt-2">
+                        <span className="text-accent text-sm hover:text-primary hover:cursor-pointer">
+                            About Us
+                        </span>
+                        <span className="text-accent text-sm hover:text-primary hover:cursor-pointer my-1">
+                            Our Team
+                        </span>
+                        <span className="text-accent text-sm hover:text-primary hover:cursor-pointer my-1">
+                            Products
+                        </span>
+                        <span className="text-accent text-sm hover:text-primary hover:cursor-pointer">
+                            Contacts
+                        </span>
                     </div>
                 </div>
-            </footer>
-        </>
+                <div className="col-span-2">
+                    <h4 className="font-bold text-secondary">Quick Links</h4>
+                    <div className="flex flex-col mt-2">
+                        <span className="text-accent text-sm hover:text-primary hover:cursor-pointer">
+                            About Us
+                        </span>
+                        <span className="text-accent text-sm hover:text-primary hover:cursor-pointer my-1">
+                            Our Team
+                        </span>
+                        <span className="text-accent text-sm hover:text-primary hover:cursor-pointer my-1">
+                            Products
+                        </span>
+                        <span className="text-accent text-sm hover:text-primary hover:cursor-pointer">
+                            Contacts
+                        </span>
+                    </div>
+                </div>
+                <div className="col-span-2">
+                    <h4 className="font-bold text-secondary">Quick Links</h4>
+                    <div className="flex flex-col mt-2">
+                        <span className="text-accent text-sm hover:text-primary hover:cursor-pointer">
+                            About Us
+                        </span>
+                        <span className="text-accent text-sm hover:text-primary hover:cursor-pointer my-1">
+                            Our Team
+                        </span>
+                        <span className="text-accent text-sm hover:text-primary hover:cursor-pointer my-1">
+                            Products
+                        </span>
+                        <span className="text-accent text-sm hover:text-primary hover:cursor-pointer">
+                            Contacts
+                        </span>
+                    </div>
+                </div>
+
+                <div className="col-span-3">
+                    <h4 className="font-bold text-secondary">Download App</h4>
+                    <p className="mt-2 text-sm">
+                        Download our Apps and get extra 15% Discount on your first Order…!
+                    </p>
+                    <div className="mt-2">
+                        <img src={google} alt="" className="my-1" />
+                        <img src={apple} alt="" />
+                    </div>
+                </div>
+            </div>
+
+            <div className="divider" />
+
+            <div className="text-accent text-xs flex flex-col sm:flex-row items-center justify-between mb-7">
+                <span>Copyright © 2022. JobBox all right reserved</span>
+                <div className="mt-2 sm:mt-0">
+                    <span className="hover:cursor-pointer hover:text-primary">Privacy Policy</span>
+                    <span className="hover:cursor-pointer hover:text-primary mx-5">
+                        Terms & Conditions
+                    </span>
+                    <span className="hover:cursor-pointer hover:text-primary">Security</span>
+                </div>
+            </div>
+        </footer>
     );
 }
 
