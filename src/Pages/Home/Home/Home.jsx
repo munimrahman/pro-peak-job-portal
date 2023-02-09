@@ -6,6 +6,7 @@ import CategorySlide from '../CategorySlide/CategorySlide/CategorySlide';
 import Hero from '../Hero/Hero';
 import HomeStats from '../HomeStats/HomeStats';
 import ImageFeatureBox from '../ImageFeatureBox/ImageFeatureBox';
+import JobsByLocation from '../JobsByLocation/JobsByLocation';
 import LatestJobs from '../LatestJobs/LatestJobs';
 import TopRecruiters from '../TopRecruiters/TopRecruiters/TopRecruiters';
 import WeHiringBox from '../WeHiringBox/WeHiringBox';
@@ -30,6 +31,7 @@ function Home() {
                     <ImageFeatureBox />
                     <HomeStats />
                     <TopRecruiters />
+                    <JobsByLocation />
                 </div>
             </div>
             <Footer />
