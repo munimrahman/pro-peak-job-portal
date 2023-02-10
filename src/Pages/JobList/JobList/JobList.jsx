@@ -2,7 +2,9 @@
 import React from 'react';
 import JobCardThree from '../../Shared/JobCardThree/JobCardThree';
 import JobCardTwo from '../../Shared/JobCardTwo/JobCardTwo';
+import Pagination from '../../Shared/Pagination/Pagination';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
+import AdvFilter from '../AdvFilter/AdvFilter';
 import HeaderSearch from '../HeaderSearch/HeaderSearch';
 
 function JobList() {
@@ -18,6 +20,7 @@ function JobList() {
                             Reset
                         </span>
                     </div>
+                    <AdvFilter />
                 </div>
                 {/* Job List Header */}
                 <div className="col-span-9">
@@ -84,6 +87,9 @@ function JobList() {
                         <JobCardThree />
                         <JobCardThree />
                         <JobCardThree />
+                    </div>
+                    <div className="mt-10">
+                        <Pagination />
                     </div>
                 </div>
             </div>
