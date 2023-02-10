@@ -27,16 +27,16 @@ function JobCardOne() {
                 </span>
             </div>
             <div className="mt-1 flex flex-wrap">
-                <span className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
+                <span className="capitalize text-xs bg-info text-[#4f5e64] hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
                     JavaScript
                 </span>
-                <span className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
+                <span className="capitalize text-xs bg-info text-[#4f5e64] hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
                     React
                 </span>
-                <span className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
+                <span className="capitalize text-xs bg-info text-[#4f5e64] hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
                     Node
                 </span>
-                <span className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
+                <span className="capitalize text-xs bg-info text-[#4f5e64] hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
                     Express
                 </span>
             </div>
