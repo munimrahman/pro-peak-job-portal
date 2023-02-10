@@ -7,7 +7,7 @@ import logo from '../../../assets/ProPeak1.png';
 
 function Footer() {
     return (
-        <footer className="mt-16 max-w-[1115px] mx-auto">
+        <footer className="mt-16 max-w-[1115px] mx-auto px-2 lg:px-0">
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-12">
                 <div className="col-span-3">
                     <img src={logo} alt="" className="w-44" />

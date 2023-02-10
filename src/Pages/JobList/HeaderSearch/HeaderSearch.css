@@ -1,0 +1,6 @@
+.header-search-box {
+  background-image: url("../../../assets/left-job-head.svg"),
+    url("../../../assets/right-job-head.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-position: left bottom, right 5px bottom;
+}
