@@ -15,9 +15,7 @@ function FilterModal() {
                         ✕
                     </label>
                     <h3 className="font-bold text-2xl text-center">Advance Filter</h3>
-                    {/* <div className="h-screen">
-                        <FilterOption />
-                    </div> */}
+
                     <AdvFilter />
                     <div className="modal-action flex justify-center">
                         <label

@@ -1,9 +1,18 @@
 import React from 'react';
+import JobDetailsHeader from '../JobDetailsHeader/JobDetailsHeader';
 
 function JobDetails() {
     return (
-        <div>
-            <h1>Job Details Coming Soon...</h1>
+        <div className="max-w-[1115px] mx-auto">
+            <JobDetailsHeader />
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
+                <div className="col-span-8 border border-purple-400">
+                    <h1>Employment Information</h1>
+                </div>
+                <div className="col-span-4 border border-purple-400">
+                    <h1>Company Information</h1>
+                </div>
+            </div>
         </div>
     );
 }

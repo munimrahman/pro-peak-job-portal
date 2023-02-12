@@ -78,7 +78,7 @@ function Footer() {
                     <h4 className="font-bold text-secondary">Resources</h4>
                     <div className="flex flex-col mt-2">
                         <span className="text-accent text-sm hover:text-primary hover:cursor-pointer">
-                            About Us
+                            <Link to="/job-details">Job Details</Link>
                         </span>
                         <span className="text-accent text-sm hover:text-primary hover:cursor-pointer my-1">
                             Our Team
