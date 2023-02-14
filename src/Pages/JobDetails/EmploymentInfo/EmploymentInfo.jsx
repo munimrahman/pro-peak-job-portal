@@ -1,12 +1,12 @@
 import React from 'react';
+import deadline from '../../../assets/employment-info-icon/deadline.svg';
+import experience from '../../../assets/employment-info-icon/experience.svg';
 import industry from '../../../assets/employment-info-icon/industry.svg';
-// import salary from '../../../assets/employment-info-icon/salary.svg';
-// import jobType from '../../../assets/employment-info-icon/job-type.svg';
-// import updated from '../../../assets/employment-info-icon/updated.svg';
-// import jobLevel from '../../../assets/employment-info-icon/job-level.svg';
-// import experience from '../../../assets/employment-info-icon/experience.svg';
-// import deadline from '../../../assets/employment-info-icon/deadline.svg';
-// import location from '../../../assets/employment-info-icon/location.svg';
+import jobLevel from '../../../assets/employment-info-icon/job-level.svg';
+import jobType from '../../../assets/employment-info-icon/job-type.svg';
+import location from '../../../assets/employment-info-icon/location.svg';
+import salary from '../../../assets/employment-info-icon/salary.svg';
+import updated from '../../../assets/employment-info-icon/updated.svg';
 
 function EmploymentInfo() {
     return (
@@ -19,68 +19,61 @@ function EmploymentInfo() {
                     <div className="grid grid-cols-12 my-8">
                         <div className="flex items-center col-span-4">
                             <img src={industry} alt="" className="mr-3" />
-                            <p className="text-neutral">
-                                {/* <i className="fas fa-industry text-xs w-2 mr-4" /> */}
-                                Industry
-                            </p>
+                            <span className="text-neutral">Industry</span>
                         </div>
-                        <p className="ml-10 text-secondary col-span-8">
-                            Mechanical / Auto / Civil / Construction
-                        </p>
-                    </div>
-                    <div className="grid grid-cols-12 gap- my-8">
-                        <p className="text-neutral col-span-4">
-                            <i className="far fa-money-bill-alt text-xs w-2 mr-4" />
-                            Salary
-                        </p>
                         <p className="ml-10 text-secondary col-span-8">Mechanical</p>
                     </div>
-                    <div className="grid grid-cols-12 gap- my-8">
-                        <p className="text-neutral col-span-4">
-                            <i className="fas fa-mug-hot text-xs w-2 mr-4" />
-                            Job Type
-                        </p>
-                        <p className="ml-10 text-secondary col-span-8">Mechanical</p>
+                    <div className="grid grid-cols-12 my-8">
+                        <div className="flex items-center col-span-4">
+                            <img src={salary} alt="" className="mr-3" />
+                            <span className="text-neutral">Salary</span>
+                        </div>
+                        <p className="ml-10 text-secondary col-span-8">$800 - $1000</p>
                     </div>
-                    <div className="grid grid-cols-12 gap- my-8">
-                        <p className="text-neutral col-span-4">
-                            <i className="fas fa-vote-yea text-xs w-2 mr-4" />
-                            Updated
-                        </p>
-                        <p className="ml-10 text-secondary col-span-8">Mechanical</p>
+                    <div className="grid grid-cols-12 my-8">
+                        <div className="flex items-center col-span-4">
+                            <img src={jobType} alt="" className="mr-3" />
+                            <span className="text-neutral">Job Type</span>
+                        </div>
+                        <p className="ml-10 text-secondary col-span-8">Permanent</p>
+                    </div>
+                    <div className="grid grid-cols-12 my-8">
+                        <div className="flex items-center col-span-4">
+                            <img src={updated} alt="" className="mr-3" />
+                            <span className="text-neutral">Updated</span>
+                        </div>
+                        <p className="ml-10 text-secondary col-span-8">01/05/2023</p>
                     </div>
                 </div>
 
                 <div>
-                    <div className="grid grid-cols-12 gap- my-8">
-                        <p className="text-neutral col-span-4">
-                            <i className="fas fa-level-up-alt mr-2" />
-                            Industry
-                        </p>
-                        <p className="ml-10 text-secondary col-span-8">
-                            Mechanical / Auto / Civil / Construction
-                        </p>
+                    <div className="grid grid-cols-12 my-8">
+                        <div className="flex items-center col-span-4">
+                            <img src={jobLevel} alt="" className="mr-3" />
+                            <span className="text-neutral">Job Level</span>
+                        </div>
+                        <p className="ml-10 text-secondary col-span-8">Mid Level</p>
                     </div>
-                    <div className="grid grid-cols-12 gap- my-8">
-                        <p className="text-neutral col-span-4">
-                            <i className="fas fa-user-tie mr-2" />
-                            Salary
-                        </p>
-                        <p className="ml-10 text-secondary col-span-8">Mechanical</p>
+                    <div className="grid grid-cols-12 my-8">
+                        <div className="flex items-center col-span-4">
+                            <img src={experience} alt="" className="mr-3" />
+                            <span className="text-neutral">Experience</span>
+                        </div>
+                        <p className="ml-10 text-secondary col-span-8">1 - 2 Years</p>
                     </div>
-                    <div className="grid grid-cols-12 gap- my-8">
-                        <p className="text-neutral col-span-4">
-                            <i className="fas fa-business-time text-sm mr-2" />
-                            Job Type
-                        </p>
-                        <p className="ml-10 text-secondary col-span-8">Mechanical</p>
+                    <div className="grid grid-cols-12 my-8">
+                        <div className="flex items-center col-span-4">
+                            <img src={deadline} alt="" className="mr-3" />
+                            <span className="text-neutral">Deadline</span>
+                        </div>
+                        <p className="ml-10 text-secondary col-span-8">02/06/2023</p>
                     </div>
-                    <div className="grid grid-cols-12 gap- my-8">
-                        <p className="text-neutral col-span-4">
-                            <i className="fas fa-map-marker-alt text-sm mr-2" />
-                            Updated
-                        </p>
-                        <p className="ml-10 text-secondary col-span-8">Mechanical</p>
+                    <div className="grid grid-cols-12 my-8">
+                        <div className="flex items-center col-span-4">
+                            <img src={location} alt="" className="mr-3" />
+                            <span className="text-neutral">Location</span>
+                        </div>
+                        <p className="ml-10 text-secondary col-span-8">Dhaka, Bangladesh</p>
                     </div>
                 </div>
             </div>
