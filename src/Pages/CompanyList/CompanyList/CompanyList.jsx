@@ -2,10 +2,9 @@
 import React from 'react';
 import NewsBlogsJL from '../../JobList/NewsBlogs/NewsBlogsJL';
 import HeaderBrowseSearch from '../../Shared/HeaderBrowseSearch/HeaderBrowseSearch';
-import JobCardThree from '../../Shared/JobCardThree/JobCardThree';
-import JobCardTwo from '../../Shared/JobCardTwo/JobCardTwo';
 import Pagination from '../../Shared/Pagination/Pagination';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
+import CompanyCard from '../../Shared/TopRecruitersCard/TopRecruitersCard';
 import AdvFilterCompany from '../AdvFilterCompany/AdvFilterCompany';
 import FilterModalCompany from '../FilterModalCompany/FilterModalCompany';
 
@@ -73,18 +72,15 @@ function CompanyList() {
                             Advance Filter
                         </label>
                     </div>
-                    {/* Job List Column */}
                     <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 mt-5">
-                        <JobCardTwo />
-                        <JobCardTwo />
-                        <JobCardTwo />
+                        <CompanyCard />
+                        <CompanyCard />
+                        <CompanyCard />
+                        <CompanyCard />
+                        <CompanyCard />
+                        <CompanyCard />
                     </div>
-                    {/* Job List Row */}
-                    <div className="mt-5 grid gap-3">
-                        <JobCardThree />
-                        <JobCardThree />
-                        <JobCardThree />
-                    </div>
+
                     <div className="mt-10">
                         <Pagination />
                     </div>

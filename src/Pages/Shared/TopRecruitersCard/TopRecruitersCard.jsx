@@ -1,7 +1,7 @@
 import React from 'react';
-import img from '../../../../assets/brand-1.png';
+import img from '../../../assets/brand-1.png';
 
-function TopRecruitersCard() {
+function CompanyCard() {
     return (
         <div className="border rounded-lg bg-[#F8FAFF] text-center">
             <img src={img} alt="" className="inline-block mt-7" />
@@ -48,4 +48,4 @@ function TopRecruitersCard() {
     );
 }
 
-export default TopRecruitersCard;
+export default CompanyCard;

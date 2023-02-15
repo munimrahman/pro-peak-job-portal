@@ -7,7 +7,7 @@ import EmploymentInfo from '../EmploymentInfo/EmploymentInfo';
 import FeaturedJobs from '../FeaturedJobs/FeaturedJobs';
 import JobDescription from '../JobDescription/JobDescription';
 import JobDetailsHeader from '../JobDetailsHeader/JobDetailsHeader';
-import SimilarJobs from '../SimilarJobs/SimilarJobs';
+import MeetHiringTeam from '../MeetHiringTeam/MeetHiringTeam';
 
 function JobDetails() {
     return (
@@ -24,7 +24,7 @@ function JobDetails() {
                 </div>
                 <div className="col-span-4">
                     <CompanyInfo />
-                    <SimilarJobs />
+                    <MeetHiringTeam />
                 </div>
             </div>
             <FeaturedJobs />

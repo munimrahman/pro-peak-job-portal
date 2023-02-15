@@ -4,6 +4,8 @@ import brand from '../../../assets/brand-1.png';
 function CompanyInfo() {
     return (
         <div className="border rounded-lg p-8">
+            <h3 className="text-xl text-secondary font-bold">Company Information</h3>
+            <div className="divider mt-2" />
             <div className="flex">
                 <img src={brand} alt="" />
                 <div className="ml-4">

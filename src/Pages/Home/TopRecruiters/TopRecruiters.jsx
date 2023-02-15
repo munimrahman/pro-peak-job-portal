@@ -1,5 +1,5 @@
 import React from 'react';
-import TopRecruitersCard from '../TopRecruitersCard/TopRecruitersCard';
+import CompanyCard from '../../Shared/TopRecruitersCard/TopRecruitersCard';
 
 function TopRecruiters() {
     return (
@@ -9,14 +9,14 @@ function TopRecruiters() {
                 Discover your next career move, freelance gig, or internship
             </p>
             <div className="grid grid-cols-1 gap-3 lg:gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-8">
-                <TopRecruitersCard />
-                <TopRecruitersCard />
-                <TopRecruitersCard />
-                <TopRecruitersCard />
-                <TopRecruitersCard />
-                <TopRecruitersCard />
-                <TopRecruitersCard />
-                <TopRecruitersCard />
+                <CompanyCard />
+                <CompanyCard />
+                <CompanyCard />
+                <CompanyCard />
+                <CompanyCard />
+                <CompanyCard />
+                <CompanyCard />
+                <CompanyCard />
             </div>
         </div>
     );
