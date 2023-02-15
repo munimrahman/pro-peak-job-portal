@@ -81,7 +81,7 @@ function Footer() {
                             <Link to="/job-details">Job Details</Link>
                         </span>
                         <span className="text-accent text-sm hover:text-primary hover:cursor-pointer my-1">
-                            Our Team
+                            <Link to="/company-details">Company Details</Link>
                         </span>
                         <span className="text-accent text-sm hover:text-primary hover:cursor-pointer my-1">
                             Products

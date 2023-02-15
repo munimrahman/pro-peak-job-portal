@@ -5,7 +5,6 @@ import loc from '../../assets/location-search-bar.svg';
 
 function JobSearchBar() {
     return (
-        // <div className="border border-red-600 bg-purple-400 p-2 w-full mx-auto">
         <div className="">
             <div className="container flex flex-col md:flex-row justify-center items-center">
                 <div className="relative h-14">
@@ -50,7 +49,6 @@ function JobSearchBar() {
                 </div>
             </div>
         </div>
-        // </div>
     );
 }
 

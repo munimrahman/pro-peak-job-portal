@@ -89,7 +89,7 @@ function JobList() {
             </div>
             <NewsBlogsJL />
             <SubscribeBox />
-            <FilterModal />
+            <FilterModal filter={AdvFilter} />
         </div>
     );
 }
