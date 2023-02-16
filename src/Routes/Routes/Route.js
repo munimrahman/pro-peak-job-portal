@@ -11,7 +11,6 @@ import Home from '../../Pages/Home/Home/Home';
 import JobDetails from '../../Pages/JobDetails/JobDetails/JobDetails';
 import JobList from '../../Pages/JobList/JobList/JobList';
 import RecruiterDetails from '../../Pages/RecruiterDetails/RecruiterDetails/RecruiterDetails';
-import RecruiterList from '../../Pages/RecruiterList/RecruiterList/RecruiterList';
 import DisplayError from '../../Pages/Shared/ErrorPage/DisplayError';
 
 const router = createBrowserRouter([
@@ -44,10 +43,6 @@ const router = createBrowserRouter([
             {
                 path: '/company-details',
                 element: <CompanyDetails />,
-            },
-            {
-                path: '/recruiters',
-                element: <RecruiterList />,
             },
             {
                 path: '/recruiter-details',

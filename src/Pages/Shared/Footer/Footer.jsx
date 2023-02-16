@@ -84,10 +84,10 @@ function Footer() {
                             <Link to="/company-details">Company Details</Link>
                         </span>
                         <span className="text-accent text-sm hover:text-primary hover:cursor-pointer my-1">
-                            Products
+                            <Link to="/recruiter-details">Recruiter Details</Link>
                         </span>
                         <span className="text-accent text-sm hover:text-primary hover:cursor-pointer">
-                            Contacts
+                            <Link to="/candidate-details">Candidate Details</Link>
                         </span>
                     </div>
                 </div>

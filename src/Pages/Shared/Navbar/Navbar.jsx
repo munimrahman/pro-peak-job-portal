@@ -38,14 +38,6 @@ function Navbar({ stickyNav }) {
             <li>
                 <NavLink
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
-                    to="/recruiters"
-                >
-                    Recruiters
-                </NavLink>
-            </li>
-            <li>
-                <NavLink
-                    className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
                     to="/candidate-list"
                 >
                     Candidates
