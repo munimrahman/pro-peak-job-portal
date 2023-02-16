@@ -4,7 +4,7 @@ import './WeHiring.css';
 
 function WeHiring() {
     return (
-        <div className="border rounded bg-[#f2f6fd] pl-8 pt-8">
+        <div className="border rounded bg-[#f2f6fd] pl-8 pt-8 mt-8">
             <h4 className="text-neutral text-5xl font-bold">
                 <span className="text-3xl text-[#a0abb8] font-normal">WE ARE</span> <br /> HIRING
             </h4>

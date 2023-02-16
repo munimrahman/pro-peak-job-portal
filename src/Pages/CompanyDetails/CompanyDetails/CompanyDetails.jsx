@@ -3,6 +3,7 @@ import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
 import WeHiring from '../../Shared/WeHiring/WeHiring';
 import CompanyDescription from '../CompanyDescription/CompanyDescription';
 import CompanyDetailsHeader from '../CompanyDetailsHeader/CompanyDetailsHeader';
+import CompanyInfoSideBar from '../CompanyInfoSideBar/CompanyInfoSideBar';
 import LatestCompanyJobs from '../LatestCompanyJobs/LatestCompanyJobs';
 
 function CompanyDetails() {
@@ -15,6 +16,7 @@ function CompanyDetails() {
                     <LatestCompanyJobs />
                 </div>
                 <div className="col-span-4">
+                    <CompanyInfoSideBar />
                     <WeHiring />
                 </div>
             </div>
