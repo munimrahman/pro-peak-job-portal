@@ -101,7 +101,7 @@ function Footer() {
                             <Link to="/recruiter-profile">Recruiter Profile</Link>
                         </span>
                         <span className="text-accent text-sm hover:text-primary hover:cursor-pointer my-1">
-                            Products
+                            <Link to="/blog-details">Blog Details</Link>
                         </span>
                         <span className="text-accent text-sm hover:text-primary hover:cursor-pointer">
                             Contacts
