@@ -1,5 +1,6 @@
 import React from 'react';
 import blogCover from '../../../assets/blog-cover.png';
+import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
 import BlogPost from '../BlogPost/BlogPost';
 
 function BlogDetails() {
@@ -10,6 +11,7 @@ function BlogDetails() {
             </div>
             <div className="max-w-[1115px] mx-auto relative lg:-top-36 lg:-mb-36">
                 <BlogPost />
+                <SubscribeBox />
             </div>
         </div>
     );

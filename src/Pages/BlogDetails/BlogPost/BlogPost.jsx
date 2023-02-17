@@ -1,5 +1,7 @@
 import React from 'react';
 import avatar from '../../../assets/avatar.jpg';
+import blogImg from '../../../assets/img-news1.png';
+import BlogComments from '../BlogComments/BlogComments';
 
 function BlogPost() {
     return (
@@ -25,11 +27,16 @@ function BlogPost() {
             <h1 className="text-center text-secondary text-xl md:text-3xl font-bold py-2 border-t border-neutral border-b my-5">
                 11 Tips to Help You Get New Clients Through Cold Calling
             </h1>
-
+            <figure className="my-4">
+                <img src={blogImg} alt="" className="w-4/5 mx-auto rounded" />
+            </figure>
             <p className="text-accent text-lg leading-relaxed">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ornare pellentesque
                 sollicitudin. Suspendisse potenti. Fusce ex risus, iaculis sit amet sapien nec,
                 finibus malesuada mi. Proin at turpis eget sapien pulvinar luctus. Vestibulum
+            </p>
+
+            <p className="text-accent text-lg leading-relaxed">
                 bibendum pharetra lorem eu aliquam. In feugiat placerat risus, sed rutrum neque
                 mattis sit amet. Nullam vestibulum ante ac quam tempor, id venenatis velit eleifend.
                 Duis id iaculis risus, quis ullamcorper augue. Nunc tristique venenatis ipsum at
@@ -58,6 +65,7 @@ function BlogPost() {
                     </span>
                 </div>
             </div>
+            <BlogComments />
         </div>
     );
 }
