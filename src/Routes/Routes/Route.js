@@ -5,12 +5,14 @@ import Blog from '../../Pages/Blog/Blog/Blog';
 import BlogDetails from '../../Pages/BlogDetails/BlogDetails/BlogDetails';
 import CandidateDetails from '../../Pages/CandidateDetails/CandidateDetails/CandidateDetails';
 import CandidateList from '../../Pages/CandidateList/CandidateList/CandidateList';
+import CandidateProfile from '../../Pages/CandidateProfile/CandidateProfile/CandidateProfile';
 import CompanyDetails from '../../Pages/CompanyDetails/CompanyDetails/CompanyDetails';
 import CompanyList from '../../Pages/CompanyList/CompanyList/CompanyList';
 import Home from '../../Pages/Home/Home/Home';
 import JobDetails from '../../Pages/JobDetails/JobDetails/JobDetails';
 import JobList from '../../Pages/JobList/JobList/JobList';
 import RecruiterDetails from '../../Pages/RecruiterDetails/RecruiterDetails/RecruiterDetails';
+import RecruiterProfile from '../../Pages/RecruiterProfile/RecruiterProfile/RecruiterProfile';
 import DisplayError from '../../Pages/Shared/ErrorPage/DisplayError';
 
 const router = createBrowserRouter([
@@ -49,12 +51,20 @@ const router = createBrowserRouter([
                 element: <RecruiterDetails />,
             },
             {
+                path: '/recruiter-profile',
+                element: <RecruiterProfile />,
+            },
+            {
                 path: '/candidate-list',
                 element: <CandidateList />,
             },
             {
                 path: '/candidate-details',
                 element: <CandidateDetails />,
+            },
+            {
+                path: '/candidate-profile',
+                element: <CandidateProfile />,
             },
             {
                 path: '/blogs',
