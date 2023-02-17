@@ -104,7 +104,7 @@ function Footer() {
                             <Link to="/blog-details">Blog Details</Link>
                         </span>
                         <span className="text-accent text-sm hover:text-primary hover:cursor-pointer">
-                            Contacts
+                            <Link to="/dashboard">Dashboard</Link>
                         </span>
                     </div>
                 </div>

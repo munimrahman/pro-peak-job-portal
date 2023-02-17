@@ -54,7 +54,7 @@ function Navbar({ stickyNav }) {
             <li>
                 <NavLink
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
-                    to="/blogs"
+                    to="/pricing"
                 >
                     Pricing
                 </NavLink>

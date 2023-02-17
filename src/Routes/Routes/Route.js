@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import DashboardLayout from '../../Layout/DashboardLayout';
 import Main from '../../Layout/Main';
 import About from '../../Pages/About/About/About';
 import Blog from '../../Pages/Blog/Blog/Blog';
@@ -8,11 +9,13 @@ import CandidateList from '../../Pages/CandidateList/CandidateList/CandidateList
 import CandidateProfile from '../../Pages/CandidateProfile/CandidateProfile/CandidateProfile';
 import CompanyDetails from '../../Pages/CompanyDetails/CompanyDetails/CompanyDetails';
 import CompanyList from '../../Pages/CompanyList/CompanyList/CompanyList';
+import DashboardCandidate from '../../Pages/Dashboard/DashboardCandidate/DashboardCandidate';
 import Home from '../../Pages/Home/Home/Home';
 import JobDetails from '../../Pages/JobDetails/JobDetails/JobDetails';
 import JobList from '../../Pages/JobList/JobList/JobList';
 import RecruiterDetails from '../../Pages/RecruiterDetails/RecruiterDetails/RecruiterDetails';
 import RecruiterProfile from '../../Pages/RecruiterProfile/RecruiterProfile/RecruiterProfile';
+import ComingSoon from '../../Pages/Shared/ComingSoon/ComingSoon';
 import DisplayError from '../../Pages/Shared/ErrorPage/DisplayError';
 
 const router = createBrowserRouter([
@@ -74,6 +77,19 @@ const router = createBrowserRouter([
                 path: '/blog-details',
                 element: <BlogDetails />,
             },
+            {
+                path: '/pricing',
+                element: <ComingSoon />,
+            },
+        ],
+    },
+    {
+        path: '/dashboard',
+        element: <DashboardLayout />,
+        errorElement: <DisplayError />,
+        children: [
+            { path: '/dashboard', element: <DashboardCandidate /> },
+            { path: '/dashboard/candidate-profile', element: <CandidateProfile /> },
         ],
     },
 ]);

@@ -46,7 +46,7 @@ function BlogPost() {
             <div className="flex justify-between items-center pb-6">
                 <div className="flex items-center">
                     <span className="text-2xl hover:cursor-pointer">
-                        <i className="far fa-heart text-red-600" />
+                        <i className="far fa-heart text-red-500" />
                     </span>
                     <span className="ml-2 text-neutral font-thin">154 Loves</span>
                 </div>
