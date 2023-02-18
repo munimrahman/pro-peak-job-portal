@@ -1,0 +1,6 @@
+.welcome {
+  background-image: url("../../../assets/hello.png");
+  background-repeat: no-repeat;
+  background-size: 25%;
+  background-position: right 30px bottom;
+}

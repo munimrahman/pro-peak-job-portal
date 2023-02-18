@@ -52,7 +52,7 @@ function DashboardLayout() {
                     </aside>
                     <div
                         id="main-content"
-                        className="h-full w-full bg-gray-50 relative overflow-y-auto md:ml-56"
+                        className="h-full w-full relative overflow-y-auto md:ml-56"
                     >
                         <main>
                             <label htmlFor="my-drawer" className="block md:hidden">
