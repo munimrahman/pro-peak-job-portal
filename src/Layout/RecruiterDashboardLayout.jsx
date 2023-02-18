@@ -1,31 +1,70 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 
 function RecruiterDashboardLayout() {
+    const activeClassName =
+        'text-sm bg-info border-l-4 border-primary text-primary active:text-secondary';
+    const inActiveClassName =
+        'text-sm text-secondary active:bg-info active:text-secondary hover:bg-info';
     const sidebarItems = (
         <>
-            <li className="bordered">
-                <Link to="/recruiter-dashboard">Dashboard</Link>
+            <li>
+                <NavLink
+                    className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
+                    to="/recruiter-dashboard/recruiter"
+                >
+                    Dashboard
+                </NavLink>
             </li>
             <li>
-                <Link to="/recruiter-dashboard/recruiter-profile">My Profile</Link>
+                <NavLink
+                    className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
+                    to="/recruiter-dashboard/recruiter-profile"
+                >
+                    My Profile
+                </NavLink>
             </li>
             <li>
-                <Link to="/recruiter-dashboard/company-profile">Company Profile</Link>
+                <NavLink
+                    className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
+                    to="/recruiter-dashboard/company-profile"
+                >
+                    Company Profile
+                </NavLink>
             </li>
             <li>
-                <Link to="/recruiter-dashboard/inbox">Inbox</Link>
+                <NavLink
+                    className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
+                    to="/recruiter-dashboard/inbox"
+                >
+                    Inbox
+                </NavLink>
             </li>
             <li>
-                <Link to="/recruiter-dashboard/manage-jobs">Manage Jobs</Link>
+                <NavLink
+                    className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
+                    to="/recruiter-dashboard/manage-jobs"
+                >
+                    Manage Jobs
+                </NavLink>
             </li>
             <li>
-                <Link to="/recruiter-dashboard/blog">Blog</Link>
+                <NavLink
+                    className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
+                    to="/recruiter-dashboard/blog"
+                >
+                    Blog
+                </NavLink>
             </li>
             <li>
-                <Link to="/recruiter-dashboard">Log Out</Link>
+                <NavLink
+                    className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
+                    to="/recruiter-dashboard"
+                >
+                    Log Out
+                </NavLink>
             </li>
         </>
     );
@@ -64,7 +103,7 @@ function RecruiterDashboardLayout() {
                             </label>
                             <div className="drawer md:hidden">
                                 <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-                                <div className="drawer-content ">
+                                <div className="drawer-content bg-gray-50">
                                     <Outlet />
                                 </div>
                                 <div className="drawer-side">
@@ -74,7 +113,7 @@ function RecruiterDashboardLayout() {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="hidden md:block">
+                            <div className="hidden md:block bg-gray-50">
                                 <Outlet />
                             </div>
                         </main>

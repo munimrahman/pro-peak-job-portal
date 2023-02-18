@@ -94,7 +94,7 @@ const router = createBrowserRouter([
         errorElement: <DisplayError />,
         children: [
             {
-                path: '/dashboard',
+                path: '/dashboard/candidate',
                 element: <DashboardCandidate />,
             },
             {
@@ -125,7 +125,7 @@ const router = createBrowserRouter([
         errorElement: <DisplayError />,
         children: [
             {
-                path: '/recruiter-dashboard',
+                path: '/recruiter-dashboard/recruiter',
                 element: <DashboardRecruiter />,
             },
             {
