@@ -7,25 +7,25 @@ function RecruiterDashboardLayout() {
     const sidebarItems = (
         <>
             <li className="bordered">
-                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/recruiter-dashboard">Dashboard</Link>
             </li>
             <li>
-                <Link to="/dashboard/candidate-profile">My Profile</Link>
+                <Link to="/recruiter-dashboard/recruiter-profile">My Profile</Link>
             </li>
             <li>
-                <Link to="/dashboard/candidate-profile">Company Profile</Link>
+                <Link to="/recruiter-dashboard/company-profile">Company Profile</Link>
             </li>
             <li>
-                <Link to="/dashboard">Inbox</Link>
+                <Link to="/recruiter-dashboard/inbox">Inbox</Link>
             </li>
             <li>
-                <Link to="/dashboard">Manage Jobs</Link>
+                <Link to="/recruiter-dashboard/manage-jobs">Manage Jobs</Link>
             </li>
             <li>
-                <Link to="/dashboard">Blog</Link>
+                <Link to="/recruiter-dashboard/blog">Blog</Link>
             </li>
             <li>
-                <Link to="/dashboard">Log Out</Link>
+                <Link to="/recruiter-dashboard">Log Out</Link>
             </li>
         </>
     );

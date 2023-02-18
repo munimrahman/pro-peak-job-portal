@@ -13,16 +13,16 @@ function DashboardLayout() {
                 <Link to="/dashboard/candidate-profile">My Profile</Link>
             </li>
             <li>
-                <Link to="/dashboard">Inbox</Link>
+                <Link to="/dashboard/inbox">Inbox</Link>
             </li>
             <li>
-                <Link to="/dashboard">Applied Jobs</Link>
+                <Link to="/dashboard/applied-jobs">Applied Jobs</Link>
             </li>
             <li>
-                <Link to="/dashboard">Skill Test</Link>
+                <Link to="/dashboard/skill-test">Skill Test</Link>
             </li>
             <li>
-                <Link to="/dashboard">Blog</Link>
+                <Link to="/dashboard/blog">Blog</Link>
             </li>
             <li>
                 <Link to="/dashboard">Log Out</Link>
