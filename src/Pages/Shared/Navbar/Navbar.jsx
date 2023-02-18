@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/ProPeak.png';
-import ButtonPrimary from '../../../Components/ButtonPrimary/ButtonPrimary';
+// import ButtonPrimary from '../../../Components/ButtonPrimary/ButtonPrimary';
+import avatar from '../../../assets/avatar.jpg';
 
 function Navbar({ stickyNav }) {
     const activeClassName = 'text-sm bg-info text-primary active:text-secondary';
@@ -96,8 +97,10 @@ function Navbar({ stickyNav }) {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">{menuItems}</ul>
                 </div>
+
                 <div className="navbar-end">
-                    <NavLink className="mr-3 sm:hidden" to="/">
+                    {/* show this if user not logged in */}
+                    {/* <NavLink className="mr-3 sm:hidden" to="/">
                         <ButtonPrimary className="btn-outline btn-md">Get Started</ButtonPrimary>
                     </NavLink>
                     <NavLink className="mr-3 hidden sm:block" to="/">
@@ -105,7 +108,33 @@ function Navbar({ stickyNav }) {
                     </NavLink>
                     <NavLink className="hidden sm:block" to="/">
                         <ButtonPrimary>LogIn</ButtonPrimary>
-                    </NavLink>
+                    </NavLink> */}
+
+                    {/* show this if user logged in */}
+
+                    <div className="dropdown dropdown-end">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            <div className="w-16 rounded-full">
+                                <img src={avatar} alt="" />
+                            </div>
+                        </label>
+                        <ul
+                            tabIndex={0}
+                            className="menu menu-compact dropdown-content mt- p-2 shadow bg-base-100 rounded-box w-52"
+                        >
+                            <li>
+                                <Link to="/dashboard" className="justify-between">
+                                    Candidate Dashboard
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/recruiter-dashboard">Recruiter Dashboard</Link>
+                            </li>
+                            <li>
+                                <Link to="/dashboard">Logout</Link>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

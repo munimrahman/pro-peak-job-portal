@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import DashboardLayout from '../../Layout/DashboardLayout';
+import RecruiterDashboardLayout from '../../Layout/RecruiterDashboardLayout';
 import Main from '../../Layout/Main';
 import About from '../../Pages/About/About/About';
 import Blog from '../../Pages/Blog/Blog/Blog';
@@ -17,6 +18,7 @@ import RecruiterDetails from '../../Pages/RecruiterDetails/RecruiterDetails/Recr
 import RecruiterProfile from '../../Pages/RecruiterProfile/RecruiterProfile/RecruiterProfile';
 import ComingSoon from '../../Pages/Shared/ComingSoon/ComingSoon';
 import DisplayError from '../../Pages/Shared/ErrorPage/DisplayError';
+import DashboardRecruiter from '../../Pages/Dashboard/DashboardRecruiter/DashboardRecruiter';
 
 const router = createBrowserRouter([
     {
@@ -54,10 +56,6 @@ const router = createBrowserRouter([
                 element: <RecruiterDetails />,
             },
             {
-                path: '/recruiter-profile',
-                element: <RecruiterProfile />,
-            },
-            {
                 path: '/candidate-list',
                 element: <CandidateList />,
             },
@@ -83,6 +81,7 @@ const router = createBrowserRouter([
             },
         ],
     },
+
     {
         path: '/dashboard',
         element: <DashboardLayout />,
@@ -90,6 +89,15 @@ const router = createBrowserRouter([
         children: [
             { path: '/dashboard', element: <DashboardCandidate /> },
             { path: '/dashboard/candidate-profile', element: <CandidateProfile /> },
+        ],
+    },
+    {
+        path: '/recruiter-dashboard',
+        element: <RecruiterDashboardLayout />,
+        errorElement: <DisplayError />,
+        children: [
+            { path: '/recruiter-dashboard', element: <DashboardRecruiter /> },
+            { path: '/recruiter-dashboard/recruiter-profile', element: <RecruiterProfile /> },
         ],
     },
 ]);

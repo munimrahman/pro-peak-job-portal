@@ -3,7 +3,7 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 
-function DashboardLayout() {
+function RecruiterDashboardLayout() {
     const sidebarItems = (
         <>
             <li className="bordered">
@@ -13,13 +13,13 @@ function DashboardLayout() {
                 <Link to="/dashboard/candidate-profile">My Profile</Link>
             </li>
             <li>
+                <Link to="/dashboard/candidate-profile">Company Profile</Link>
+            </li>
+            <li>
                 <Link to="/dashboard">Inbox</Link>
             </li>
             <li>
-                <Link to="/dashboard">Applied Jobs</Link>
-            </li>
-            <li>
-                <Link to="/dashboard">Skill Test</Link>
+                <Link to="/dashboard">Manage Jobs</Link>
             </li>
             <li>
                 <Link to="/dashboard">Blog</Link>
@@ -85,4 +85,4 @@ function DashboardLayout() {
     );
 }
 
-export default DashboardLayout;
+export default RecruiterDashboardLayout;
