@@ -61,7 +61,7 @@ function RecruiterDashboardLayout() {
             <li>
                 <NavLink
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
-                    to="/recruiter-dashboard"
+                    to="/"
                 >
                     Log Out
                 </NavLink>
@@ -70,56 +70,51 @@ function RecruiterDashboardLayout() {
     );
 
     return (
-        <div>
+        <div className="min-h-screen flex flex-col h-screen">
             <Navbar />
-            <div>
-                <div className="flex overflow-hidden bg-white">
-                    <aside
-                        id="sidebar"
-                        className="fixed hidden h-full top-20 left-0 md:flex flex-shrink-0 flex-col w-56 transition-width duration-75"
-                        aria-label="Sidebar"
-                    >
-                        <div className="relative flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white pt-0">
-                            <div className="flex-1 flex flex-col py-2 overflow-y-auto">
-                                <div className="flex-1 px-3 bg-white divide-y space-y-1">
-                                    <ul className="space-y-2 pb-2 menu bg-base-100 w-56">
-                                        {sidebarItems}
-                                    </ul>
-                                </div>
+            {/* <!-- main container --> */}
+            <div className="flex-1 flex flex-row overflow-y-hidden">
+                <main className="flex-1 overflow-y-auto border-l">
+                    <div className="md:hidden">
+                        <label htmlFor="my-drawer" className="block md:hidden">
+                            <div className="flex justify-end">
+                                <p className="bg-info text-primary px-2 py-1 my-2 rounded hover:cursor-pointer">
+                                    Menu <i className="fas fa-arrow-circle-right" />
+                                </p>
                             </div>
-                        </div>
-                    </aside>
-                    <div
-                        id="main-content"
-                        className="h-full w-full bg-gray-50 relative overflow-y-auto md:ml-56"
-                    >
-                        <main>
-                            <label htmlFor="my-drawer" className="block md:hidden">
-                                <div className="flex justify-end">
-                                    <p className="bg-info text-primary px-2 py-1 my-2 rounded hover:cursor-pointer">
-                                        Menu <i className="fas fa-arrow-circle-right" />
-                                    </p>
-                                </div>
-                            </label>
-                            <div className="drawer md:hidden">
-                                <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-                                <div className="drawer-content bg-gray-50">
-                                    <Outlet />
-                                </div>
-                                <div className="drawer-side">
-                                    <label htmlFor="my-drawer" className="drawer-overlay" />
-                                    <ul className="space-y-2 pb-2 menu bg-base-100 w-56">
-                                        {sidebarItems}
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="hidden md:block bg-gray-50">
+                        </label>
+                        <div className="drawer md:hidden">
+                            <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+                            <div className="drawer-content bg-gray-50">
                                 <Outlet />
                             </div>
-                        </main>
+                            <div className="drawer-side">
+                                <label htmlFor="my-drawer" className="drawer-overlay" />
+                                <ul className="space-y-2 pb-2 menu bg-base-100 w-56">
+                                    {sidebarItems}
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <div className="hidden md:block bg-gray-50">
+                        <Outlet />
+                    </div>
+                </main>
+
+                {/* <nav className="order-first sm:w-32 bg-purple-200 overflow-y-auto">Sidebar</nav> */}
+                <aside id="sidebar" className="order-first hidden md:block">
+                    <div className="relative flex-1 flex flex-col min-h-0 bg-white pt-0">
+                        <div className="flex-1 flex flex-col py-2 overflow-y-auto">
+                            <div className="flex-1 pl-3 bg-white divide-y space-y-1">
+                                <ul className="space-y-2 pb-2 menu bg-base-100 w-56">
+                                    {sidebarItems}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
             </div>
+            {/* <!-- end main container --> */}
         </div>
     );
 }

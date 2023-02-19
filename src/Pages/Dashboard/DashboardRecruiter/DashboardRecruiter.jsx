@@ -1,11 +1,8 @@
 import React from 'react';
+import DashboardCandidate from '../DashboardCandidate/DashboardCandidate';
 
 function DashboardRecruiter() {
-    return (
-        <div>
-            <h1>Dashboard for Recruiter</h1>
-        </div>
-    );
+    return <DashboardCandidate />;
 }
 
 export default DashboardRecruiter;

@@ -4,7 +4,6 @@ function AppliedJobs() {
     return (
         <div className="p-8">
             <h2 className="text-secondary text-3xl">Applied Jobs</h2>
-
             <div className="divider my-3" />
             <div className="bg-white rounded-xl shadow p-5">
                 <div className="overflow-x-auto">

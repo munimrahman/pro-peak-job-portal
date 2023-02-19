@@ -1,11 +1,11 @@
 import React from 'react';
 
-function PostBlog() {
+function PostJob() {
     return (
         <div>
-            <h1>Post Blog</h1>
+            <h1>Post New Job</h1>
         </div>
     );
 }
 
-export default PostBlog;
+export default PostJob;

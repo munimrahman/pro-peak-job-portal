@@ -57,7 +57,7 @@ function Navbar({ stickyNav }) {
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
                     to="/pricing"
                 >
-                    Pricing
+                    Skill Assessment
                 </NavLink>
             </li>
         </>
@@ -128,10 +128,10 @@ function Navbar({ stickyNav }) {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/recruiter-dashboard">Recruiter Dashboard</Link>
+                                <Link to="/recruiter-dashboard/recruiter">Recruiter Dashboard</Link>
                             </li>
                             <li>
-                                <Link to="/dashboard">Logout</Link>
+                                <Link to="/">Logout</Link>
                             </li>
                         </ul>
                     </div>

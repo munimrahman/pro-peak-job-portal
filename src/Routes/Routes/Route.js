@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import BlogDashboardLayout from '../../Layout/BlogDashboardLayout';
 import CandidateProfileLayout from '../../Layout/CandidateProfileLayout';
 import DashboardLayout from '../../Layout/DashboardLayout';
 import Main from '../../Layout/Main';
@@ -11,15 +12,22 @@ import CandidateList from '../../Pages/CandidateList/CandidateList/CandidateList
 import CompanyDetails from '../../Pages/CompanyDetails/CompanyDetails/CompanyDetails';
 import CompanyList from '../../Pages/CompanyList/CompanyList/CompanyList';
 import AppliedJobs from '../../Pages/Dashboard/AppliedJobs/AppliedJobs';
-import BlogDashboard from '../../Pages/Dashboard/BlogDashboard/BlogDashboard/BlogDashboard';
+import BlogDashboard from '../../Pages/Dashboard/BlogDashboard/BlogDashboard';
+import PostBlog from '../../Pages/Dashboard/BlogDashboard/PostBlog';
+import UpdateBlog from '../../Pages/Dashboard/BlogDashboard/UpdateBlog';
 import CandidateProfile from '../../Pages/Dashboard/CandidateProfile/CandidateProfile';
 import ChangePassword from '../../Pages/Dashboard/CandidateProfile/ChangePassword';
 import EditProfile from '../../Pages/Dashboard/CandidateProfile/EditProfile';
 import CompanyProfile from '../../Pages/Dashboard/CompanyProfile/CompanyProfile';
+import UpdateCompanyProfile from '../../Pages/Dashboard/CompanyProfile/UpdateCompanyProfile';
 import DashboardCandidate from '../../Pages/Dashboard/DashboardCandidate/DashboardCandidate';
 import DashboardRecruiter from '../../Pages/Dashboard/DashboardRecruiter/DashboardRecruiter';
 import Inbox from '../../Pages/Dashboard/Inbox/Inbox';
 import ManageJobs from '../../Pages/Dashboard/ManageJobs/ManageJobs';
+import PostJob from '../../Pages/Dashboard/ManageJobs/PostJob';
+import UpdateJob from '../../Pages/Dashboard/ManageJobs/UpdateJob';
+import ChangeRecruiterPassword from '../../Pages/Dashboard/RecruiterProfile/ChangeRecruiterPassword';
+import EditRecruiterProfile from '../../Pages/Dashboard/RecruiterProfile/EditRecruiterProfile';
 import RecruiterProfile from '../../Pages/Dashboard/RecruiterProfile/RecruiterProfile';
 import SkillTest from '../../Pages/Dashboard/SkillTest/SkillTest';
 import Home from '../../Pages/Home/Home/Home';
@@ -90,7 +98,6 @@ const router = createBrowserRouter([
             },
         ],
     },
-
     {
         path: '/dashboard',
         element: <DashboardLayout />,
@@ -132,7 +139,21 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/blog',
-                element: <BlogDashboard />,
+                element: <BlogDashboardLayout />,
+                children: [
+                    {
+                        path: '/dashboard/blog',
+                        element: <BlogDashboard />,
+                    },
+                    {
+                        path: '/dashboard/blog/post-new-blog',
+                        element: <PostBlog />,
+                    },
+                    {
+                        path: '/dashboard/blog/update-blog',
+                        element: <UpdateBlog />,
+                    },
+                ],
             },
         ],
     },
@@ -147,11 +168,35 @@ const router = createBrowserRouter([
             },
             {
                 path: '/recruiter-dashboard/recruiter-profile',
-                element: <RecruiterProfile />,
+                element: <CandidateProfileLayout />,
+                children: [
+                    {
+                        path: '/recruiter-dashboard/recruiter-profile',
+                        element: <RecruiterProfile />,
+                    },
+                    {
+                        path: '/recruiter-dashboard/recruiter-profile/edit',
+                        element: <EditRecruiterProfile />,
+                    },
+                    {
+                        path: '/recruiter-dashboard/recruiter-profile/change-password',
+                        element: <ChangeRecruiterPassword />,
+                    },
+                ],
             },
             {
                 path: '/recruiter-dashboard/company-profile',
-                element: <CompanyProfile />,
+                element: <CandidateProfileLayout />,
+                children: [
+                    {
+                        path: '/recruiter-dashboard/company-profile',
+                        element: <CompanyProfile />,
+                    },
+                    {
+                        path: '/recruiter-dashboard/company-profile/edit',
+                        element: <UpdateCompanyProfile />,
+                    },
+                ],
             },
             {
                 path: '/recruiter-dashboard/inbox',
@@ -159,7 +204,21 @@ const router = createBrowserRouter([
             },
             {
                 path: '/recruiter-dashboard/manage-jobs',
-                element: <ManageJobs />,
+                element: <CandidateProfileLayout />,
+                children: [
+                    {
+                        path: '/recruiter-dashboard/manage-jobs',
+                        element: <ManageJobs />,
+                    },
+                    {
+                        path: '/recruiter-dashboard/manage-jobs/post-new-job',
+                        element: <PostJob />,
+                    },
+                    {
+                        path: '/recruiter-dashboard/manage-jobs/update-job',
+                        element: <UpdateJob />,
+                    },
+                ],
             },
             {
                 path: '/recruiter-dashboard/blog',

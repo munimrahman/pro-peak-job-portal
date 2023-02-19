@@ -50,7 +50,7 @@ function DashboardLayout() {
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
                     to="/dashboard/skill-test"
                 >
-                    Skill Test
+                    Skill Assessment
                 </NavLink>
             </li>
             <li>
