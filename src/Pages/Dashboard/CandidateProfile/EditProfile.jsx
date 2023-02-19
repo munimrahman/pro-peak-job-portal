@@ -53,20 +53,16 @@ function EditProfile() {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="text-secondary">Industry:</span>
+                            <span className="text-secondary">Profile Photo:</span>
                         </label>
-                        <select className="select select-bordered focus:outline-none w-full">
-                            <option>Web Development</option>
-                            <option>Graphic Designer</option>
-                            <option>Product Designer</option>
-                            <option>UI/UX Designer</option>
-                            <option>Video Editor</option>
-                            <option>App Developer</option>
-                        </select>
+                        <input
+                            type="file"
+                            className="file-input file-input-bordered focus:outline-none w-full"
+                        />
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="text-secondary">Profile Photo:</span>
+                            <span className="text-secondary">Cover Photo:</span>
                         </label>
                         <input
                             type="file"
@@ -121,21 +117,25 @@ function EditProfile() {
                     </div>
                     <div className="form-control">
                         <label className="label">
+                            <span className="text-secondary">Industry:</span>
+                        </label>
+                        <select className="select select-bordered focus:outline-none w-full">
+                            <option>Web Development</option>
+                            <option>Graphic Designer</option>
+                            <option>Product Designer</option>
+                            <option>UI/UX Designer</option>
+                            <option>Video Editor</option>
+                            <option>App Developer</option>
+                        </select>
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
                             <span className="text-secondary">Skills:</span>
                         </label>
                         <input
                             type="text"
                             placeholder="React, Nodejs"
                             className="input input-bordered focus:outline-none w-full"
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="text-secondary">Cover Photo:</span>
-                        </label>
-                        <input
-                            type="file"
-                            className="file-input file-input-bordered focus:outline-none w-full"
                         />
                     </div>
                 </div>

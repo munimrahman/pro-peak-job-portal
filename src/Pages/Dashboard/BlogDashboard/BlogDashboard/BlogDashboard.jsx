@@ -2,8 +2,8 @@ import React from 'react';
 
 function BlogDashboard() {
     return (
-        <div>
-            <h1>Blog Dashboard</h1>
+        <div className="p-5">
+            <h1>Blog</h1>
         </div>
     );
 }
