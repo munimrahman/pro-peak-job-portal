@@ -99,7 +99,7 @@ function DashboardLayout() {
                             </div>
                         </div>
                     </div>
-                    <div className="hidden md:block">
+                    <div className="hidden md:block bg-gray-50">
                         <Outlet />
                     </div>
                 </main>
