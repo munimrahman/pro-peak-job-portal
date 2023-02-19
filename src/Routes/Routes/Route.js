@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import CandidateProfileLayout from '../../Layout/CandidateProfileLayout';
 import DashboardLayout from '../../Layout/DashboardLayout';
 import Main from '../../Layout/Main';
 import RecruiterDashboardLayout from '../../Layout/RecruiterDashboardLayout';
@@ -12,6 +13,8 @@ import CompanyList from '../../Pages/CompanyList/CompanyList/CompanyList';
 import AppliedJobs from '../../Pages/Dashboard/AppliedJobs/AppliedJobs';
 import BlogDashboard from '../../Pages/Dashboard/BlogDashboard/BlogDashboard/BlogDashboard';
 import CandidateProfile from '../../Pages/Dashboard/CandidateProfile/CandidateProfile';
+import ChangePassword from '../../Pages/Dashboard/CandidateProfile/ChangePassword';
+import EditProfile from '../../Pages/Dashboard/CandidateProfile/EditProfile';
 import CompanyProfile from '../../Pages/Dashboard/CompanyProfile/CompanyProfile';
 import DashboardCandidate from '../../Pages/Dashboard/DashboardCandidate/DashboardCandidate';
 import DashboardRecruiter from '../../Pages/Dashboard/DashboardRecruiter/DashboardRecruiter';
@@ -99,7 +102,21 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/candidate-profile',
-                element: <CandidateProfile />,
+                element: <CandidateProfileLayout />,
+                children: [
+                    {
+                        path: '/dashboard/candidate-profile',
+                        element: <CandidateProfile />,
+                    },
+                    {
+                        path: '/dashboard/candidate-profile/edit',
+                        element: <EditProfile />,
+                    },
+                    {
+                        path: '/dashboard/candidate-profile/change-password',
+                        element: <ChangePassword />,
+                    },
+                ],
             },
             {
                 path: '/dashboard/inbox',

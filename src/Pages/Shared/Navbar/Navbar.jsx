@@ -123,7 +123,7 @@ function Navbar({ stickyNav }) {
                             className="menu menu-compact dropdown-content mt- p-2 shadow bg-base-100 rounded-box w-52"
                         >
                             <li>
-                                <Link to="/dashboard" className="justify-between">
+                                <Link to="/dashboard/candidate" className="justify-between">
                                     Candidate Dashboard
                                 </Link>
                             </li>
