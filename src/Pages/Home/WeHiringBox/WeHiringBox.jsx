@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ButtonPrimary from '../../../Components/ButtonPrimary/ButtonPrimary';
 import './WehiringBox.css';
 
@@ -13,7 +14,9 @@ function WeHiringBox() {
                 <br /> & <span className="text-secondary font-bold">Explore</span> <br />{' '}
                 Opportunities
             </p>
-            <ButtonPrimary className="self-center">Apply Now</ButtonPrimary>
+            <Link to="/job-details">
+                <ButtonPrimary className="self-center">Apply Now</ButtonPrimary>
+            </Link>
         </div>
     );
 }

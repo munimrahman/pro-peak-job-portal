@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import avatar from '../../../assets/avatar.jpg';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 
@@ -12,12 +13,14 @@ function CandidateCard() {
                     </div>
                 </div>
                 <div className="ml-3">
-                    <h3 className="text-lg font-bold text-secondary">
-                        Sansa Stark{' '}
-                        <span>
-                            <i className="fas fa-check-circle text-primary text-sm" />
-                        </span>
-                    </h3>
+                    <Link to="/candidate-details">
+                        <h3 className="text-lg font-bold text-secondary hover:text-primary">
+                            Sansa Stark{' '}
+                            <span>
+                                <i className="fas fa-check-circle text-primary text-sm" />
+                            </span>
+                        </h3>
+                    </Link>
                     <p className="text-xs text-neutral mt-1">
                         <i className="fas fa-map-marker-alt mr-1" />
                         Dhaka, Bangladesh
@@ -59,7 +62,9 @@ function CandidateCard() {
                 <p className="text-sm text-accent">
                     <span className="text-xl text-primary font-bold">$80</span>/Hour
                 </p>
-                <ButtonInfo>Hire Now</ButtonInfo>
+                <Link to="/candidate-details">
+                    <ButtonInfo>Hire Now</ButtonInfo>
+                </Link>
             </div>
         </div>
     );

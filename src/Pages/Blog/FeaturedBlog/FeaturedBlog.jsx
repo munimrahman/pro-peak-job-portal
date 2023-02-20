@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import img from '../../../assets/img-news1.png';
 
 function FeaturedBlog() {
@@ -20,19 +21,23 @@ function FeaturedBlog() {
                         React
                     </span>
                 </div>
-                <h2 className="text-secondary text-4xl font-bold hover:text-primary mt-2 hover:cursor-pointer">
-                    Improve Your Business With These 8 Simple Tricks
-                </h2>
+                <Link to="/blog-details">
+                    <h2 className="text-secondary text-4xl font-bold hover:text-primary mt-2 hover:cursor-pointer">
+                        Improve Your Business With These 8 Simple Tricks
+                    </h2>
+                </Link>
                 <p className="my-5 text-accent">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore consequatur
                     sapiente quaerat in dolor id eos vitae voluptates magnam omnis, rerum, saepe
                     adipisci nesciunt quasi vero quidem obcaecati blanditiis incidunt.
                 </p>
                 <div className="card-actions justify-start">
-                    <span className="text-primary hover:underline hover:underline-offset-1 text-sm font-bold hover:cursor-pointer">
-                        Read More
-                        <i className="fas fa-arrow-right text-xs ml-1" />
-                    </span>
+                    <Link to="/blog-details">
+                        <span className="text-primary hover:underline hover:underline-offset-1 text-sm font-bold hover:cursor-pointer">
+                            Read More
+                            <i className="fas fa-arrow-right text-xs ml-1" />
+                        </span>
+                    </Link>
                 </div>
             </div>
         </div>

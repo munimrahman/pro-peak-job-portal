@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import brand from '../../../assets/brand-1.png';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 
@@ -15,10 +16,11 @@ function JobCardTwo() {
                     </span>
                 </div>
             </div>
-
-            <h2 className="text-secondary text-lg font-bold">
-                UI / UX Designer Fulltime Salary $800 per month
-            </h2>
+            <Link to="/job-details">
+                <h2 className="text-secondary text-lg font-bold hover:text-primary">
+                    UI / UX Designer Fulltime Salary $800 per month
+                </h2>
+            </Link>
             <div className="text-xs text-neutral flex justify-between  my-3">
                 <span>
                     <i className="fas fa-briefcase mr-1" /> Fulltime
@@ -50,7 +52,9 @@ function JobCardTwo() {
                 <p className="text-sm text-accent">
                     <span className="text-lg text-primary font-bold">$80-$150</span>/Hour
                 </p>
-                <ButtonInfo>Apply Now</ButtonInfo>
+                <Link to="/job-details">
+                    <ButtonInfo>Apply Now</ButtonInfo>
+                </Link>
             </div>
         </div>
     );

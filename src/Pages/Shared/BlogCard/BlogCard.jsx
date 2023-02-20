@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import img from '../../../assets/img-news1.png';
 import userImg from '../../../assets/user1.png';
 
@@ -8,10 +9,11 @@ function BlogCard() {
             <img src={img} alt="" className="rounded-xl w-full" />
 
             <div className="px-1">
-                <h2 className="text-secondary hover:text-primary text-lg hover:cursor-pointer font-bold mt-4">
-                    React Native Web Developer Salary $4000 Per Month
-                </h2>
-
+                <Link to="/blog-details">
+                    <h2 className="text-secondary hover:text-primary text-lg hover:cursor-pointer font-bold mt-4">
+                        React Native Web Developer Salary $4000 Per Month
+                    </h2>
+                </Link>
                 <div className="mt-1 flex flex-wrap">
                     <span className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
                         JavaScript

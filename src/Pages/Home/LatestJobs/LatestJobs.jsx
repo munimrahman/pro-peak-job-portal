@@ -10,6 +10,7 @@ function LatestJobs() {
                 Explore the different types of available jobs to apply discover which is right for
                 you.
             </p>
+
             <div className="flex flex-wrap md:justify-center mt-5">
                 <div className="flex items-center border hover:border-primary rounded-lg py-2 px-3 mx-1 my-1 hover:cursor-pointer hover:text-primary hover:shadow">
                     <img src={img} alt="" className="w-5" />

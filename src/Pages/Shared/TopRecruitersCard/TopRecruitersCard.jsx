@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import img from '../../../assets/brand-1.png';
 
 function CompanyCard() {
@@ -41,9 +42,11 @@ function CompanyCard() {
                     Dhaka, Bangladesh
                 </p>
             </div>
-            <button className="bg-info text-sm text-secondary p-3 rounded-lg hover:text-primary mb-7">
-                15 Jobs Open
-            </button>
+            <Link to="/company-details">
+                <button className="bg-info text-sm text-secondary p-3 rounded-lg hover:text-primary mb-7">
+                    15 Jobs Open
+                </button>
+            </Link>
         </div>
     );
 }

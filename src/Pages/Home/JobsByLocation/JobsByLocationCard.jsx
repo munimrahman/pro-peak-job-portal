@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function JobsByLocationCard({ name, vacancy, companies, colSpan, img }) {
     return (
@@ -11,9 +12,11 @@ function JobsByLocationCard({ name, vacancy, companies, colSpan, img }) {
                     </span>
                 </div>
             </div>
-            <h2 className="text-secondary hover:text-primary text-xl hover:cursor-pointer font-bold mt-4">
-                {name}
-            </h2>
+            <Link to="/company-list">
+                <h2 className="text-secondary hover:text-primary text-xl hover:cursor-pointer font-bold mt-4">
+                    {name}
+                </h2>
+            </Link>
             <div className="mt-1 flex justify-between">
                 <span className="text-sm text-neutral">{vacancy} Vacancy</span>
                 <span className="text-sm text-neutral ml-2">{companies} companies</span>

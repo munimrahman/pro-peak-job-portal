@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import img from '../../../assets/job-card-img.png';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 
@@ -13,9 +14,11 @@ function JobCardOne() {
                     </span>
                 </div>
             </div>
-            <h2 className="text-secondary hover:text-primary text-xl hover:cursor-pointer font-bold mt-4">
-                React Native Web Developer Salary $4000 Per Month
-            </h2>
+            <Link to="/job-details">
+                <h2 className="text-secondary hover:text-primary text-xl hover:cursor-pointer font-bold mt-4">
+                    React Native Web Developer Salary $4000 Per Month
+                </h2>
+            </Link>
             <div className="mt-1">
                 <span className="text-xs text-[#a0abb8]">
                     <i className="fas fa-map-marker-alt mr-1" />
@@ -48,7 +51,9 @@ function JobCardOne() {
                 <p className="text-sm text-accent">
                     <span className="text-xl text-primary font-bold">$80-$150</span>/Hour
                 </p>
-                <ButtonInfo>Apply Now</ButtonInfo>
+                <Link to="/job-details">
+                    <ButtonInfo>Apply Now</ButtonInfo>
+                </Link>
             </div>
         </div>
     );
