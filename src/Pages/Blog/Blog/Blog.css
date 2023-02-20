@@ -1,5 +1,6 @@
 .blog-header {
   background-image: url("../../../assets//bg-blog.png");
   background-repeat: no-repeat;
+  background-size: cover;
   background-position: right 5px bottom;
 }

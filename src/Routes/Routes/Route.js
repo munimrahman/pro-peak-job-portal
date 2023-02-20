@@ -13,6 +13,7 @@ import CandidateDetails from '../../Pages/CandidateDetails/CandidateDetails/Cand
 import CandidateList from '../../Pages/CandidateList/CandidateList/CandidateList';
 import CompanyDetails from '../../Pages/CompanyDetails/CompanyDetails/CompanyDetails';
 import CompanyList from '../../Pages/CompanyList/CompanyList/CompanyList';
+import ContactUs from '../../Pages/ContactUs/ContactUs/ContactUs';
 import AppliedJobs from '../../Pages/Dashboard/AppliedJobs/AppliedJobs';
 import BlogDashboard from '../../Pages/Dashboard/BlogDashboard/BlogDashboard';
 import PostBlog from '../../Pages/Dashboard/BlogDashboard/PostBlog';
@@ -105,6 +106,14 @@ const router = createBrowserRouter([
             {
                 path: '/quiz-result',
                 element: <AssessmentResult />,
+            },
+            {
+                path: '/about',
+                element: <About />,
+            },
+            {
+                path: '/contact',
+                element: <ContactUs />,
             },
         ],
     },

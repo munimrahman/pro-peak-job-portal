@@ -112,10 +112,10 @@ function Footer() {
                     <h4 className="font-bold text-secondary">Quick Links</h4>
                     <div className="flex flex-col mt-2">
                         <span className="text-accent text-sm hover:text-primary hover:cursor-pointer">
-                            About Us
+                            <Link to="/about">About Us</Link>
                         </span>
                         <span className="text-accent text-sm hover:text-primary hover:cursor-pointer my-1">
-                            Our Team
+                            <Link to="/contact">Contact Us</Link>
                         </span>
                         <span className="text-accent text-sm hover:text-primary hover:cursor-pointer my-1">
                             Products
