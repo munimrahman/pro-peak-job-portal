@@ -36,6 +36,7 @@ import SkillTest from '../../Pages/Dashboard/SkillTest/SkillTest';
 import Home from '../../Pages/Home/Home/Home';
 import JobDetails from '../../Pages/JobDetails/JobDetails/JobDetails';
 import JobList from '../../Pages/JobList/JobList/JobList';
+import ProPricing from '../../Pages/ProPricing/ProPricing/ProPricing';
 import RecruiterDetails from '../../Pages/RecruiterDetails/RecruiterDetails/RecruiterDetails';
 import DisplayError from '../../Pages/Shared/ErrorPage/DisplayError';
 import SkillAssessment from '../../Pages/SkillAssessment/SkillAssessment/SkillAssessment';
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
             {
                 path: '/contact',
                 element: <ContactUs />,
+            },
+            {
+                path: '/pricing',
+                element: <ProPricing />,
             },
         ],
     },

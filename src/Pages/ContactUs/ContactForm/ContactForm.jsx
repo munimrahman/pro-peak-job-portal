@@ -66,7 +66,7 @@ function ContactForm() {
                         </label>
                         <textarea
                             className="textarea textarea-bordered focus:outline-none w-full h-44"
-                            placeholder="Bio"
+                            placeholder="Your Message . . ."
                         />
                     </div>
 
