@@ -55,7 +55,7 @@ function Navbar({ stickyNav }) {
             <li>
                 <NavLink
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
-                    to="/pricing"
+                    to="/skill-assessment"
                 >
                     Skill Assessment
                 </NavLink>

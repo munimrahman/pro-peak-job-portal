@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-function CandidateProfileLayout() {
+function NestedLayout() {
     return (
         <div className="">
             <Outlet />
@@ -9,4 +9,4 @@ function CandidateProfileLayout() {
     );
 }
 
-export default CandidateProfileLayout;
+export default NestedLayout;

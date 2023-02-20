@@ -1,10 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom';
 import BlogDashboardLayout from '../../Layout/BlogDashboardLayout';
-import CandidateProfileLayout from '../../Layout/CandidateProfileLayout';
 import DashboardLayout from '../../Layout/DashboardLayout';
 import Main from '../../Layout/Main';
+import NestedLayout from '../../Layout/NestedLayout';
 import RecruiterDashboardLayout from '../../Layout/RecruiterDashboardLayout';
 import About from '../../Pages/About/About/About';
+import AssessmentQuiz from '../../Pages/AssessmentQuiz/AssessmentQuiz.jsx/AssessmentQuiz';
+import AssessmentResult from '../../Pages/AssessmentResult/AssessmentResult';
 import Blog from '../../Pages/Blog/Blog/Blog';
 import BlogDetails from '../../Pages/BlogDetails/BlogDetails/BlogDetails';
 import CandidateDetails from '../../Pages/CandidateDetails/CandidateDetails/CandidateDetails';
@@ -34,8 +36,8 @@ import Home from '../../Pages/Home/Home/Home';
 import JobDetails from '../../Pages/JobDetails/JobDetails/JobDetails';
 import JobList from '../../Pages/JobList/JobList/JobList';
 import RecruiterDetails from '../../Pages/RecruiterDetails/RecruiterDetails/RecruiterDetails';
-import ComingSoon from '../../Pages/Shared/ComingSoon/ComingSoon';
 import DisplayError from '../../Pages/Shared/ErrorPage/DisplayError';
+import SkillAssessment from '../../Pages/SkillAssessment/SkillAssessment/SkillAssessment';
 
 const router = createBrowserRouter([
     {
@@ -93,8 +95,16 @@ const router = createBrowserRouter([
                 element: <BlogDetails />,
             },
             {
-                path: '/pricing',
-                element: <ComingSoon />,
+                path: '/skill-assessment',
+                element: <SkillAssessment />,
+            },
+            {
+                path: '/quiz',
+                element: <AssessmentQuiz />,
+            },
+            {
+                path: '/quiz-result',
+                element: <AssessmentResult />,
             },
         ],
     },
@@ -109,7 +119,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/candidate-profile',
-                element: <CandidateProfileLayout />,
+                element: <NestedLayout />,
                 children: [
                     {
                         path: '/dashboard/candidate-profile',
@@ -168,7 +178,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/recruiter-dashboard/recruiter-profile',
-                element: <CandidateProfileLayout />,
+                element: <NestedLayout />,
                 children: [
                     {
                         path: '/recruiter-dashboard/recruiter-profile',
@@ -186,7 +196,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/recruiter-dashboard/company-profile',
-                element: <CandidateProfileLayout />,
+                element: <NestedLayout />,
                 children: [
                     {
                         path: '/recruiter-dashboard/company-profile',
@@ -204,7 +214,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/recruiter-dashboard/manage-jobs',
-                element: <CandidateProfileLayout />,
+                element: <NestedLayout />,
                 children: [
                     {
                         path: '/recruiter-dashboard/manage-jobs',
