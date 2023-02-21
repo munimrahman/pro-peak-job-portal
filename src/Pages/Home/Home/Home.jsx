@@ -18,14 +18,6 @@ function Home() {
         <section>
             <Hero />
             <div className="mx-2 md:mx-0">
-                <div className="text-center text-3xl">
-                    <h1 className="text-primary">Hello Text Primary</h1>
-                    <h1 className="text-secondary">Hello Text Secondary</h1>
-                    <h1 className="text-accent">Hello Text Accent</h1>
-                    <h1 className="text-neutral">Hello Text Neutral</h1>
-                    <h1 className="text-info">Hello Text Info</h1>
-                </div>
-
                 <div className="max-w-[1115px] mx-auto">
                     <CategorySlide />
                     <WeHiringBox />
