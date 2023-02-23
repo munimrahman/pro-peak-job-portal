@@ -33,7 +33,6 @@ function JobSearchBar() {
                 </div>
                 <div className="relative">
                     <div className="absolute top-[23px] left-3">
-                        {/* <i className="fa fa-search text-gray-400 z-20 hover:text-gray-500" /> */}
                         <img src={key} alt="" />
                     </div>
                     <input
