@@ -3,6 +3,7 @@ import banner1 from '../../../assets/banner1.png';
 import banner2 from '../../../assets/banner2.png';
 import Navbar from '../../Shared/Navbar/Navbar';
 import './Hero.css';
+import HeroSearchBar from './HeroSearchBar';
 
 // const styleObj = {
 //     backgroundImage: `url(${heroBg})`,
@@ -38,18 +39,14 @@ function Hero() {
                             The <span className="text-primary">Easiest Way</span> to Get Your New
                             Job
                         </h1>
-                        <p className="text-accent text-base sm:text-lg mt-6">
+                        <p className="text-accent text-base mt-6">
                             Each month, more than 3 million job seekers turn to website in their
                             search for work, making over 140,000 applications every single day
                         </p>
-                        <div className="form-control w-full max-w-xs mt-6">
-                            <input
-                                type="text"
-                                placeholder="Type here"
-                                className="input input-bordered w-full max-w-xs"
-                            />
-                        </div>
-                        <p className="mt-6 text-md text-accent">
+                        {/* job search bar */}
+                        <HeroSearchBar />
+                        {/* job search bar end */}
+                        <p className="mt-4 text-md text-accent">
                             <span className="font-bold">Popular Searches:</span>{' '}
                             <span className="underline underline-offset-2">Designer,</span>{' '}
                             <span className="underline underline-offset-2">Web,</span>{' '}
