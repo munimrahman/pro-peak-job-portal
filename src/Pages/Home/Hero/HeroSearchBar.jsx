@@ -6,12 +6,12 @@ function HeroSearchBar() {
     return (
         <div className="mt-2">
             <div className="container flex flex-col justify-center items-center">
-                <div className="mb-2 flex flex-col md:flex-row w-full md:w-max">
-                    <div className="relative h-14 w-full">
+                <div className="mb-2 flex flex-col md:flex-row md:justify-between w-full md:w-max">
+                    <div className="relative h-14 w-full md:mr-2">
                         <div className="absolute top-[20px] left-[10px]">
                             <img src={job} alt="" />
                         </div>
-                        <select className="shadow md:shadow-none h-14 w-full md:w-auto pl-8 pr-2 md:pl-10 md:pr-20 rounded-l-xl rounded-r-xl md:rounded-r-none md:rounded-l-xl z-0 focus:outline-none bg-white">
+                        <select className="shadow h-14 w-full md:w-auto pl-8 pr-2 md:pl-10 md:pr-20 rounded-xl z-0 focus:outline-none bg-white">
                             <option>Industry</option>
                             <option>Marge</option>
                             <option>Bart</option>
@@ -23,7 +23,7 @@ function HeroSearchBar() {
                         <div className="absolute top-[20px] left-[7px]">
                             <img src={loc} alt="" />
                         </div>
-                        <select className="shadow md:shadow-none h-14 w-full md:w-auto pl-8 pr-2 rounded-xl md:rounded-none md:rounded-r-xl md:pl-10 md:pr-20 z-0 focus:outline-none bg-white">
+                        <select className="shadow h-14 w-full rounded-xl md:pl-10 md:pr-20 z-0 focus:outline-none bg-white">
                             <option>Location</option>
                             <option>Marge</option>
                             <option>Bart</option>
