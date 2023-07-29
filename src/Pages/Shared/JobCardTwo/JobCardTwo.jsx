@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import brand from '../../../assets/brand-1.png';
 
-function JobCardTwo(job) {
+function JobCardTwo({ job }) {
     console.log(job);
     return (
         <div className="border bg-[#F8FAFA] rounded-lg p-3">

@@ -19,21 +19,27 @@ import HeaderSearch from '../HeaderSearch/HeaderSearch';
 import NewsBlogsJL from '../NewsBlogs/NewsBlogsJL';
 
 function JobList() {
-    const [listDesign, setListDesign] = useState(false);
     const { search } = useLocation();
+    const [listDesign, setListDesign] = useState(false);
+    // const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(5);
+    const page = 1;
     let location;
     if (search === '?location=Dhaka,%20Bangladesh') {
         location = 'Dhaka, Bangladesh';
     }
-    const [limit, setLimit] = useState();
-
     const {
-        data: { data: { jobs = [] } = {} } = {},
+        data: { data: { totalCount, jobs = [] } = {} } = {},
         isLoading,
         isSuccess,
         isError,
-    } = useGetJobsQuery({ limit, location });
-    console.log(jobs);
+    } = useGetJobsQuery({ page, limit, location });
+
+    const low = page * limit - limit + 1;
+    let high = page * limit;
+    if (high > totalCount) high = totalCount;
+    // const totalPage = Math.ceil(totalCount / limit);
+
     const showAsGrid = () => {
         setListDesign(false);
     };
@@ -98,10 +104,17 @@ function JobList() {
                 <div className="col-span-9">
                     {/* Job List Header */}
                     <div className="border-b border-[#b4c0e0] flex items-center md:items-end justify-between">
-                        <h4 className="text-accent text-base pb-2">
-                            Showing <span className="font-bold">41-60</span> of{' '}
-                            <span className="font-bold">944</span> Jobs
-                        </h4>
+                        {!isLoading && !isError ? (
+                            <h4 className="text-accent text-base pb-2">
+                                Showing{' '}
+                                <span className="font-bold">
+                                    {low}-{high}
+                                </span>{' '}
+                                of <span className="font-bold">{totalCount}</span> Jobs
+                            </h4>
+                        ) : (
+                            <div className="w-32 h-2 bg-gray-300 mb-2 rounded-lg animate-pulse" />
+                        )}
                         <div className="hidden md:flex items-center pb-2">
                             <div className="border rounded px-1">
                                 <span className="text-[#a0abb8] text-sm">Show:</span>
@@ -158,6 +171,11 @@ function JobList() {
                     </div>
                     {content}
                     <div className="mt-10">
+                        {/* {Array.from(Array(totalPage).keys()).map((p, i) => (
+                            <button className="btn btn-primary" onClick={() => setPage(i + 1)}>
+                                {i + 1}
+                            </button>
+                        ))} */}
                         <Pagination />
                     </div>
                 </div>
