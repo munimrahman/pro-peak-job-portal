@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -64,15 +65,15 @@ function JobList() {
             <>
                 {listDesign ? (
                     <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 mt-5">
-                        <JobCardTwo />
-                        <JobCardTwo />
-                        {/* <JobGridSkeleton /> */}
+                        {jobs.map((job) => (
+                            <JobCardTwo key={job._id} job={job} />
+                        ))}
                     </div>
                 ) : (
                     <div className="mt-5 grid gap-3">
-                        <JobCardThree />
-                        <JobCardThree />
-                        <JobCardThree />
+                        {jobs.map((job) => (
+                            <JobCardThree key={job._id} job={job} />
+                        ))}
                     </div>
                 )}
             </>
