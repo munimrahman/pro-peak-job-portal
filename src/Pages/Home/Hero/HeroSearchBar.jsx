@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import job from '../../../assets/job-search-bar.svg';
 import loc from '../../../assets/location-search-bar.svg';
 
@@ -42,9 +43,12 @@ function HeroSearchBar() {
                         placeholder="Search Name..."
                     />
                     <div className="absolute top-2 right-2">
-                        <button className="flex justify-center items-center h-10 w-20 text-white rounded-xl bg-primary hover:bg-secondary">
+                        <Link
+                            to="/find-jobs?location=Dhaka, Bangladesh"
+                            className="flex justify-center items-center h-10 w-20 text-white rounded-xl bg-primary hover:bg-secondary"
+                        >
                             Search
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

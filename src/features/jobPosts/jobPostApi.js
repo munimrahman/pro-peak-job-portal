@@ -7,10 +7,11 @@ import apiSlice from '../api/apiSlice';
 export const customersApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getJobs: builder.query({
-            query: (a) => {
-                console.log(a);
+            query: (query) => {
+                console.log(query);
                 return {
-                    url: `/jobs?`,
+                    url: `/jobs`,
+                    params: { page: 1, ...query },
                 };
             },
         }),

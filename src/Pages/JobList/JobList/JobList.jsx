@@ -1,6 +1,9 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import JobGridSkeleton from '../../../Components/LoadingElements/JobGridSkeleton';
+import JobRowSkeleton from '../../../Components/LoadingElements/JobRowSkeleton';
 import { useGetJobsQuery } from '../../../features/jobPosts/jobPostApi';
 import JobCardThree from '../../Shared/JobCardThree/JobCardThree';
 import JobCardTwo from '../../Shared/JobCardTwo/JobCardTwo';
@@ -14,16 +17,15 @@ import NewsBlogsJL from '../NewsBlogs/NewsBlogsJL';
 function JobList() {
     const [listDesign, setListDesign] = useState(false);
     // const [skip, setSkip] = useState(true);
-    const [page, setPage] = useState(true);
-    const { data } = useGetJobsQuery(page, {
-        // skip: false,
-        // refetchOnMountOrArgChange: true,
-        // forceRefetch({ currentArg, previousArg }) {
-        //     return currentArg !== previousArg;
-        // },
-    });
+    const { search } = useLocation();
+    let location;
+    if (search === '?location=Dhaka,%20Bangladesh') {
+        location = 'Dhaka, Bangladesh';
+    }
+    const [limit, setLimit] = useState();
+    console.log(search);
+    const { data } = useGetJobsQuery({ limit, location });
     console.log(data);
-
     const showAsGrid = () => {
         setListDesign(false);
     };
@@ -60,10 +62,12 @@ function JobList() {
                                     name=""
                                     id=""
                                     className="bg-white focus:outline-none text-sm hover:cursor-pointer"
+                                    onChange={(e) => setLimit(e.target.value)}
                                 >
-                                    <option value="">5</option>
-                                    <option value="">10</option>
-                                    <option value="">15</option>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
                                 </select>
                             </div>
                             <div className="border rounded px-1 mx-1">
@@ -80,13 +84,17 @@ function JobList() {
                             </div>
                             <div className="flex">
                                 <p
-                                    className="border rounded text-neutral hover:bg-primary hover:text-white px-2 mr-1 hover:cursor-pointer transition duration-300"
+                                    className={`border rounded hover:bg-primary hover:text-white px-2 mr-1 hover:cursor-pointer transition duration-300 ${
+                                        !listDesign ? 'bg-primary text-white' : 'text-neutral'
+                                    }`}
                                     onClick={showAsGrid}
                                 >
                                     <i className="fas fa-bars inline-block" />
                                 </p>
                                 <p
-                                    className="border rounded text-neutral hover:bg-primary hover:text-white px-2 hover:cursor-pointer transition duration-300"
+                                    className={`border rounded hover:bg-primary hover:text-white px-2 mr-1 hover:cursor-pointer transition duration-300 ${
+                                        listDesign ? 'bg-primary text-white' : 'text-neutral'
+                                    }`}
                                     onClick={showAsRow}
                                 >
                                     <i className="fas fa-th-large" />
@@ -100,25 +108,20 @@ function JobList() {
                         >
                             Advance Filter
                         </label>
-                        <select onChange={(e) => setPage(e.target.value)}>
-                            <option value="2">2</option>
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                        </select>
                     </div>
                     {listDesign ? (
                         <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 mt-5">
                             <JobCardTwo />
                             <JobCardTwo />
-                            <JobCardTwo />
+                            {/* <JobCardTwo /> */}
+                            <JobGridSkeleton />
                         </div>
                     ) : (
                         <div className="mt-5 grid gap-3">
                             <JobCardThree />
-                            <JobCardThree />
-                            <JobCardThree />
+                            <JobRowSkeleton />
+                            {/* <JobCardThree />
+                            <JobCardThree /> */}
                         </div>
                     )}
                     <div className="mt-10">

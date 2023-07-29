@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import img from '../../../assets/job-card-img.png';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
+import img from '../../../assets/job-card-img.png';
 
 function JobCardOne() {
     return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import RecruiterSkeleton from '../../../Components/LoadingElements/RecruiterSkeleton';
 import CompanyCard from '../../Shared/TopRecruitersCard/TopRecruitersCard';
 
 function TopRecruiters() {
@@ -10,7 +11,8 @@ function TopRecruiters() {
             </p>
             <div className="grid grid-cols-1 gap-3 lg:gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-8">
                 <CompanyCard />
-                <CompanyCard />
+                {/* <CompanyCard /> */}
+                <RecruiterSkeleton />
                 <CompanyCard />
                 <CompanyCard />
                 <CompanyCard />

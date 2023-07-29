@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import brand from '../../../assets/brand-1.png';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
+import brand from '../../../assets/brand-1.png';
 
 function JobCardTwo() {
     return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import JobCardSkeleton from '../../../Components/LoadingElements/JobCardSkeleton';
 import img from '../../../assets/human.svg';
 import JobCardOne from '../../Shared/JobCardOne/JobCardOne';
 
@@ -39,7 +40,8 @@ function LatestJobs() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                 <JobCardOne />
-                <JobCardOne />
+                {/* <JobCardOne /> */}
+                <JobCardSkeleton />
                 <JobCardOne />
                 <JobCardOne />
                 <JobCardOne />
