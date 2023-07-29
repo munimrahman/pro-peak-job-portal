@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useState } from 'react';
+import { useGetJobsQuery } from '../../../features/jobPosts/jobPostApi';
 import JobCardThree from '../../Shared/JobCardThree/JobCardThree';
 import JobCardTwo from '../../Shared/JobCardTwo/JobCardTwo';
 import Pagination from '../../Shared/Pagination/Pagination';
@@ -10,6 +12,26 @@ import HeaderSearch from '../HeaderSearch/HeaderSearch';
 import NewsBlogsJL from '../NewsBlogs/NewsBlogsJL';
 
 function JobList() {
+    const [listDesign, setListDesign] = useState(false);
+    // const [skip, setSkip] = useState(true);
+    const [page, setPage] = useState(true);
+    const { data } = useGetJobsQuery(page, {
+        // skip: false,
+        // refetchOnMountOrArgChange: true,
+        // forceRefetch({ currentArg, previousArg }) {
+        //     return currentArg !== previousArg;
+        // },
+    });
+    console.log(data);
+
+    const showAsGrid = () => {
+        setListDesign(false);
+    };
+
+    const showAsRow = () => {
+        setListDesign(true);
+    };
+
     return (
         <div className="max-w-[1115px] mx-auto">
             <HeaderSearch />
@@ -57,31 +79,48 @@ function JobList() {
                                 </select>
                             </div>
                             <div className="flex">
-                                <p className="border rounded text-neutral hover:bg-primary hover:text-white px-2 mr-1 hover:cursor-pointer transition duration-300">
+                                <p
+                                    className="border rounded text-neutral hover:bg-primary hover:text-white px-2 mr-1 hover:cursor-pointer transition duration-300"
+                                    onClick={showAsGrid}
+                                >
                                     <i className="fas fa-bars inline-block" />
                                 </p>
-                                <p className="border rounded text-neutral hover:bg-primary hover:text-white px-2 hover:cursor-pointer transition duration-300">
+                                <p
+                                    className="border rounded text-neutral hover:bg-primary hover:text-white px-2 hover:cursor-pointer transition duration-300"
+                                    onClick={showAsRow}
+                                >
                                     <i className="fas fa-th-large" />
                                 </p>
                             </div>
                         </div>
                         {/* The button to open modal */}
-                        <label htmlFor="filter-modal" className="bg-info text-primary px-2 rounded">
+                        <label
+                            htmlFor="filter-modal"
+                            className="bg-info text-primary px-2 rounded md:hidden"
+                        >
                             Advance Filter
                         </label>
+                        <select onChange={(e) => setPage(e.target.value)}>
+                            <option value="2">2</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
                     </div>
-                    {/* Job List Column */}
-                    <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 mt-5">
-                        <JobCardTwo />
-                        <JobCardTwo />
-                        <JobCardTwo />
-                    </div>
-                    {/* Job List Row */}
-                    <div className="mt-5 grid gap-3">
-                        <JobCardThree />
-                        <JobCardThree />
-                        <JobCardThree />
-                    </div>
+                    {listDesign ? (
+                        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 mt-5">
+                            <JobCardTwo />
+                            <JobCardTwo />
+                            <JobCardTwo />
+                        </div>
+                    ) : (
+                        <div className="mt-5 grid gap-3">
+                            <JobCardThree />
+                            <JobCardThree />
+                            <JobCardThree />
+                        </div>
+                    )}
                     <div className="mt-10">
                         <Pagination />
                     </div>

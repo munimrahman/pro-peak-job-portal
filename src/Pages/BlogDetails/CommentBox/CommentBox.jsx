@@ -1,6 +1,6 @@
 import React from 'react';
-import avatar from '../../../assets/avatar.jpg';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
+import avatar from '../../../assets/avatar.jpg';
 
 function CommentBox() {
     return (
