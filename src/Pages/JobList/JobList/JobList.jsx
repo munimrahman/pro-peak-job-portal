@@ -1,9 +1,12 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import FetchError from '../../../Components/FetchError/FetchError';
 import JobGridSkeleton from '../../../Components/LoadingElements/JobGridSkeleton';
 import JobRowSkeleton from '../../../Components/LoadingElements/JobRowSkeleton';
+import NoDataFound from '../../../Components/NoDataFound/NoDataFound';
 import { useGetJobsQuery } from '../../../features/jobPosts/jobPostApi';
 import JobCardThree from '../../Shared/JobCardThree/JobCardThree';
 import JobCardTwo from '../../Shared/JobCardTwo/JobCardTwo';
@@ -16,16 +19,20 @@ import NewsBlogsJL from '../NewsBlogs/NewsBlogsJL';
 
 function JobList() {
     const [listDesign, setListDesign] = useState(false);
-    // const [skip, setSkip] = useState(true);
     const { search } = useLocation();
     let location;
     if (search === '?location=Dhaka,%20Bangladesh') {
         location = 'Dhaka, Bangladesh';
     }
     const [limit, setLimit] = useState();
-    console.log(search);
-    const { data } = useGetJobsQuery({ limit, location });
-    console.log(data);
+
+    const {
+        data: { data: { jobs = [] } = {} } = {},
+        isLoading,
+        isSuccess,
+        isError,
+    } = useGetJobsQuery({ limit, location });
+    console.log(jobs);
     const showAsGrid = () => {
         setListDesign(false);
     };
@@ -34,6 +41,45 @@ function JobList() {
         setListDesign(true);
     };
 
+    // job list content
+    let content = null;
+    if (isLoading) {
+        content = (
+            <>
+                {listDesign ? (
+                    <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 mt-5">
+                        <JobGridSkeleton />
+                    </div>
+                ) : (
+                    <div className="mt-5 grid gap-3">
+                        <JobRowSkeleton />
+                    </div>
+                )}
+            </>
+        );
+    } else if (isSuccess && !isError && jobs.length === 0) {
+        content = <NoDataFound />;
+    } else if (isSuccess && !isError && jobs.length > 0) {
+        content = (
+            <>
+                {listDesign ? (
+                    <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 mt-5">
+                        <JobCardTwo />
+                        <JobCardTwo />
+                        {/* <JobGridSkeleton /> */}
+                    </div>
+                ) : (
+                    <div className="mt-5 grid gap-3">
+                        <JobCardThree />
+                        <JobCardThree />
+                        <JobCardThree />
+                    </div>
+                )}
+            </>
+        );
+    } else if (isError) {
+        content = <FetchError />;
+    }
     return (
         <div className="max-w-[1115px] mx-auto">
             <HeaderSearch />
@@ -48,8 +94,8 @@ function JobList() {
                     </div>
                     <AdvFilter />
                 </div>
-                {/* Job List Header */}
                 <div className="col-span-9">
+                    {/* Job List Header */}
                     <div className="border-b border-[#b4c0e0] flex items-center md:items-end justify-between">
                         <h4 className="text-accent text-base pb-2">
                             Showing <span className="font-bold">41-60</span> of{' '}
@@ -109,21 +155,7 @@ function JobList() {
                             Advance Filter
                         </label>
                     </div>
-                    {listDesign ? (
-                        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 mt-5">
-                            <JobCardTwo />
-                            <JobCardTwo />
-                            {/* <JobCardTwo /> */}
-                            <JobGridSkeleton />
-                        </div>
-                    ) : (
-                        <div className="mt-5 grid gap-3">
-                            <JobCardThree />
-                            <JobRowSkeleton />
-                            {/* <JobCardThree />
-                            <JobCardThree /> */}
-                        </div>
-                    )}
+                    {content}
                     <div className="mt-10">
                         <Pagination />
                     </div>

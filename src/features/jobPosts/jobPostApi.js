@@ -11,7 +11,7 @@ export const customersApi = apiSlice.injectEndpoints({
                 console.log(query);
                 return {
                     url: `/jobs`,
-                    params: { page: 1, ...query },
+                    params: { page: 1, jobLevel: 'kj', ...query },
                 };
             },
         }),
