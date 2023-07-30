@@ -42,18 +42,17 @@ function JobList() {
     if (!isLoading && !isError && totalCount) {
         totalPage = Math.ceil(totalCount / limit);
     }
-    let low = page * limit - limit + 1;
+    const low = page * limit - limit + 1;
     let high = page * limit;
     if (high > totalCount) high = totalCount;
     if (low > totalCount) {
-        low = 0;
-        high = 0;
+        setPage(1);
     }
 
+    // show as row or column
     const showAsGrid = () => {
         setListDesign(false);
     };
-
     const showAsRow = () => {
         setListDesign(true);
     };
@@ -180,10 +179,15 @@ function JobList() {
                             Advance Filter
                         </label>
                     </div>
+                    {/* job list */}
                     {content}
                     <div className="mt-10">
                         {[...Array(totalPage).keys()].map((p, i) => (
-                            <button className="btn btn-primary" onClick={() => setPage(i + 1)}>
+                            <button
+                                key={i}
+                                className="btn btn-primary"
+                                onClick={() => setPage(i + 1)}
+                            >
                                 {i + 1}
                             </button>
                         ))}
