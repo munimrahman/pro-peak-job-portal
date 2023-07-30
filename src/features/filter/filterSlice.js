@@ -2,14 +2,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    // jobs: {
-    industryFilter: [],
-    salaryFilter: [],
-    jobLevel: [],
-    workPlace: [],
-    postDate: [],
-    jobType: [],
-    // },
+    jobs: {
+        industryFilter: [],
+        salaryFilter: [],
+        jobLevelFilter: [],
+        workPlaceFilter: [],
+        postDateFilter: [],
+        jobTypeFilter: [],
+    },
 };
 
 export const filterSlice = createSlice({
@@ -17,30 +17,97 @@ export const filterSlice = createSlice({
     initialState,
     reducers: {
         jobFilterByIndustry: (state, action) => {
-            const { name, check } = action.payload;
-            const { industryFilter } = state;
+            const { value, check } = action.payload;
+            const {
+                jobs: { industryFilter },
+            } = state;
 
-            if (check && !industryFilter.includes(name)) {
-                industryFilter.push(name);
-            } else if (!check && industryFilter.includes(name)) {
-                const index = industryFilter.indexOf(name);
+            if (check && !industryFilter.includes(value)) {
+                industryFilter.push(value);
+            } else if (!check && industryFilter.includes(value)) {
+                const index = industryFilter.indexOf(value);
                 industryFilter.splice(index, 1);
             }
         },
+
         jobFilterBySalary: (state, action) => {
-            state.jobs.salaryFilter = action.payload;
+            const { value, check } = action.payload;
+            const {
+                jobs: { salaryFilter },
+            } = state;
+
+            if (check && !salaryFilter.includes(value)) {
+                salaryFilter.push(value);
+            } else if (!check && salaryFilter.includes(value)) {
+                const index = salaryFilter.indexOf(value);
+                salaryFilter.splice(index, 1);
+            }
         },
+
         jobFilterByJobLevel: (state, action) => {
-            state.jobs.jobLevel = action.payload;
+            const { value, check } = action.payload;
+            const {
+                jobs: { jobLevelFilter },
+            } = state;
+
+            if (check && !jobLevelFilter.includes(value)) {
+                jobLevelFilter.push(value);
+            } else if (!check && jobLevelFilter.includes(value)) {
+                const index = jobLevelFilter.indexOf(value);
+                jobLevelFilter.splice(index, 1);
+            }
         },
+
         jobFilterByWorkPlace: (state, action) => {
-            state.jobs.workPlace = action.payload;
+            const { value, check } = action.payload;
+            const {
+                jobs: { workPlaceFilter },
+            } = state;
+
+            if (check && !workPlaceFilter.includes(value)) {
+                workPlaceFilter.push(value);
+            } else if (!check && workPlaceFilter.includes(value)) {
+                const index = workPlaceFilter.indexOf(value);
+                workPlaceFilter.splice(index, 1);
+            }
         },
+
         jobFilterByPostDate: (state, action) => {
-            state.jobs.postDate = action.payload;
+            const { value, check } = action.payload;
+            const {
+                jobs: { postDateFilter },
+            } = state;
+
+            if (check && !postDateFilter.includes(value)) {
+                postDateFilter.push(value);
+            } else if (!check && postDateFilter.includes(value)) {
+                const index = postDateFilter.indexOf(value);
+                postDateFilter.splice(index, 1);
+            }
         },
+
         jobFilterByJobType: (state, action) => {
-            state.jobs.jobType = action.payload;
+            const { value, check } = action.payload;
+            const {
+                jobs: { jobTypeFilter },
+            } = state;
+
+            if (check && !jobTypeFilter.includes(value)) {
+                jobTypeFilter.push(value);
+            } else if (!check && jobTypeFilter.includes(value)) {
+                const index = jobTypeFilter.indexOf(value);
+                jobTypeFilter.splice(index, 1);
+            }
+        },
+        resetFilter: (state) => {
+            state.jobs = {
+                industryFilter: [],
+                salaryFilter: [],
+                jobLevelFilter: [],
+                workPlaceFilter: [],
+                postDateFilter: [],
+                jobTypeFilter: [],
+            };
         },
     },
 });
@@ -53,4 +120,5 @@ export const {
     jobFilterByWorkPlace,
     jobFilterByPostDate,
     jobFilterByJobType,
+    resetFilter,
 } = filterSlice.actions;

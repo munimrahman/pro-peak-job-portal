@@ -3,12 +3,13 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useCallback, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import FetchError from '../../../Components/FetchError/FetchError';
 import JobGridSkeleton from '../../../Components/LoadingElements/JobGridSkeleton';
 import JobRowSkeleton from '../../../Components/LoadingElements/JobRowSkeleton';
 import NoDataFound from '../../../Components/NoDataFound/NoDataFound';
+import { resetFilter } from '../../../features/filter/filterSlice';
 import { useGetJobsQuery } from '../../../features/jobPosts/jobPostApi';
 import JobCardThree from '../../Shared/JobCardThree/JobCardThree';
 import JobCardTwo from '../../Shared/JobCardTwo/JobCardTwo';
@@ -20,42 +21,79 @@ import HeaderSearch from '../HeaderSearch/HeaderSearch';
 import NewsBlogsJL from '../NewsBlogs/NewsBlogsJL';
 
 function JobList() {
-    const { search } = useLocation();
+    // const { search } = useLocation();
     const [listDesign, setListDesign] = useState(false);
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(5);
+    const dispatch = useDispatch();
+    const {
+        industryFilter,
+        salaryFilter,
+        jobLevelFilter,
+        workPlaceFilter,
+        postDateFilter,
+        jobTypeFilter,
+    } = useSelector((state) => state.filter.jobs);
 
-    let location;
-    if (search === '?location=Dhaka,%20Bangladesh') {
-        location = 'Dhaka, Bangladesh';
+    // let location;
+    // if (search === '?location=Dhaka,%20Bangladesh') {
+    //     location = 'Dhaka, Bangladesh';
+    // }
+
+    let query = '';
+
+    if (industryFilter.length > 0) {
+        query += `industry=${industryFilter.join(',').trim()}`;
+    }
+    if (salaryFilter.length > 0) {
+        if (query.length > 0) query += '&';
+        query += `jobLevel=${salaryFilter.join(',').trim()}`;
+    }
+    if (jobLevelFilter.length > 0) {
+        if (query.length > 0) query += '&';
+        query += `jobLevel=${jobLevelFilter.join(',').trim()}`;
+    }
+    if (workPlaceFilter.length > 0) {
+        if (query.length > 0) query += '&';
+        query += `jobLevel=${jobLevelFilter.join(',').trim()}`;
+    }
+    if (postDateFilter.length > 0) {
+        if (query.length > 0) query += '&';
+        query += `jobLevel=${jobLevelFilter.join(',').trim()}`;
+    }
+    if (jobTypeFilter.length > 0) {
+        if (query.length > 0) query += '&';
+        query += `jobLevel=${jobLevelFilter.join(',').trim()}`;
     }
 
     const {
-        data: { data: { totalCount, jobs = [] } = {} } = {},
+        data: { data: { totalCount, count, jobs = [] } = {} } = {},
         isLoading,
         isSuccess,
         isError,
-    } = useGetJobsQuery({ page, limit, location });
-
+    } = useGetJobsQuery(query);
+    // console.log(page, limit);
     // pagination calculation
     let totalPage;
     if (!isLoading && !isError && totalCount) {
         totalPage = Math.ceil(totalCount / limit);
     }
-    const low = page * limit - limit + 1;
+    let low = page * limit - limit + 1;
     let high = page * limit;
     if (high > totalCount) high = totalCount;
     if (low > totalCount) {
-        setPage(1);
+        low = 0;
+        high = 0;
     }
 
     // show as row or column
-    const showAsGrid = () => {
+    const showAsGrid = useCallback(() => {
         setListDesign(false);
-    };
-    const showAsRow = () => {
+    }, []);
+
+    const showAsRow = useCallback(() => {
         setListDesign(true);
-    };
+    }, []);
 
     // job list content
     let content = null;
@@ -105,9 +143,12 @@ function JobList() {
                 <div className="hidden md:block col-span-3">
                     <div className="border-b border-[#b4c0e0] pb-2 flex items-end justify-between">
                         <h4 className="text-secondary text-xl font-bold">Advance Filter</h4>
-                        <span className="text-neutral text-sm hover:text-primary hover:cursor-pointer">
+                        <button
+                            onClick={() => dispatch(resetFilter())}
+                            className="text-neutral text-sm hover:text-primary hover:cursor-pointer"
+                        >
                             Reset
-                        </span>
+                        </button>
                     </div>
                     <AdvFilter />
                 </div>
@@ -116,11 +157,8 @@ function JobList() {
                     <div className="border-b border-[#b4c0e0] flex items-center md:items-end justify-between">
                         {!isLoading && !isError ? (
                             <h4 className="text-accent text-base pb-2">
-                                Showing{' '}
-                                <span className="font-bold">
-                                    {low} - {high}
-                                </span>{' '}
-                                of <span className="font-bold">{totalCount}</span> Jobs
+                                Showing <span className="font-bold">{count}</span> of{' '}
+                                <span className="font-bold">{totalCount}</span> Jobs
                             </h4>
                         ) : (
                             <div className="w-32 h-2 bg-gray-300 mb-2 rounded-lg animate-pulse" />
