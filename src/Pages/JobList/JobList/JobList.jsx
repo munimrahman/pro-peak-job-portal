@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
@@ -21,13 +22,14 @@ import NewsBlogsJL from '../NewsBlogs/NewsBlogsJL';
 function JobList() {
     const { search } = useLocation();
     const [listDesign, setListDesign] = useState(false);
-    // const [page, setPage] = useState(1);
+    const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(5);
-    const page = 1;
+
     let location;
     if (search === '?location=Dhaka,%20Bangladesh') {
         location = 'Dhaka, Bangladesh';
     }
+
     const {
         data: { data: { totalCount, jobs = [] } = {} } = {},
         isLoading,
@@ -35,10 +37,18 @@ function JobList() {
         isError,
     } = useGetJobsQuery({ page, limit, location });
 
-    const low = page * limit - limit + 1;
+    // pagination calculation
+    let totalPage;
+    if (!isLoading && !isError && totalCount) {
+        totalPage = Math.ceil(totalCount / limit);
+    }
+    let low = page * limit - limit + 1;
     let high = page * limit;
     if (high > totalCount) high = totalCount;
-    // const totalPage = Math.ceil(totalCount / limit);
+    if (low > totalCount) {
+        low = 0;
+        high = 0;
+    }
 
     const showAsGrid = () => {
         setListDesign(false);
@@ -87,6 +97,7 @@ function JobList() {
     } else if (isError) {
         content = <FetchError />;
     }
+
     return (
         <div className="max-w-[1115px] mx-auto">
             <HeaderSearch />
@@ -108,7 +119,7 @@ function JobList() {
                             <h4 className="text-accent text-base pb-2">
                                 Showing{' '}
                                 <span className="font-bold">
-                                    {low}-{high}
+                                    {low} - {high}
                                 </span>{' '}
                                 of <span className="font-bold">{totalCount}</span> Jobs
                             </h4>
@@ -171,11 +182,11 @@ function JobList() {
                     </div>
                     {content}
                     <div className="mt-10">
-                        {/* {Array.from(Array(totalPage).keys()).map((p, i) => (
+                        {[...Array(totalPage).keys()].map((p, i) => (
                             <button className="btn btn-primary" onClick={() => setPage(i + 1)}>
                                 {i + 1}
                             </button>
-                        ))} */}
+                        ))}
                         <Pagination />
                     </div>
                 </div>
