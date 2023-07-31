@@ -65,6 +65,14 @@ function JobList() {
         if (query.length > 0) query += '&';
         query += `jobType=${jobTypeFilter.join(',').trim()}`;
     }
+    if (page) {
+        if (query.length > 0) query += '&';
+        query += `page=${page}`;
+    }
+    if (limit) {
+        if (query.length > 0) query += '&';
+        query += `limit=${limit}`;
+    }
 
     const {
         data: { data: { totalCount, count, jobs = [] } = {} } = {},
@@ -72,7 +80,7 @@ function JobList() {
         isSuccess,
         isError,
     } = useGetJobsQuery(query);
-    // console.log(page, limit);
+
     // pagination calculation
     let totalPage;
     if (!isLoading && !isError && totalCount) {
@@ -220,16 +228,7 @@ function JobList() {
                     {/* job list */}
                     {content}
                     <div className="mt-10">
-                        {[...Array(totalPage).keys()].map((p, i) => (
-                            <button
-                                key={i}
-                                className="btn btn-primary"
-                                onClick={() => setPage(i + 1)}
-                            >
-                                {i + 1}
-                            </button>
-                        ))}
-                        <Pagination />
+                        <Pagination totalPage={totalPage} currentPage={page} setPage={setPage} />
                     </div>
                 </div>
             </div>
