@@ -21,12 +21,10 @@ import HeaderSearch from '../HeaderSearch/HeaderSearch';
 import NewsBlogsJL from '../NewsBlogs/NewsBlogsJL';
 
 function JobList() {
-    // const { search } = useLocation();
     const [listDesign, setListDesign] = useState(false);
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(5);
     const [sort, setSort] = useState('');
-    // const [search, setSearch] = useState({ industry: '', location: '', searchAText: '' });
     const dispatch = useDispatch();
     const {
         industryFilter,
@@ -37,11 +35,6 @@ function JobList() {
         jobTypeFilter,
         jobSearch: { industry, location, searchText },
     } = useSelector((state) => state.filter.jobs);
-
-    // let location;
-    // if (search === '?location=Dhaka,%20Bangladesh') {
-    //     location = 'Dhaka, Bangladesh';
-    // }
 
     let query = '';
 

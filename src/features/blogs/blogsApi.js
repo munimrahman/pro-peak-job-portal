@@ -6,21 +6,21 @@ import apiSlice from '../api/apiSlice';
 
 export const customersApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        getJobs: builder.query({
+        getBlogs: builder.query({
             query: (query) => ({
-                url: `/jobs`,
+                url: `/blogs`,
                 params: query,
             }),
         }),
 
-        getSingleJob: builder.query({
-            query: (id) => `/jobs/${id}`,
+        getSingleBlog: builder.query({
+            query: (id) => `/blogs/${id}`,
         }),
 
-        // TODO: add Job
-        addJob: builder.mutation({
+        // TODO: add Blog
+        addBlog: builder.mutation({
             query: (data) => ({
-                url: '/jobs',
+                url: '/blogs',
                 method: 'POST',
                 body: data,
             }),
@@ -37,10 +37,10 @@ export const customersApi = apiSlice.injectEndpoints({
             },
         }),
 
-        // TODO: edit Job
-        editJob: builder.mutation({
+        // TODO: edit Blog
+        editBlog: builder.mutation({
             query: ({ id, data }) => ({
-                url: `/jobs/${id}`,
+                url: `/blogs/${id}`,
                 method: 'PUT',
                 body: data,
             }),
@@ -60,9 +60,9 @@ export const customersApi = apiSlice.injectEndpoints({
         }),
 
         // TODO: delete Job
-        deleteJob: builder.mutation({
+        deleteBlog: builder.mutation({
             query: (id) => ({
-                url: `/jobs/${id}`,
+                url: `/blogs/${id}`,
                 method: 'DELETE',
             }),
 
@@ -85,9 +85,9 @@ export const customersApi = apiSlice.injectEndpoints({
 });
 
 export const {
-    useGetJobsQuery,
-    useGetSingleJobQuery,
-    useAddJobMutation,
-    useEditJobMutation,
-    useDeleteJobMutation,
+    useGetBlogsQuery,
+    useGetSingleBlogQuery,
+    useAddBlogMutation,
+    useEditBlogMutation,
+    useDeleteBlogMutation,
 } = customersApi;
