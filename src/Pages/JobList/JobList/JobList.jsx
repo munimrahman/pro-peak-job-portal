@@ -25,6 +25,8 @@ function JobList() {
     const [listDesign, setListDesign] = useState(false);
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(5);
+    const [sort, setSort] = useState('');
+    // const [search, setSearch] = useState({ industry: '', location: '', searchAText: '' });
     const dispatch = useDispatch();
     const {
         industryFilter,
@@ -33,6 +35,7 @@ function JobList() {
         workPlaceFilter,
         postDateFilter,
         jobTypeFilter,
+        jobSearch: { industry, location, searchText },
     } = useSelector((state) => state.filter.jobs);
 
     // let location;
@@ -65,6 +68,18 @@ function JobList() {
         if (query.length > 0) query += '&';
         query += `jobType=${jobTypeFilter.join(',').trim()}`;
     }
+    if (industry.length > 0) {
+        if (query.length > 0) query += '&';
+        query += `industry=${industry}`;
+    }
+    if (location.length > 0) {
+        if (query.length > 0) query += '&';
+        query += `location=${location}`;
+    }
+    if (searchText.length > 0) {
+        if (query.length > 0) query += '&';
+        query += `searchQuery=${searchText}`;
+    }
     if (page) {
         if (query.length > 0) query += '&';
         query += `page=${page}`;
@@ -72,6 +87,10 @@ function JobList() {
     if (limit) {
         if (query.length > 0) query += '&';
         query += `limit=${limit}`;
+    }
+    if (sort) {
+        if (query.length > 0) query += '&';
+        query += `sortBy=${sort}`;
     }
 
     const {
@@ -192,10 +211,14 @@ function JobList() {
                                     name=""
                                     id=""
                                     className="bg-white focus:outline-none text-sm hover:cursor-pointer"
+                                    onChange={(e) => setSort(e.target.value)}
                                 >
-                                    <option value="">Newest Post</option>
-                                    <option value="">Rating</option>
-                                    <option value="">Salary</option>
+                                    <option disabled selected>
+                                        Default
+                                    </option>
+                                    <option value="-createdAt">Newest Post</option>
+                                    <option value="salary">Salary Low-High</option>
+                                    <option value="-salary">Salary High-Low</option>
                                 </select>
                             </div>
                             <div className="flex">
@@ -227,9 +250,15 @@ function JobList() {
                     </div>
                     {/* job list */}
                     {content}
-                    <div className="mt-10">
-                        <Pagination totalPage={totalPage} currentPage={page} setPage={setPage} />
-                    </div>
+                    {totalPage > 1 && (
+                        <div className="mt-10">
+                            <Pagination
+                                totalPage={totalPage}
+                                currentPage={page}
+                                setPage={setPage}
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
             <NewsBlogsJL />

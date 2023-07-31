@@ -9,6 +9,11 @@ const initialState = {
         workPlaceFilter: [],
         postDateFilter: [],
         jobTypeFilter: [],
+        jobSearch: {
+            industry: '',
+            location: '',
+            searchText: '',
+        },
     },
 };
 
@@ -99,8 +104,18 @@ export const filterSlice = createSlice({
                 jobTypeFilter.splice(index, 1);
             }
         },
+        jobSearch: (state, action) => {
+            const {
+                jobs: { jobSearch },
+            } = state;
+            const { industry, location, searchText } = action.payload;
+            jobSearch.industry = industry;
+            jobSearch.location = location;
+            jobSearch.searchText = searchText;
+        },
         resetFilter: (state) => {
             state.jobs = {
+                ...state.jobs,
                 industryFilter: [],
                 salaryFilter: [],
                 jobLevelFilter: [],
@@ -121,4 +136,5 @@ export const {
     jobFilterByPostDate,
     jobFilterByJobType,
     resetFilter,
+    jobSearch,
 } = filterSlice.actions;
