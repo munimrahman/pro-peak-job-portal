@@ -14,7 +14,8 @@ function WeHiringBox() {
                 <br /> & <span className="text-secondary font-bold">Explore</span> <br />{' '}
                 Opportunities
             </p>
-            <Link to="/job-details">
+            {/* TODO: set url of a propeak job */}
+            <Link to="/find-jobs">
                 <ButtonPrimary className="self-center">Apply Now</ButtonPrimary>
             </Link>
         </div>

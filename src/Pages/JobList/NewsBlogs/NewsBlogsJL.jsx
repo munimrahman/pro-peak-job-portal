@@ -4,7 +4,7 @@ import BlogCard from '../../Shared/BlogCard/BlogCard';
 
 function NewsBlogsJL() {
     const { data: { data: { blogs = [] } = {} } = {} } = useGetBlogsQuery('limit=3');
-    console.log(blogs);
+
     return (
         <div className="mt-16">
             <h1 className="text-3xl text-secondary font-bold">Latest News & Blogs</h1>

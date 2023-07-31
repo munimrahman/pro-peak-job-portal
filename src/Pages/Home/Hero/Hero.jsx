@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import banner1 from '../../../assets/banner1.png';
 import banner2 from '../../../assets/banner2.png';
+import { jobSearch } from '../../../features/filter/filterSlice';
 import Navbar from '../../Shared/Navbar/Navbar';
 import './Hero.css';
 import HeroSearchBar from './HeroSearchBar';
 
-// const styleObj = {
-//     backgroundImage: `url(${heroBg})`,
-//     backgroundRepeat: 'no-repeat',
-//     backgroundSize: 'cover',
-//     minHeight: '750px',
-//     width: '100%',
-// };
-
 function Hero() {
     const [stickyNav, setStickyNav] = useState(false);
-
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     useEffect(() => {
         window.onscroll = () => {
             setStickyNav(window.pageYOffset !== 0);
@@ -23,6 +19,12 @@ function Hero() {
             return () => (window.onscroll = null);
         };
     }, [setStickyNav]);
+
+    const handlePopularSearch = (value) => {
+        dispatch(jobSearch({ industry: '', location: '', searchText: value }));
+        navigate('/find-jobs');
+    };
+
     return (
         <div className="hero-bg">
             <Navbar
@@ -48,15 +50,60 @@ function Hero() {
                         {/* job search bar end */}
                         <p className="mt-4 text-md text-accent">
                             <span className="font-bold">Popular Searches:</span>{' '}
-                            <span className="underline underline-offset-2">Designer,</span>{' '}
-                            <span className="underline underline-offset-2">Web,</span>{' '}
-                            <span className="underline underline-offset-2">IOS,</span>{' '}
-                            <span className="underline underline-offset-2">Developer,</span>{' '}
-                            <span className="underline underline-offset-2">React,</span>{' '}
-                            <span className="underline underline-offset-2">Java,</span>{' '}
-                            <span className="underline underline-offset-2">Python,</span>{' '}
-                            <span className="underline underline-offset-2">JavaScript,</span>{' '}
-                            <span className="underline underline-offset-2">PHP,</span>{' '}
+                            <button
+                                onClick={() => handlePopularSearch('designer')}
+                                className="underline underline-offset-2"
+                            >
+                                Designer,
+                            </button>{' '}
+                            <button
+                                onClick={() => handlePopularSearch('web')}
+                                className="underline underline-offset-2"
+                            >
+                                Web,
+                            </button>{' '}
+                            <button
+                                onClick={() => handlePopularSearch('ios')}
+                                className="underline underline-offset-2"
+                            >
+                                IOS,
+                            </button>{' '}
+                            <button
+                                onClick={() => handlePopularSearch('developer')}
+                                className="underline underline-offset-2"
+                            >
+                                Developer,
+                            </button>{' '}
+                            <button
+                                onClick={() => handlePopularSearch('react')}
+                                className="underline underline-offset-2"
+                            >
+                                React,
+                            </button>{' '}
+                            <button
+                                onClick={() => handlePopularSearch('java')}
+                                className="underline underline-offset-2"
+                            >
+                                Java,
+                            </button>{' '}
+                            <button
+                                onClick={() => handlePopularSearch('python')}
+                                className="underline underline-offset-2"
+                            >
+                                Python,
+                            </button>{' '}
+                            <button
+                                onClick={() => handlePopularSearch('javascript')}
+                                className="underline underline-offset-2"
+                            >
+                                JavaScript,
+                            </button>{' '}
+                            <button
+                                onClick={() => handlePopularSearch('php')}
+                                className="underline underline-offset-2"
+                            >
+                                PHP,
+                            </button>{' '}
                         </p>
                     </div>
                     <div className="mt-3 hidden lg:block">

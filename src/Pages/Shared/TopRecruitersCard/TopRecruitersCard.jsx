@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import img from '../../../assets/brand-1.png';
 
-function CompanyCard() {
+function CompanyCard({ company }) {
+    const { _id, name, logo, location } = company || {};
     return (
         <div className="border rounded-lg bg-[#F8FAFF] text-center">
-            <img src={img} alt="" className="inline-block mt-7" />
-            <div className="my-7">
-                <h3 className="font-bold text-xl">Car Toys</h3>
+            <img src={logo} alt="" className="inline-block mt-7 w-16 rounded-md" />
+            <div className="my-5">
+                <h3 className="font-bold text-xl">{name}</h3>
                 <div className="rating rating-xs">
                     <input
                         type="radio"
@@ -39,10 +39,11 @@ function CompanyCard() {
                 </div>
                 <p className="text-xs text-[#a0abb8]">
                     <i className="fas fa-map-marker-alt mr-1" />
-                    Dhaka, Bangladesh
+                    {location}
                 </p>
             </div>
-            <Link to="/company-details">
+            {/* TODO: show open jobs */}
+            <Link to={`/company-list/${_id}`}>
                 <button className="bg-info text-sm text-secondary p-3 rounded-lg hover:text-primary mb-7">
                     15 Jobs Open
                 </button>

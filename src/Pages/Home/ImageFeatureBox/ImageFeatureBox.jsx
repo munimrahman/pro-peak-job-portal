@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ButtonPrimary from '../../../Components/ButtonPrimary/ButtonPrimary';
 import rightBottom from '../../../assets/controlcard.png';
 import leftTop from '../../../assets/img-chart.png';
 import img from '../../../assets/img-feature-box.png';
-import ButtonPrimary from '../../../Components/ButtonPrimary/ButtonPrimary';
 
 function ImageFeatureBox() {
     return (
@@ -31,7 +31,7 @@ function ImageFeatureBox() {
                     estimate. Read reviews on over 600,000 companies worldwide. The right job is out
                     there.
                 </p>
-                <Link to="/job-details">
+                <Link to="/find-jobs">
                     <ButtonPrimary>Search Jobs</ButtonPrimary>
                 </Link>
             </div>

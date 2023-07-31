@@ -7,13 +7,14 @@ function JobCardThree({ job }) {
     const {
         _id,
         title,
-        tags,
+        tags = [],
         description,
         salary,
         jobType,
         createdAt,
-        company: { name, logo, location },
+        company: { name, logo, location } = {},
     } = job || {};
+
     return (
         <div className="border bg-[#F8FAFA] rounded-lg p-3">
             <div className="flex justify-between">
@@ -53,7 +54,7 @@ function JobCardThree({ job }) {
                 </span>
             </div>
 
-            <p className="text-base text-accent">{description.slice(0, 180)}...</p>
+            <p className="text-base text-accent">{description?.slice(0, 180)}...</p>
 
             <div className="flex justify-between items-center my-3">
                 <p className="text-sm text-accent">

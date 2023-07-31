@@ -1,7 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { jobSearch } from '../../../features/filter/filterSlice';
 
-function JobsByLocationCard({ name, vacancy, companies, colSpan, img }) {
+function JobsByLocationCard({ name, value, vacancy, companies, colSpan, img }) {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleClick = (location) => {
+        dispatch(jobSearch({ industry: '', location, searchText: '' }));
+        navigate('/find-jobs');
+    };
+
     return (
         <div className={`border rounded-xl p-3 shadow-sm ${colSpan}`}>
             <div className="relative">
@@ -12,11 +22,11 @@ function JobsByLocationCard({ name, vacancy, companies, colSpan, img }) {
                     </span>
                 </div>
             </div>
-            <Link to="/company-list">
+            <button onClick={() => handleClick(value)}>
                 <h2 className="text-secondary hover:text-primary text-xl hover:cursor-pointer font-bold mt-4">
                     {name}
                 </h2>
-            </Link>
+            </button>
             <div className="mt-1 flex justify-between">
                 <span className="text-sm text-neutral">{vacancy} Vacancy</span>
                 <span className="text-sm text-neutral ml-2">{companies} companies</span>

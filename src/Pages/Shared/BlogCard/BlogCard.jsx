@@ -5,21 +5,23 @@ import calculateReadingTime from '../../../utils/readingTime';
 
 function BlogCard({ blog }) {
     const {
+        _id,
         title,
         description,
         featuredPhoto,
-        author: { name, profilePhoto },
+        author: { name, profilePhoto } = {},
         createdAt,
-        tags,
+        tags = [],
     } = blog || {};
     const readingTime = calculateReadingTime(description);
 
     return (
         <div className="border rounded-xl p-2 shadow-md">
-            <img src={featuredPhoto} alt="" className="rounded-xl w-full" />
-
+            <Link to={`/blogs/${_id}`}>
+                <img src={featuredPhoto} alt="" className="rounded-xl w-full" />
+            </Link>
             <div className="px-1">
-                <Link to="/blog-details">
+                <Link to={`/blogs/${_id}`}>
                     <h2 className="text-secondary hover:text-primary text-lg hover:cursor-pointer font-bold mt-4">
                         {title}
                     </h2>
@@ -32,7 +34,7 @@ function BlogCard({ blog }) {
                     ))}
                 </div>
                 <p className="text-sm text-accent my-3 text-justify">
-                    {description.slice(0, 110)}...
+                    {description?.slice(0, 110)}...
                 </p>
                 <div className="flex justify-between items-end mb-3">
                     <div className="flex">
@@ -42,7 +44,12 @@ function BlogCard({ blog }) {
                             </div>
                         </div>
                         <div className="ml-2 flex flex-col">
-                            <span className="text-neutral text-base font-bold">{name}</span>
+                            <Link to="/blogs">
+                                <span className="text-neutral text-base font-bold hover:text-primary">
+                                    {name}
+                                </span>
+                            </Link>
+
                             <span className="text-neutral text-xs">
                                 {moment(createdAt).format('ll')}
                             </span>

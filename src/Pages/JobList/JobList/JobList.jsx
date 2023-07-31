@@ -157,7 +157,7 @@ function JobList() {
 
     return (
         <div className="max-w-[1115px] mx-auto">
-            <HeaderSearch />
+            <HeaderSearch totalCount={totalCount} />
             <div className="mt-8 md:grid md:grid-cols-12 md:gap-6">
                 {/* Advance Filter Header */}
                 <div className="hidden md:block col-span-3">

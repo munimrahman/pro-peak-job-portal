@@ -10,7 +10,7 @@ function HomeStats() {
                             25K+
                         </h2>
                         <p className="text-secondary text-base sm:text-xl font-bold my-1">
-                            Completed Cases
+                            Skilled Candidate
                         </p>
                         <p className="text-sm">
                             We always provide people a complete solution upon focused of any
@@ -19,10 +19,10 @@ function HomeStats() {
                     </div>
                     <div className="p-4 sm:w-1/4 w-1/2">
                         <h2 className="text-primary text-4xl sm:text-6xl font-bold font-serif">
-                            17+
+                            18K+
                         </h2>
                         <p className="text-secondary text-base sm:text-xl font-bold my-1">
-                            Our Office
+                            Jobs Posted
                         </p>
                         <p className="text-sm">
                             We always provide people a complete solution upon focused of any
@@ -31,10 +31,10 @@ function HomeStats() {
                     </div>
                     <div className="p-4 sm:w-1/4 w-1/2">
                         <h2 className="text-primary text-4xl sm:text-6xl font-bold font-serif">
-                            86+
+                            25+
                         </h2>
                         <p className="text-secondary text-base sm:text-xl font-bold my-1">
-                            Skilled People
+                            Team Members
                         </p>
                         <p className="text-sm">
                             We always provide people a complete solution upon focused of any
@@ -43,10 +43,10 @@ function HomeStats() {
                     </div>
                     <div className="p-4 sm:w-1/4 w-1/2">
                         <h2 className="text-primary text-4xl sm:text-6xl font-bold font-serif">
-                            28+
+                            30+
                         </h2>
                         <p className="text-secondary text-base sm:text-xl font-bold my-1">
-                            Happy Clients
+                            Happy Companies
                         </p>
                         <p className="text-sm">
                             We always provide people a complete solution upon focused of any

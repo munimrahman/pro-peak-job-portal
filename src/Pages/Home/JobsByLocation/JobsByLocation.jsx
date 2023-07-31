@@ -14,9 +14,11 @@ function JobsByLocation() {
             <p className="text-lg text-neutral text-center my-2">
                 Find your favourite jobs and get the benefits of yourself
             </p>
+            {/* TODO: Change location name and value */}
             <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-12 md:gap-5">
                 <JobsByLocationCard
                     name="Paris, France"
+                    value="Khulna, Bangladesh"
                     vacancy={12}
                     companies={120}
                     img={location1}
@@ -24,6 +26,7 @@ function JobsByLocation() {
                 />
                 <JobsByLocationCard
                     name="London, England"
+                    value="Dhaka, Bangladesh"
                     vacancy={7}
                     companies={68}
                     img={location2}
@@ -31,6 +34,7 @@ function JobsByLocation() {
                 />
                 <JobsByLocationCard
                     name="New York, USA"
+                    value="Dhaka, Bangladesh"
                     vacancy={9}
                     companies={80}
                     img={location3}
@@ -38,6 +42,7 @@ function JobsByLocation() {
                 />
                 <JobsByLocationCard
                     name="Amsterdam, Holland"
+                    value="Dhaka, Bangladesh"
                     vacancy={15}
                     companies={69}
                     img={location4}
@@ -45,6 +50,7 @@ function JobsByLocation() {
                 />
                 <JobsByLocationCard
                     name="Copenhagen, Denmark"
+                    value="Dhaka, Bangladesh"
                     vacancy={19}
                     companies={154}
                     img={location5}
@@ -52,6 +58,7 @@ function JobsByLocation() {
                 />
                 <JobsByLocationCard
                     name="Berlin, Germany"
+                    value="Dhaka, Bangladesh"
                     vacancy={12}
                     companies={25}
                     img={location6}
