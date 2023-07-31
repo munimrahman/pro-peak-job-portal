@@ -47,7 +47,7 @@ function JobList() {
     }
     if (salaryFilter.length > 0) {
         if (query.length > 0) query += '&';
-        query += `jobLevel=${salaryFilter.join(',').trim()}`;
+        query += `salary=${salaryFilter.join(',').trim()}`;
     }
     if (jobLevelFilter.length > 0) {
         if (query.length > 0) query += '&';
@@ -55,15 +55,15 @@ function JobList() {
     }
     if (workPlaceFilter.length > 0) {
         if (query.length > 0) query += '&';
-        query += `jobLevel=${jobLevelFilter.join(',').trim()}`;
+        query += `workPlace=${workPlaceFilter.join(',').trim()}`;
     }
     if (postDateFilter.length > 0) {
         if (query.length > 0) query += '&';
-        query += `jobLevel=${jobLevelFilter.join(',').trim()}`;
+        query += `postDate=${postDateFilter.join(',').trim()}`;
     }
     if (jobTypeFilter.length > 0) {
         if (query.length > 0) query += '&';
-        query += `jobLevel=${jobLevelFilter.join(',').trim()}`;
+        query += `jobType=${jobTypeFilter.join(',').trim()}`;
     }
 
     const {
