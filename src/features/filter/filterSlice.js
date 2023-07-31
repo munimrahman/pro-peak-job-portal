@@ -113,6 +113,13 @@ export const filterSlice = createSlice({
             jobSearch.location = location;
             jobSearch.searchText = searchText;
         },
+        clearSearch: (state) => {
+            state.jobs.jobSearch = {
+                industry: '',
+                location: '',
+                searchText: '',
+            };
+        },
         resetFilter: (state) => {
             state.jobs = {
                 ...state.jobs,
@@ -137,4 +144,5 @@ export const {
     jobFilterByJobType,
     resetFilter,
     jobSearch,
+    clearSearch,
 } = filterSlice.actions;

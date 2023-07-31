@@ -18,6 +18,7 @@ function JobSearchBar() {
         setLocation('');
         setSearchText('');
     };
+
     return (
         <div className="">
             <form
