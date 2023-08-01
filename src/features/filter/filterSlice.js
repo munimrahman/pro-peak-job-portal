@@ -15,12 +15,19 @@ const initialState = {
             searchText: '',
         },
     },
+    company: {
+        industryFilter: [],
+        companySizeFilter: [],
+        workPlaceFilter: [],
+        companySearch: '',
+    },
 };
 
 export const filterSlice = createSlice({
     name: 'filter',
     initialState,
     reducers: {
+        // job filter
         jobFilterByIndustry: (state, action) => {
             const { value, check } = action.payload;
             const {
@@ -113,12 +120,60 @@ export const filterSlice = createSlice({
             jobSearch.location = location;
             jobSearch.searchText = searchText;
         },
+        // company filter
+        companyFilterByIndustry: (state, action) => {
+            const { value, check } = action.payload;
+            const {
+                company: { industryFilter },
+            } = state;
+
+            if (check && !industryFilter.includes(value)) {
+                industryFilter.push(value);
+            } else if (!check && industryFilter.includes(value)) {
+                const index = industryFilter.indexOf(value);
+                industryFilter.splice(index, 1);
+            }
+        },
+        companyFilterBySize: (state, action) => {
+            const { value, check } = action.payload;
+            const {
+                company: { companySizeFilter },
+            } = state;
+
+            if (check && !companySizeFilter.includes(value)) {
+                companySizeFilter.push(value);
+            } else if (!check && companySizeFilter.includes(value)) {
+                const index = companySizeFilter.indexOf(value);
+                companySizeFilter.splice(index, 1);
+            }
+        },
+        companyFilterByWorkPlace: (state, action) => {
+            const { value, check } = action.payload;
+            const {
+                company: { workPlaceFilter },
+            } = state;
+
+            if (check && !workPlaceFilter.includes(value)) {
+                workPlaceFilter.push(value);
+            } else if (!check && workPlaceFilter.includes(value)) {
+                const index = workPlaceFilter.indexOf(value);
+                workPlaceFilter.splice(index, 1);
+            }
+        },
+        companySearch: (state, action) => {
+            const { company } = state;
+            const searchText = action.payload;
+            company.companySearch = searchText;
+        },
+        // candidate filter
+        // common filter
         clearSearch: (state) => {
             state.jobs.jobSearch = {
                 industry: '',
                 location: '',
                 searchText: '',
             };
+            state.company.companySearch = '';
         },
         resetFilter: (state) => {
             state.jobs = {
@@ -129,6 +184,12 @@ export const filterSlice = createSlice({
                 workPlaceFilter: [],
                 postDateFilter: [],
                 jobTypeFilter: [],
+            };
+            state.company = {
+                industryFilter: [],
+                companySizeFilter: [],
+                workPlaceFilter: [],
+                companySearch: '',
             };
         },
     },
@@ -142,7 +203,11 @@ export const {
     jobFilterByWorkPlace,
     jobFilterByPostDate,
     jobFilterByJobType,
-    resetFilter,
     jobSearch,
+    companyFilterByIndustry,
+    companyFilterBySize,
+    companyFilterByWorkPlace,
+    companySearch,
     clearSearch,
+    resetFilter,
 } = filterSlice.actions;

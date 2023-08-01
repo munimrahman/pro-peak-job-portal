@@ -54,7 +54,7 @@ function JobCardOne({ job }) {
             <p className="text-sm text-accent my-3">{description}</p>
             <div className="flex justify-between items-center mb-3">
                 <p className="text-sm text-accent">
-                    <span className="text-xl text-primary font-bold">${salary}</span>/Hour
+                    <span className="text-xl text-primary font-bold">${salary}</span>/Month
                 </p>
                 <Link to={`/find-jobs/${_id}`}>
                     <ButtonInfo>Apply Now</ButtonInfo>

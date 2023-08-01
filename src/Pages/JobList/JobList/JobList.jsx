@@ -36,8 +36,8 @@ function JobList() {
         jobSearch: { industry, location, searchText },
     } = useSelector((state) => state.filter.jobs);
 
+    // setup query for fetch data from api
     let query = '';
-
     if (industryFilter.length > 0) {
         query += `industry=${industryFilter.join(',').trim()}`;
     }
@@ -87,7 +87,7 @@ function JobList() {
     }
 
     const {
-        data: { data: { totalCount, count, jobs = [] } = {} } = {},
+        data: { data: { totalCount, jobs = [] } = {} } = {},
         isLoading,
         isSuccess,
         isError,
@@ -177,8 +177,11 @@ function JobList() {
                     <div className="border-b border-[#b4c0e0] flex items-center md:items-end justify-between">
                         {!isLoading && !isError ? (
                             <h4 className="text-accent text-base pb-2">
-                                Showing <span className="font-bold">{count}</span> of{' '}
-                                <span className="font-bold">{totalCount}</span> Jobs
+                                Showing{' '}
+                                <span className="font-bold">
+                                    {low} - {high}
+                                </span>{' '}
+                                of <span className="font-bold">{totalCount}</span> Jobs
                             </h4>
                         ) : (
                             <div className="w-32 h-2 bg-gray-300 mb-2 rounded-lg animate-pulse" />
