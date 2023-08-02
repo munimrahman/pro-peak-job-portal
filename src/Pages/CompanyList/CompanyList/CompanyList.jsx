@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ScrollRestoration } from 'react-router-dom';
 import FetchError from '../../../Components/FetchError/FetchError';
 import RecruiterSkeleton from '../../../Components/LoadingElements/RecruiterSkeleton';
 import NoDataFound from '../../../Components/NoDataFound/NoDataFound';
@@ -179,6 +180,7 @@ function CompanyList() {
             <NewsBlogsJL />
             <SubscribeBox />
             <FilterModalCompany />
+            <ScrollRestoration />
         </div>
     );
 }

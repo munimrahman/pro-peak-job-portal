@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ScrollRestoration } from 'react-router-dom';
 import FetchError from '../../../Components/FetchError/FetchError';
 import JobGridSkeleton from '../../../Components/LoadingElements/JobGridSkeleton';
 import NoDataFound from '../../../Components/NoDataFound/NoDataFound';
@@ -185,6 +186,7 @@ function CandidateList() {
             <NewsBlogsJ />
             <SubscribeBox />
             <FilterModalCandidate />
+            <ScrollRestoration />
         </div>
     );
 }

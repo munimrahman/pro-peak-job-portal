@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 
+import { ScrollRestoration } from 'react-router-dom';
 import Footer from '../../Shared/Footer/Footer';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
 import CategorySlide from '../CategorySlide/CategorySlide/CategorySlide';
@@ -31,6 +32,7 @@ function Home() {
                 </div>
             </div>
             <Footer />
+            <ScrollRestoration />
         </section>
     );
 }

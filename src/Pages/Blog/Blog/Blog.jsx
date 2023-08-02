@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { ScrollRestoration } from 'react-router-dom';
 import FeaturedBlogSkeleton from '../../../Components/LoadingElements/FeaturedBlogSkeleton';
 import { useGetSingleBlogQuery } from '../../../features/blogs/blogsApi';
 import { blogSearch } from '../../../features/filter/filterSlice';
@@ -61,6 +62,7 @@ function Blog() {
                     </div>
                 </div>
                 <SubscribeBox />
+                <ScrollRestoration />
             </div>
         </>
     );

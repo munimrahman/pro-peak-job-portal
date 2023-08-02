@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollRestoration } from 'react-router-dom';
 import HeaderBrowseSearch from '../../Shared/HeaderBrowseSearch/HeaderBrowseSearch';
 import SkillTestCard from '../SkillTestCard/SkillTestCard';
 
@@ -20,6 +21,7 @@ function SkillAssessment() {
                 <SkillTestCard />
                 <SkillTestCard />
             </div>
+            <ScrollRestoration />
         </div>
     );
 }
