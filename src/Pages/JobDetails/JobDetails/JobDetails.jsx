@@ -32,7 +32,7 @@ function JobDetails() {
                     <MeetHiringTeam jobPost={jobPost} />
                 </div>
             </div>
-            <FeaturedJobs />
+            <FeaturedJobs jobPost={jobPost} />
             <SubscribeBox />
             <ScrollRestoration />
         </div>
