@@ -62,6 +62,7 @@ function Navbar({ stickyNav }) {
             </li>
         </>
     );
+
     return (
         <div className={`${stickyNav || 'sticky shadow-md top-0 bg-white'} z-40`}>
             <div className="navbar max-w-[1180px] mx-auto">

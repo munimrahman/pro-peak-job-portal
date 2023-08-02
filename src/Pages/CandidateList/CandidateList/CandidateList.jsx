@@ -84,7 +84,7 @@ function CandidateList() {
         content = (
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 mt-5">
                 {users.map((user) => (
-                    <CandidateCard key={user._id} company={user} />
+                    <CandidateCard key={user._id} user={user} />
                 ))}
             </div>
         );

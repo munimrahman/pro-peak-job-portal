@@ -48,7 +48,7 @@ function CompanyList() {
         if (query.length > 0) query += '&';
         query += `limit=${limit}`;
     }
-    console.log(query);
+
     const {
         data: { data: { totalCount, companies } = {} } = {},
         isLoading,

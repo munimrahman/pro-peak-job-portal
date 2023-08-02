@@ -1,21 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import avatar from '../../../assets/avatar.jpg';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 
-function CandidateCard() {
+function CandidateCard({ user }) {
+    const { _id, name, profilePhoto, certifications } = user || {};
+
     return (
         <div className="border rounded-lg bg-[#F8FAFF] p-3">
             <div className="flex">
                 <div className={`avatar ${'online' || 'offline'}`}>
                     <div className="w-16 rounded-full">
-                        <img src={avatar} alt="" />
+                        <img src={profilePhoto} alt="" />
                     </div>
                 </div>
                 <div className="ml-3">
-                    <Link to="/candidate-details">
-                        <h3 className="text-lg font-bold text-secondary hover:text-primary">
-                            Sansa Stark{' '}
+                    <Link to={`/candidate-list/${_id}`}>
+                        <h3 className="font-bold text-secondary hover:text-primary">
+                            {name}{' '}
                             <span>
                                 <i className="fas fa-check-circle text-primary text-sm" />
                             </span>
@@ -46,15 +47,23 @@ function CandidateCard() {
                         Express
                     </span>
                 </div>
-                <h4 className="font-bold text-secondary mt-3 text-sm">ProPeak Certification</h4>
-                <div className="mt-1 flex flex-wrap">
-                    <span className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
-                        English
-                    </span>
-                    <span className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
-                        JavaScript
-                    </span>
-                </div>
+                <h4 className="font-bold text-secondary mt-3 text-sm">ProPeak Certifications</h4>
+                {certifications ? (
+                    <div className="mt-1 flex flex-wrap">
+                        <span className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
+                            English
+                        </span>
+                        <span className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
+                            JavaScript
+                        </span>
+                    </div>
+                ) : (
+                    <div className="mt-1 flex flex-wrap">
+                        <span className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
+                            No Certifications Available
+                        </span>
+                    </div>
+                )}
             </div>
 
             <div className="divider my-1" />
@@ -62,7 +71,7 @@ function CandidateCard() {
                 <p className="text-sm text-accent">
                     <span className="text-xl text-primary font-bold">$80</span>/Hour
                 </p>
-                <Link to="/candidate-details">
+                <Link to={`/candidate-list/${_id}`}>
                     <ButtonInfo>Hire Now</ButtonInfo>
                 </Link>
             </div>

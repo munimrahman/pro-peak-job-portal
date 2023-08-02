@@ -27,6 +27,11 @@ const initialState = {
         certificationFilter: [],
         candidateSearch: '',
     },
+    blog: {
+        tagFilter: '',
+        authorFilter: '',
+        blogSearch: '',
+    },
 };
 
 export const filterSlice = createSlice({
@@ -216,6 +221,21 @@ export const filterSlice = createSlice({
             const searchText = action.payload;
             candidate.candidateSearch = searchText;
         },
+        // blog filter
+        blogFilterByTag: (state, action) => {
+            const tag = action.payload;
+            const { blog } = state;
+            blog.tagFilter = tag;
+        },
+        blogFilterByAuthor: (state, action) => {
+            const authorId = action.payload;
+            state.blog.authorFilter = authorId;
+        },
+        blogSearch: (state, action) => {
+            const { blog } = state;
+            const searchText = action.payload;
+            blog.blogSearch = searchText;
+        },
         // common filter
         clearSearch: (state) => {
             state.jobs.jobSearch = {
@@ -225,6 +245,7 @@ export const filterSlice = createSlice({
             };
             state.company.companySearch = '';
             state.candidate.candidateSearch = '';
+            state.blog.blogSearch = '';
         },
         resetFilter: (state) => {
             state.jobs = {
@@ -248,6 +269,11 @@ export const filterSlice = createSlice({
                 certificationFilter: [],
                 candidateSearch: '',
             };
+            state.blog = {
+                tagFilter: '',
+                authorFilter: '',
+                blogSearch: '',
+            };
         },
     },
 });
@@ -270,6 +296,9 @@ export const {
     candidateFilterByHourlyRate,
     candidateFilterByCertification,
     candidateSearch,
+    blogFilterByTag,
+    blogFilterByAuthor,
+    blogSearch,
     clearSearch,
     resetFilter,
 } = filterSlice.actions;

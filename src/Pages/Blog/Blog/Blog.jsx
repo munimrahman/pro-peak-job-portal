@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import FeaturedBlogSkeleton from '../../../Components/LoadingElements/FeaturedBlogSkeleton';
+import { useGetSingleBlogQuery } from '../../../features/blogs/blogsApi';
+import { blogSearch } from '../../../features/filter/filterSlice';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
 import WeHiring from '../../Shared/WeHiring/WeHiring';
 import BlogHeader from '../BlogHeader/BlogHeader';
@@ -8,11 +12,35 @@ import TrendingBlogs from '../TrendingBlogs/TrendingBlogs';
 import './Blog.css';
 
 function Blog() {
+    const [inputText, setInputText] = useState('');
+    const dispatch = useDispatch();
+    const {
+        data: { blog = {} } = {},
+        isLoading,
+        isSuccess,
+        isError,
+    } = useGetSingleBlogQuery('64ca24d277173d6c4bd8f69a');
+
+    useEffect(() => {
+        const delayId = setTimeout(() => {
+            dispatch(blogSearch(inputText));
+        }, 500);
+
+        return () => clearTimeout(delayId);
+    }, [dispatch, inputText]);
+
+    let featuredBlog = null;
+    if (isLoading) {
+        featuredBlog = <FeaturedBlogSkeleton />;
+    } else if (isSuccess && !isError) {
+        featuredBlog = <FeaturedBlog blog={blog} />;
+    }
+
     return (
         <>
             <BlogHeader />
             <div className="max-w-[1115px] mx-auto">
-                <FeaturedBlog />
+                {featuredBlog}
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-12 my-8">
                     <div className="md:col-span-8">
                         <BlogList />
@@ -23,6 +51,8 @@ function Blog() {
                                 type="text"
                                 placeholder="Search here . . ."
                                 className="input input-bordered focus:outline-none w-full"
+                                value={inputText}
+                                onChange={(e) => setInputText(e.target.value)}
                             />
                             <i className="fas fa-search text-accent absolute bottom-3 right-6 text-lg" />
                         </div>
