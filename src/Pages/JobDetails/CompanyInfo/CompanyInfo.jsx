@@ -66,7 +66,7 @@ function CompanyInfo({ jobPost }) {
                 </div>
                 <div className="flex justify-between text-sm my-4">
                     <p className="font-bold">Social Media:</p>
-                    <span className="inline-flex lg:ml-auto lg:mt-0 mt-6 w-full justify-center md:justify-start md:w-auto">
+                    <span className="inline-flex lg:ml-auto lg:mt-0 mt-6 w-full justify-center md:justify-start md:w-auto gap-2">
                         <a
                             href={facebook}
                             target="_blank"

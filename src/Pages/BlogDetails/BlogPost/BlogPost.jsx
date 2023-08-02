@@ -1,47 +1,48 @@
+import moment from 'moment';
 import React from 'react';
-import avatar from '../../../assets/avatar.jpg';
-import blogImg from '../../../assets/img-news1.png';
+import calculateReadingTime from '../../../utils/readingTime';
 import BlogComments from '../BlogComments/BlogComments';
 
-function BlogPost() {
+function BlogPost({ blog }) {
+    const {
+        author: { name, designation, profilePhoto } = {},
+        title,
+        description,
+        createdAt,
+        featuredPhoto,
+        comments = [],
+    } = blog || {};
+
+    const readingTime = calculateReadingTime(description);
+
     return (
         <div className="bg-base-100 rounded shadow-xl px-8 lg:px-36">
             <div className="flex justify-between flex-wrap pt-10">
                 <div className="flex items-center">
                     <div className="avatar">
                         <div className="w-12 rounded-full">
-                            <img src={avatar} alt="" className="" />
+                            <img src={profilePhoto} alt="" className="" />
                         </div>
                     </div>
                     <div className="ml-2">
-                        <p className="text-secondary">Writers Name</p>
-                        <p className="text-neutral text-xs mt-1">Writers Position</p>
+                        <p className="text-secondary">{name}</p>
+                        <p className="text-neutral text-xs mt-1">{designation}n</p>
                     </div>
                 </div>
                 <div className="text-right">
-                    <p className="text-neutral">May 12, 2022</p>
-                    <p className="text-neutral text-sm">8 min to Read</p>
+                    <p className="text-neutral">{moment(createdAt).format('ll')}</p>
+                    <p className="text-neutral text-sm">{readingTime} mins to Read</p>
                 </div>
             </div>
 
             <h1 className="text-center text-secondary text-xl md:text-3xl font-bold py-2 border-t border-neutral border-b my-5">
-                11 Tips to Help You Get New Clients Through Cold Calling
+                {title}
             </h1>
             <figure className="my-4">
-                <img src={blogImg} alt="" className="w-4/5 mx-auto rounded" />
+                <img src={featuredPhoto} alt="" className="w-3/5 mx-auto rounded" />
             </figure>
-            <p className="text-accent text-lg leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ornare pellentesque
-                sollicitudin. Suspendisse potenti. Fusce ex risus, iaculis sit amet sapien nec,
-                finibus malesuada mi. Proin at turpis eget sapien pulvinar luctus. Vestibulum
-            </p>
+            <p className="text-accent text-lg leading-relaxed">{description}</p>
 
-            <p className="text-accent text-lg leading-relaxed">
-                bibendum pharetra lorem eu aliquam. In feugiat placerat risus, sed rutrum neque
-                mattis sit amet. Nullam vestibulum ante ac quam tempor, id venenatis velit eleifend.
-                Duis id iaculis risus, quis ullamcorper augue. Nunc tristique venenatis ipsum at
-                euismod. Pellentesque id arcu est.
-            </p>
             <div className="divider" />
             <div className="flex justify-between items-center pb-6">
                 <div className="flex items-center">
@@ -65,7 +66,7 @@ function BlogPost() {
                     </span>
                 </div>
             </div>
-            <BlogComments />
+            <BlogComments comments={comments} />
         </div>
     );
 }
