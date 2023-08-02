@@ -1,24 +1,31 @@
 import React from 'react';
-import CompanyDetailsSidebar from '../../CompanyDetails/CompanyInfoSideBar/CompanyInfoSideBar';
+import { ScrollRestoration, useParams } from 'react-router-dom';
+// import CompanyDetailsSidebar from '../../CompanyDetails/CompanyInfoSideBar/CompanyInfoSideBar';
+import { useGetSingleUserQuery } from '../../../features/users/usersApi';
 import LatestCompanyJobs from '../../CompanyDetails/LatestCompanyJobs/LatestCompanyJobs';
+import CompanyInfo from '../../JobDetails/CompanyInfo/CompanyInfo';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
 import WeHiring from '../../Shared/WeHiring/WeHiring';
 import RecruiterDetailsHeader from '../RecruiterDetailsHeader/RecruiterDetailsHeader';
 
 function RecruiterDetails() {
+    const { id } = useParams();
+    const { data: { user = {} } = {} } = useGetSingleUserQuery(id);
+    const { company } = user;
     return (
         <div className="max-w-[1115px] mx-auto">
-            <RecruiterDetailsHeader />
+            <RecruiterDetailsHeader user={user} />
             <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
                 <div className="col-span-8">
-                    <LatestCompanyJobs />
+                    <LatestCompanyJobs hiringManagerId={id} />
                 </div>
                 <div className="col-span-4">
-                    <CompanyDetailsSidebar />
+                    <CompanyInfo company={company} />
                     <WeHiring />
                 </div>
             </div>
             <SubscribeBox />
+            <ScrollRestoration />
         </div>
     );
 }

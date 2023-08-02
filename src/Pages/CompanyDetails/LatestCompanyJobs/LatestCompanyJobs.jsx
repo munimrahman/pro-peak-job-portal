@@ -6,11 +6,13 @@ import { useGetJobsQuery } from '../../../features/jobPosts/jobPostApi';
 import JobCardThree from '../../Shared/JobCardThree/JobCardThree';
 import Pagination from '../../Shared/Pagination/Pagination';
 
-function LatestCompanyJobs({ id }) {
+function LatestCompanyJobs({ hiringManagerId, companyId }) {
     const [page, setPage] = useState(1);
-
+    const limit = 3;
     // setup query for fetch data from api
-    const query = `page=${page}&limit=3&companyId=${id}`;
+    let query = `page=${page}&limit=${limit}`;
+    if (hiringManagerId) query += `&hiringManagerId=${hiringManagerId}`;
+    if (companyId) query += `&companyId=${companyId}`;
 
     const {
         data: { data: { totalCount, jobs = [] } = {} } = {},
@@ -22,7 +24,7 @@ function LatestCompanyJobs({ id }) {
     // pagination calculation
     let totalPage;
     if (!isLoading && !isError && totalCount) {
-        totalPage = Math.ceil(totalCount / 3);
+        totalPage = Math.ceil(totalCount / limit);
     }
 
     // job list content

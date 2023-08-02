@@ -14,6 +14,7 @@ import MeetHiringTeam from '../MeetHiringTeam/MeetHiringTeam';
 function JobDetails() {
     const { id } = useParams();
     const { data: { jobPost = {} } = {} } = useGetSingleJobQuery(id);
+    const { company } = jobPost || {};
 
     return (
         <div className="max-w-[1115px] mx-auto">
@@ -28,7 +29,7 @@ function JobDetails() {
                     </div>
                 </div>
                 <div className="col-span-4">
-                    <CompanyInfo jobPost={jobPost} />
+                    <CompanyInfo company={company} />
                     <MeetHiringTeam jobPost={jobPost} />
                 </div>
             </div>

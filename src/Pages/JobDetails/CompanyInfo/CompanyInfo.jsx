@@ -1,23 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function CompanyInfo({ jobPost }) {
+function CompanyInfo({ company }) {
     const {
-        company: {
-            _id,
-            name,
-            location,
-            logo,
-            industry,
-            companySize,
-            phone,
-            foundedIn,
-            website,
-            email,
-            facebook,
-            linkedin,
-        } = {},
-    } = jobPost || {};
+        _id,
+        name,
+        location,
+        logo,
+        industry,
+        companySize,
+        phone,
+        foundedIn,
+        website,
+        email,
+        facebook,
+        linkedin,
+    } = company || {};
 
     return (
         <div className="border rounded-lg p-8">

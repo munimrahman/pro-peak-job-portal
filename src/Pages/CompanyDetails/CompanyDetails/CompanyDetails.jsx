@@ -18,7 +18,7 @@ function CompanyDetails() {
             <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
                 <div className="col-span-8">
                     <CompanyDescription company={company} />
-                    <LatestCompanyJobs id={company._id} />
+                    <LatestCompanyJobs companyId={company._id} />
                 </div>
                 <div className="col-span-4">
                     <CompanyInfoSideBar company={company} />
