@@ -21,6 +21,12 @@ const initialState = {
         workPlaceFilter: [],
         companySearch: '',
     },
+    candidate: {
+        skillFilter: [],
+        hourlyRateFilter: [],
+        certificationFilter: [],
+        candidateSearch: '',
+    },
 };
 
 export const filterSlice = createSlice({
@@ -166,6 +172,50 @@ export const filterSlice = createSlice({
             company.companySearch = searchText;
         },
         // candidate filter
+        candidateFilterBySkills: (state, action) => {
+            const { value, check } = action.payload;
+            const {
+                candidate: { skillFilter },
+            } = state;
+
+            if (check && !skillFilter.includes(value)) {
+                skillFilter.push(value);
+            } else if (!check && skillFilter.includes(value)) {
+                const index = skillFilter.indexOf(value);
+                skillFilter.splice(index, 1);
+            }
+        },
+        candidateFilterByHourlyRate: (state, action) => {
+            const { value, check } = action.payload;
+            const {
+                candidate: { hourlyRateFilter },
+            } = state;
+
+            if (check && !hourlyRateFilter.includes(value)) {
+                hourlyRateFilter.push(value);
+            } else if (!check && hourlyRateFilter.includes(value)) {
+                const index = hourlyRateFilter.indexOf(value);
+                hourlyRateFilter.splice(index, 1);
+            }
+        },
+        candidateFilterByCertification: (state, action) => {
+            const { value, check } = action.payload;
+            const {
+                candidate: { certificationFilter },
+            } = state;
+
+            if (check && !certificationFilter.includes(value)) {
+                certificationFilter.push(value);
+            } else if (!check && certificationFilter.includes(value)) {
+                const index = certificationFilter.indexOf(value);
+                certificationFilter.splice(index, 1);
+            }
+        },
+        candidateSearch: (state, action) => {
+            const { candidate } = state;
+            const searchText = action.payload;
+            candidate.candidateSearch = searchText;
+        },
         // common filter
         clearSearch: (state) => {
             state.jobs.jobSearch = {
@@ -174,6 +224,7 @@ export const filterSlice = createSlice({
                 searchText: '',
             };
             state.company.companySearch = '';
+            state.candidate.candidateSearch = '';
         },
         resetFilter: (state) => {
             state.jobs = {
@@ -191,11 +242,18 @@ export const filterSlice = createSlice({
                 workPlaceFilter: [],
                 companySearch: '',
             };
+            state.candidate = {
+                skillFilter: [],
+                hourlyRateFilter: [],
+                certificationFilter: [],
+                candidateSearch: '',
+            };
         },
     },
 });
 
 export default filterSlice.reducer;
+
 export const {
     jobFilterByIndustry,
     jobFilterBySalary,
@@ -208,6 +266,10 @@ export const {
     companyFilterBySize,
     companyFilterByWorkPlace,
     companySearch,
+    candidateFilterBySkills,
+    candidateFilterByHourlyRate,
+    candidateFilterByCertification,
+    candidateSearch,
     clearSearch,
     resetFilter,
 } = filterSlice.actions;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { companySearch, resetFilter } from '../../../features/filter/filterSlice';
+import { candidateSearch, companySearch, resetFilter } from '../../../features/filter/filterSlice';
 // import key from '../../../assets/key-search-bar.svg';
 
 function HeaderBrowseSearch({ title, description }) {
@@ -11,6 +11,7 @@ function HeaderBrowseSearch({ title, description }) {
         e.preventDefault();
         dispatch(resetFilter());
         if (title === 'Browse Companies') dispatch(companySearch(searchText.trim()));
+        if (title === 'Browse Candidates') dispatch(candidateSearch(searchText.trim()));
         setSearchText('');
     };
 

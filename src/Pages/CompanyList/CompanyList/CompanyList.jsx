@@ -75,6 +75,8 @@ function CompanyList() {
         content = (
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 mt-5">
                 <RecruiterSkeleton />
+                <RecruiterSkeleton />
+                <RecruiterSkeleton />
             </div>
         );
     } else if (isSuccess && !isError && companies.length === 0) {
@@ -163,9 +165,15 @@ function CompanyList() {
                     </div>
                     {content}
 
-                    <div className="mt-10">
-                        <Pagination totalPage={totalPage} currentPage={page} setPage={setPage} />
-                    </div>
+                    {totalPage > 1 && (
+                        <div className="mt-10">
+                            <Pagination
+                                totalPage={totalPage}
+                                currentPage={page}
+                                setPage={setPage}
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
             <NewsBlogsJL />
