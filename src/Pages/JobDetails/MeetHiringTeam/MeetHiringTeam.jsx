@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
-import avatarImg from '../../../assets/avatar.jpg';
 
 function MeetHiringTeam({ jobPost }) {
     const {
@@ -9,6 +8,7 @@ function MeetHiringTeam({ jobPost }) {
             _id,
             name,
             designation,
+            profilePhoto,
             socialMedia: { facebook = '', linkedin = '', twitter = '' } = {},
         } = {},
     } = jobPost || {};
@@ -20,7 +20,7 @@ function MeetHiringTeam({ jobPost }) {
             <div className="flex items-start">
                 <div className="avatar">
                     <div className="w-14 rounded-full">
-                        <img src={avatarImg} alt="" />
+                        <img src={profilePhoto} alt="" />
                     </div>
                 </div>
                 <div className="ml-3">

@@ -111,11 +111,10 @@ function CompanyInfo({ jobPost }) {
             </div>
 
             <div className="text-center mt-6">
-                <Link
-                    to={`/company-list/${_id}`}
-                    className="bg-info text-primary text-sm p-3 rounded hover:text-white hover:bg-primary hover:cursor-pointer"
-                >
-                    View Company Profile
+                <Link to={`/company-list/${_id}`}>
+                    <p className="bg-info text-primary text-sm p-3 rounded hover:text-white hover:bg-primary hover:cursor-pointer">
+                        View Company Profile
+                    </p>
                 </Link>
             </div>
         </div>

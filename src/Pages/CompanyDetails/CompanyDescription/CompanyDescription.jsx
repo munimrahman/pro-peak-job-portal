@@ -1,15 +1,11 @@
 import React from 'react';
 
-function CompanyDescription() {
+function CompanyDescription({ company }) {
+    const { name, description } = company || {};
     return (
         <div className="text-accent leading-7">
-            <h2 className="text-2xl font-bold mb-4">Welcome to AliStudio Team</h2>
-            <p className="my-5">
-                The AliStudio Design team has a vision to establish a trusted platform that enables
-                productive and healthy enterprises in a world of digital and remote everything,
-                constantly changing work patterns and norms, and the need for organizational
-                resiliency.
-            </p>
+            <h2 className="text-2xl font-bold mb-4">Welcome to {name}</h2>
+            <p className="my-5">{description}</p>
             <p className="my-5">
                 The ideal candidate will have strong creative skills and a portfolio of work which
                 demonstrates their passion for illustrative design and typography. This candidate

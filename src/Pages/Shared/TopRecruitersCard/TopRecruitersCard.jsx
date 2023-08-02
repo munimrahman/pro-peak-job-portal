@@ -7,7 +7,9 @@ function CompanyCard({ company }) {
         <div className="border rounded-lg bg-[#F8FAFF] text-center">
             <img src={logo} alt="" className="inline-block mt-7 w-16 rounded-md" />
             <div className="my-5">
-                <h3 className="font-bold text-xl">{name}</h3>
+                <Link to={`/company-list/${_id}`} className="hover:text-primary">
+                    <h3 className="font-bold text-xl">{name}</h3>
+                </Link>
                 <div className="rating rating-xs">
                     <input
                         type="radio"
