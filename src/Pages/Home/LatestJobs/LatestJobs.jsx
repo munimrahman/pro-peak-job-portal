@@ -8,12 +8,11 @@ import JobCardOne from '../../Shared/JobCardOne/JobCardOne';
 function LatestJobs() {
     const [category, setCategory] = useState('Software Development');
     const {
-        data: { data: { totalCount, count, jobs = [] } = {} } = {},
+        data: { data: { jobs = [] } = {} } = {},
         isLoading,
         isSuccess,
         isError,
     } = useGetJobsQuery(`industry=${category}&limit=6`);
-    console.log(totalCount, count, jobs, isLoading, isSuccess, isError);
 
     let listContent = null;
 

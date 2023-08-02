@@ -73,7 +73,7 @@ const router = createBrowserRouter([
                 element: <CompanyDetails />,
             },
             {
-                path: '/recruiter-details',
+                path: '/recruiter-details/:id',
                 element: <RecruiterDetails />,
             },
             {

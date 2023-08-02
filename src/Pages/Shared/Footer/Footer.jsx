@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../../assets/ProPeak1.png';
 import google from '../../../assets/android.png';
 import apple from '../../../assets/app-store.png';
-import logo from '../../../assets/ProPeak1.png';
 
 function Footer() {
     return (

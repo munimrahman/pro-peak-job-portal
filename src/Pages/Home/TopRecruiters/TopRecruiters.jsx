@@ -10,7 +10,6 @@ function TopRecruiters() {
         isError,
         isSuccess,
     } = useGetCompaniesQuery('limit=8');
-    console.log(companies);
 
     let listContent = null;
 

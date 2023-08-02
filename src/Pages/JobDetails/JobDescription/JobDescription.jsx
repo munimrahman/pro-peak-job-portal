@@ -1,15 +1,11 @@
 import React from 'react';
 
-function JobDescription() {
+function JobDescription({ jobPost }) {
+    const { company: { name } = {}, description } = jobPost || {};
     return (
         <div className="text-accent mt-10 leading-7">
-            <h2 className="text-2xl font-bold my-4">Welcome to AliStudio Team</h2>
-            <p className="my-5">
-                The AliStudio Design team has a vision to establish a trusted platform that enables
-                productive and healthy enterprises in a world of digital and remote everything,
-                constantly changing work patterns and norms, and the need for organizational
-                resiliency.
-            </p>
+            <h2 className="text-2xl font-bold my-4">Welcome to {name}</h2>
+            <p className="my-5">{description}</p>
             <p className="my-5">
                 The ideal candidate will have strong creative skills and a portfolio of work which
                 demonstrates their passion for illustrative design and typography. This candidate
@@ -55,7 +51,7 @@ function JobDescription() {
                     Aligning or influencing design thinking with teams working in other geographies
                 </li>
             </ul>
-            <h2 className="text-2xl font-bold my-4">Product Designer</h2>
+            <h2 className="text-2xl font-bold my-4">Should Have</h2>
             <p className="my-5">
                 <strong>Product knowledge:</strong> Deeply understand the technology and features of
                 the product area to which you are assigned.
