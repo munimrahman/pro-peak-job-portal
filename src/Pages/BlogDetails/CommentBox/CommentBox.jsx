@@ -1,14 +1,26 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import avatar from '../../../assets/avatar.jpg';
 
-function CommentBox({ isFocused, commentId, from, blogId }) {
-    console.log(commentId, blogId, from);
+function CommentBox({ isFocused, commentId, from, blogId, setShow }) {
+    const [text, setText] = useState('');
+
     const ref = useRef();
 
     useEffect(() => {
         if (isFocused) ref.current.focus();
     }, [isFocused]);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (from === 'blog') {
+            console.log(`Comment of Blog ID:${blogId}= ${text}`);
+        } else {
+            console.log(`Comment Reply ID:${commentId}= ${text}`);
+        }
+        setText('');
+        setShow(() => ({ status: false, id: '' }));
+    };
 
     return (
         <div className="grid grid-cols-12 md:gap-5 my-2">
@@ -19,16 +31,18 @@ function CommentBox({ isFocused, commentId, from, blogId }) {
                     </div>
                 </div>
             </div>
-            <div className="col-span-11 px-3 py-3 md:py-0">
+            <form onSubmit={handleSubmit} className="col-span-11 px-3 py-3 md:py-0">
                 <textarea
                     ref={ref}
                     className="textarea textarea-bordered focus:outline-none w-full h-28"
                     placeholder="Write Your Comment . . ."
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
                 />
                 <div className="flex justify-end mt-2">
-                    <ButtonInfo>Comment</ButtonInfo>
+                    <ButtonInfo type="submit">Comment</ButtonInfo>
                 </div>
-            </div>
+            </form>
         </div>
     );
 }

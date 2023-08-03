@@ -4,7 +4,7 @@
 /* eslint-disable eqeqeq */
 import apiSlice from '../api/apiSlice';
 
-export const customersApi = apiSlice.injectEndpoints({
+export const usersApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getUsers: builder.query({
             query: (query) => ({
@@ -62,4 +62,4 @@ export const customersApi = apiSlice.injectEndpoints({
 });
 
 export const { useGetUsersQuery, useGetSingleUserQuery, useAddUserMutation, useEditUserMutation } =
-    customersApi;
+    usersApi;

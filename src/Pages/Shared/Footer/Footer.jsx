@@ -13,8 +13,8 @@ function Footer() {
                     <img src={logo} alt="" className="w-44" />
 
                     <p className="text-sm my-4 text-neutral">
-                        JobBox is the heart of the design community and the best resource to
-                        discover and connect with designers and jobs worldwide.
+                        ProPeak is the heart of the developer community and the best resource to
+                        discover and connect with developers and jobs worldwide.
                     </p>
                     <span className="inline-flex lg:ml-auto lg:mt-0 mt-6 w-full justify-center md:justify-start md:w-auto">
                         <Link to="/" className="text-accent hover:text-primary">

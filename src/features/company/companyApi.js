@@ -4,7 +4,7 @@
 /* eslint-disable eqeqeq */
 import apiSlice from '../api/apiSlice';
 
-export const customersApi = apiSlice.injectEndpoints({
+export const companyApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getCompanies: builder.query({
             query: (query) => ({
@@ -66,4 +66,4 @@ export const {
     useGetSingleCompanyQuery,
     useAddCOmpanyMutation,
     useEditCompanyMutation,
-} = customersApi;
+} = companyApi;

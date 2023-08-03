@@ -4,7 +4,7 @@
 /* eslint-disable eqeqeq */
 import apiSlice from '../api/apiSlice';
 
-export const customersApi = apiSlice.injectEndpoints({
+export const blogsApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getBlogs: builder.query({
             query: (query) => ({
@@ -90,4 +90,4 @@ export const {
     useAddBlogMutation,
     useEditBlogMutation,
     useDeleteBlogMutation,
-} = customersApi;
+} = blogsApi;

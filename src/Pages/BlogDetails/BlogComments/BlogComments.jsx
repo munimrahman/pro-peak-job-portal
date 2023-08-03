@@ -18,7 +18,6 @@ function BlogComments({ comments = [], blogId }) {
                                     key={comment._id}
                                     from="comment"
                                     comment={comment}
-                                    show={show}
                                     setShow={setShow}
                                 />
                                 <div className="ml-8">
@@ -38,6 +37,7 @@ function BlogComments({ comments = [], blogId }) {
                                             commentId={comment._id}
                                             isFocused={show.status}
                                             from="comment"
+                                            setShow={setShow}
                                         />
                                     )}
                                 </div>
@@ -59,6 +59,7 @@ function BlogComments({ comments = [], blogId }) {
                                         commentId={comment._id}
                                         isFocused={show.status}
                                         from="comment"
+                                        setShow={setShow}
                                     />
                                 )}
                             </div>

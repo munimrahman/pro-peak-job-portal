@@ -4,21 +4,21 @@
 /* eslint-disable eqeqeq */
 import apiSlice from '../api/apiSlice';
 
-export const jobPostApi = apiSlice.injectEndpoints({
+export const quizApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        getJobs: builder.query({
+        getQuizzes: builder.query({
             query: (query) => ({
                 url: `/jobs`,
                 params: query,
             }),
         }),
 
-        getSingleJob: builder.query({
+        getSingleQuiz: builder.query({
             query: (id) => `/jobs/${id}`,
         }),
 
-        // TODO: add Job
-        addJob: builder.mutation({
+        // TODO: add Quiz
+        addQuiz: builder.mutation({
             query: (data) => ({
                 url: '/jobs',
                 method: 'POST',
@@ -37,8 +37,8 @@ export const jobPostApi = apiSlice.injectEndpoints({
             },
         }),
 
-        // TODO: edit Job
-        editJob: builder.mutation({
+        // TODO: edit quiz
+        editQuiz: builder.mutation({
             query: ({ id, data }) => ({
                 url: `/jobs/${id}`,
                 method: 'PUT',
@@ -59,8 +59,8 @@ export const jobPostApi = apiSlice.injectEndpoints({
             },
         }),
 
-        // TODO: delete Job
-        deleteJob: builder.mutation({
+        // TODO: delete quiz
+        deleteQuiz: builder.mutation({
             query: (id) => ({
                 url: `/jobs/${id}`,
                 method: 'DELETE',
@@ -85,9 +85,9 @@ export const jobPostApi = apiSlice.injectEndpoints({
 });
 
 export const {
-    useGetJobsQuery,
-    useGetSingleJobQuery,
-    useAddJobMutation,
-    useEditJobMutation,
-    useDeleteJobMutation,
-} = jobPostApi;
+    useGetQuizzesQuery,
+    useGetSingleQuizQuery,
+    useAddQuizMutation,
+    useEditQuizMutation,
+    useDeleteQuizMutation,
+} = quizApi;
