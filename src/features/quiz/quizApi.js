@@ -8,19 +8,19 @@ export const quizApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getQuizzes: builder.query({
             query: (query) => ({
-                url: `/jobs`,
+                url: `/quizzes`,
                 params: query,
             }),
         }),
 
         getSingleQuiz: builder.query({
-            query: (id) => `/jobs/${id}`,
+            query: (id) => `/quizzes/${id}`,
         }),
 
         // TODO: add Quiz
         addQuiz: builder.mutation({
             query: (data) => ({
-                url: '/jobs',
+                url: '/quizzes',
                 method: 'POST',
                 body: data,
             }),
@@ -40,7 +40,7 @@ export const quizApi = apiSlice.injectEndpoints({
         // TODO: edit quiz
         editQuiz: builder.mutation({
             query: ({ id, data }) => ({
-                url: `/jobs/${id}`,
+                url: `/quizzes/${id}`,
                 method: 'PUT',
                 body: data,
             }),
@@ -62,7 +62,7 @@ export const quizApi = apiSlice.injectEndpoints({
         // TODO: delete quiz
         deleteQuiz: builder.mutation({
             query: (id) => ({
-                url: `/jobs/${id}`,
+                url: `/quizzes/${id}`,
                 method: 'DELETE',
             }),
 

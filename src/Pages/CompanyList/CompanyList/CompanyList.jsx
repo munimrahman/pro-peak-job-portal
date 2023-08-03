@@ -51,7 +51,7 @@ function CompanyList() {
     }
 
     const {
-        data: { data: { totalCount, companies } = {} } = {},
+        data: { data: { totalCount, companies = [] } = {} } = {},
         isLoading,
         isSuccess,
         isError,

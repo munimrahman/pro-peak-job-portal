@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { candidateSearch, companySearch, resetFilter } from '../../../features/filter/filterSlice';
+import {
+    candidateSearch,
+    companySearch,
+    quizSearch,
+    resetFilter,
+} from '../../../features/filter/filterSlice';
 // import key from '../../../assets/key-search-bar.svg';
 
 function HeaderBrowseSearch({ title, description }) {
@@ -12,8 +17,19 @@ function HeaderBrowseSearch({ title, description }) {
         dispatch(resetFilter());
         if (title === 'Browse Companies') dispatch(companySearch(searchText.trim()));
         if (title === 'Browse Candidates') dispatch(candidateSearch(searchText.trim()));
+        if (title === 'Browse Skill Tests') dispatch(quizSearch(searchText.trim()));
         setSearchText('');
     };
+
+    useEffect(() => {
+        const delayId = setTimeout(() => {
+            if (title === 'Browse Companies') dispatch(companySearch(searchText.trim()));
+            if (title === 'Browse Candidates') dispatch(candidateSearch(searchText.trim()));
+            if (title === 'Browse Skill Tests') dispatch(quizSearch(searchText.trim()));
+        }, 500);
+
+        return () => clearTimeout(delayId);
+    }, [dispatch, title, searchText]);
 
     return (
         <div className="bg-[#f2f6fd] py-12 rounded-xl mt-8 flex flex-col items-center header-search-box">

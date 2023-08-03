@@ -101,7 +101,7 @@ const router = createBrowserRouter([
                 element: <SkillAssessment />,
             },
             {
-                path: '/quiz',
+                path: '/quiz/:id',
                 element: <AssessmentQuiz />,
             },
             {

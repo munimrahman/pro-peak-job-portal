@@ -32,6 +32,9 @@ const initialState = {
         authorFilter: '',
         blogSearch: '',
     },
+    quiz: {
+        quizSearchText: '',
+    },
 };
 
 export const filterSlice = createSlice({
@@ -236,6 +239,12 @@ export const filterSlice = createSlice({
             const searchText = action.payload;
             blog.blogSearch = searchText;
         },
+        // skill
+        quizSearch: (state, action) => {
+            const { quiz } = state;
+            const searchText = action.payload;
+            quiz.quizSearchText = searchText;
+        },
         // common filter
         clearSearch: (state) => {
             state.jobs.jobSearch = {
@@ -246,6 +255,7 @@ export const filterSlice = createSlice({
             state.company.companySearch = '';
             state.candidate.candidateSearch = '';
             state.blog.blogSearch = '';
+            state.quiz.quizSearchText = '';
         },
         resetFilter: (state) => {
             state.jobs = {
@@ -274,6 +284,9 @@ export const filterSlice = createSlice({
                 authorFilter: '',
                 blogSearch: '',
             };
+            state.quiz = {
+                quizSearchText: '',
+            };
         },
     },
 });
@@ -299,6 +312,7 @@ export const {
     blogFilterByTag,
     blogFilterByAuthor,
     blogSearch,
+    quizSearch,
     clearSearch,
     resetFilter,
 } = filterSlice.actions;

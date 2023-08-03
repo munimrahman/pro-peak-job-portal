@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Pagination({ totalPage, currentPage, setPage }) {
-    console.log(totalPage);
     return (
         // <!-- Component: Primary basic pagination -->
         <nav>
