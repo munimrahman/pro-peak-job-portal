@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { ScrollRestoration, useParams } from 'react-router-dom';
 import blogCover from '../../../assets/blog-cover.png';
 import { useGetSingleBlogQuery } from '../../../features/blogs/blogsApi';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
@@ -19,6 +19,7 @@ function BlogDetails() {
                 <BlogPost blog={blog} />
                 <SubscribeBox />
             </div>
+            <ScrollRestoration />
         </div>
     );
 }

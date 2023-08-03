@@ -5,11 +5,14 @@ import BlogComments from '../BlogComments/BlogComments';
 
 function BlogPost({ blog }) {
     const {
+        _id,
         author: { name, designation, profilePhoto } = {},
         title,
         description,
         createdAt,
         featuredPhoto,
+        tags = [],
+        loves,
         comments = [],
     } = blog || {};
 
@@ -49,24 +52,20 @@ function BlogPost({ blog }) {
                     <span className="text-2xl hover:cursor-pointer">
                         <i className="far fa-heart text-red-500" />
                     </span>
-                    <span className="ml-2 text-neutral font-thin">154 Loves</span>
+                    <span className="ml-2 text-neutral font-thin">{loves} Loves</span>
                 </div>
                 <div className="flex flex-wrap justify-center">
-                    <span className="capitalize text-xs bg-info text-[#4f5e64] hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1 md:my-0">
-                        JavaScript
-                    </span>
-                    <span className="capitalize text-xs bg-info text-[#4f5e64] hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1 md:my-0">
-                        React
-                    </span>
-                    <span className="capitalize text-xs bg-info text-[#4f5e64] hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1 md:my-0">
-                        Node
-                    </span>
-                    <span className="capitalize text-xs bg-info text-[#4f5e64] hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1 md:my-0">
-                        Express
-                    </span>
+                    {tags.map((tag, i) => (
+                        <span
+                            key={i}
+                            className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1"
+                        >
+                            {tag}
+                        </span>
+                    ))}
                 </div>
             </div>
-            <BlogComments comments={comments} />
+            <BlogComments comments={comments} blogId={_id} />
         </div>
     );
 }

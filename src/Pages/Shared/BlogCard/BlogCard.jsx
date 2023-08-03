@@ -27,8 +27,11 @@ function BlogCard({ blog }) {
                     </h2>
                 </Link>
                 <div className="mt-1 flex flex-wrap">
-                    {tags.map((tag) => (
-                        <span className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
+                    {tags.map((tag, i) => (
+                        <span
+                            key={i}
+                            className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1"
+                        >
                             {tag}
                         </span>
                     ))}
