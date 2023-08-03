@@ -1,10 +1,24 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React from 'react';
 
-function AssessmentQuizCard({ que, i }) {
+const shuffleArray = (arr) => arr.sort(() => 0.5 - Math.random());
+
+function AssessmentQuizCard({ que, i, setAns }) {
     const { question, options = [] } = que || {};
-    const [givenAns, setGivenAns] = useState('');
-    console.log(givenAns);
+
+    const ansOptions = shuffleArray([
+        options[0].option,
+        options[1].option,
+        options[2].option,
+        options[3].option,
+    ]);
+
+    const handleChange = (e) => {
+        setAns((pre) => {
+            const result = pre.filter((r) => r.id !== i);
+            return [...result, { id: i, ans: e.target.value }];
+        });
+    };
 
     return (
         <div className="bg-info p-5 rounded-lg shadow-lg">
@@ -18,10 +32,10 @@ function AssessmentQuizCard({ que, i }) {
                                 type="radio"
                                 name={`option-${i}`}
                                 className="radio-xs mr-2 cursor-pointer"
-                                value={options[0]?.option}
-                                onChange={(e) => setGivenAns(e.target.value)}
+                                value={ansOptions[0]}
+                                onChange={handleChange}
                             />
-                            {options[0]?.option}
+                            {ansOptions[0]}
                         </label>
                     </div>
                     <div className="flex items-center my-3">
@@ -30,9 +44,11 @@ function AssessmentQuizCard({ que, i }) {
                                 id={`option-two-${i}`}
                                 type="radio"
                                 name={`option-${i}`}
+                                value={ansOptions[1]}
+                                onChange={handleChange}
                                 className="radio-xs mr-2 cursor-pointer"
                             />
-                            {options[1]?.option}
+                            {ansOptions[1]}
                         </label>
                     </div>
                 </div>
@@ -43,9 +59,11 @@ function AssessmentQuizCard({ que, i }) {
                                 id={`option-three-${i}`}
                                 type="radio"
                                 name={`option-${i}`}
+                                value={ansOptions[2]}
+                                onChange={handleChange}
                                 className="radio-xs mr-2 cursor-pointer"
                             />
-                            {options[2]?.option}
+                            {ansOptions[2]}
                         </label>
                     </div>
                     <div className="flex items-center my-3">
@@ -54,9 +72,11 @@ function AssessmentQuizCard({ que, i }) {
                                 id={`option-four-${i}`}
                                 type="radio"
                                 name={`option-${i}`}
+                                value={ansOptions[3]}
+                                onChange={handleChange}
                                 className="radio-xs mr-2 cursor-pointer"
                             />
-                            {options[3]?.option}
+                            {ansOptions[3]}
                         </label>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ import img from '../../../assets/job-card-img.png';
 
 function SkillTestCard({ quiz }) {
     const { _id, title, times, totalQuestions, featuredPhoto } = quiz || {};
+
     return (
         <div className="border rounded-xl p-2 bg-[#F8FAFF] shadow-md">
             <div className="relative">

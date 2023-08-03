@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, ScrollRestoration, useParams } from 'react-router-dom';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import { useGetSingleQuizQuery } from '../../../features/quiz/quizApi';
+import { quizResult } from '../../../features/quiz/quizSlice';
 import AssessmentQuizCard from '../AssessmentQuizCard/AssessmentQuizCard';
 
 function AssessmentQuiz() {
     const { id } = useParams();
     const { data: { quiz: { title, totalQuestions, times, questions = [] } = {} } = {} } =
         useGetSingleQuizQuery(id);
+    const [ans, setAns] = useState([]);
+    const dispatch = useDispatch();
+
+    const result = ans
+        .map((a, i) => a.ans === questions[i]?.options[0]?.option)
+        .reduce((pre, next) => pre + next, 0);
+
+    const resultObj = {
+        testName: title,
+        score: result,
+        correct: result,
+        wrong: questions.length - result,
+    };
+
+    const handleSubmit = () => {
+        dispatch(quizResult(resultObj));
+    };
 
     return (
         <div className="max-w-[1115px] mx-auto">
@@ -27,19 +46,21 @@ function AssessmentQuiz() {
                 </div>
                 <div className="mt-5 grid gap-5">
                     {questions.map((q, i) => (
-                        <AssessmentQuizCard key={i} que={q} i={i + 1} />
+                        <AssessmentQuizCard key={i} que={q} i={i + 1} setAns={setAns} />
                     ))}
                 </div>
                 <div className="flex justify-center mt-5">
                     <Link to="/quiz-result">
-                        {' '}
-                        <ButtonInfo className="px-4 py-3">Submit</ButtonInfo>
+                        <ButtonInfo onClick={handleSubmit} className="px-4 py-3">
+                            Submit
+                        </ButtonInfo>
                     </Link>
                 </div>
             </div>
+
             <ScrollRestoration />
         </div>
     );
 }
 
-export default AssessmentQuiz;
+export default React.memo(AssessmentQuiz);

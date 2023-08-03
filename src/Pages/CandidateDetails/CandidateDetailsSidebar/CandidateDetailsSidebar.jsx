@@ -5,7 +5,7 @@ function CandidateDetailsSidebar({ user }) {
         experience,
         hourlyRate,
         language = [],
-        phone,
+        mobile,
         email,
         website,
         socialMedia: { facebook, linkedin } = {},
@@ -34,7 +34,7 @@ function CandidateDetailsSidebar({ user }) {
                 </div>
                 <div className="flex justify-between text-sm my-4">
                     <p className="font-bold">Phone:</p>
-                    <p>{phone || '01254865254'}</p>
+                    <p>{mobile || '01254865254'}</p>
                 </div>
                 <div className="flex justify-between text-sm my-4">
                     <p className="font-bold">Email:</p>
