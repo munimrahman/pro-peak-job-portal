@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, ScrollRestoration, useParams } from 'react-router-dom';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
+import QuestionSkeleton from '../../../Components/LoadingElements/QuestionSkeleton';
 import { useGetSingleQuizQuery } from '../../../features/quiz/quizApi';
 import { quizResult } from '../../../features/quiz/quizSlice';
 import AssessmentQuizCard from '../AssessmentQuizCard/AssessmentQuizCard';
 
 function AssessmentQuiz() {
     const { id } = useParams();
-    const { data: { quiz: { title, totalQuestions, times, questions = [] } = {} } = {} } =
-        useGetSingleQuizQuery(id);
+    const {
+        data: { quiz: { title, totalQuestions, times, questions = [] } = {} } = {},
+        isLoading,
+    } = useGetSingleQuizQuery(id);
     const [ans, setAns] = useState([]);
     const dispatch = useDispatch();
 
@@ -28,9 +31,17 @@ function AssessmentQuiz() {
         dispatch(quizResult(resultObj));
     };
 
-    return (
-        <div className="max-w-[1115px] mx-auto">
-            <div className="max-w-3xl mx-auto mt-10">
+    let heading = null;
+    if (isLoading) {
+        heading = (
+            <div className="flex flex-col items-center gap-6">
+                <div className="w-5/6 h-4 rounded-xl bg-gray-300" />
+                <div className="w-3/6 h-2 rounded-xl bg-gray-300" />
+            </div>
+        );
+    } else {
+        heading = (
+            <>
                 <h1 className="text-center text-3xl text-secondary">
                     Skill Assessment For {title}
                 </h1>
@@ -44,11 +55,28 @@ function AssessmentQuiz() {
                         {times}
                     </span>
                 </div>
-                <div className="mt-5 grid gap-5">
-                    {questions.map((q, i) => (
-                        <AssessmentQuizCard key={i} que={q} i={i + 1} setAns={setAns} />
-                    ))}
-                </div>
+            </>
+        );
+    }
+
+    return (
+        <div className="max-w-[1115px] mx-auto">
+            <div className="max-w-3xl mx-auto mt-10">
+                {heading}
+                {isLoading ? (
+                    <div className="mt-5 grid gap-5">
+                        <QuestionSkeleton />
+                        <QuestionSkeleton />
+                        <QuestionSkeleton />
+                    </div>
+                ) : (
+                    <div className="mt-5 grid gap-5">
+                        {questions.map((q, i) => (
+                            <AssessmentQuizCard key={i} que={q} i={i + 1} setAns={setAns} />
+                        ))}
+                    </div>
+                )}
+
                 <div className="flex justify-center mt-5">
                     <Link to="/quiz-result">
                         <ButtonInfo onClick={handleSubmit} className="px-4 py-3">
