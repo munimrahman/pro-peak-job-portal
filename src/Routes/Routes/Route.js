@@ -5,6 +5,7 @@ import Main from '../../Layout/Main';
 import NestedLayout from '../../Layout/NestedLayout';
 import RecruiterDashboardLayout from '../../Layout/RecruiterDashboardLayout';
 import About from '../../Pages/About/About/About';
+import FormTest from '../../Pages/About/FormTest/FormTest';
 import AssessmentQuiz from '../../Pages/AssessmentQuiz/AssessmentQuiz.jsx/AssessmentQuiz';
 import AssessmentResult from '../../Pages/AssessmentResult/AssessmentResult';
 import Blog from '../../Pages/Blog/Blog/Blog';
@@ -111,6 +112,10 @@ const router = createBrowserRouter([
             {
                 path: '/about',
                 element: <About />,
+            },
+            {
+                path: '/file-upload',
+                element: <FormTest />,
             },
             {
                 path: '/contact',
