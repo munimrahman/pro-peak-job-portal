@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollRestoration, useParams } from 'react-router-dom';
-import { useGetSingleUserQuery } from '../../../features/users/usersApi';
+import { useGetUserQuery } from '../../../features/users/usersApi';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
 import WeHiring from '../../Shared/WeHiring/WeHiring';
 import CandidateDescription from '../CandidateDescription/CandidateDescription';
@@ -10,7 +10,7 @@ import WorkExperience from '../WorkExperience/WorkExperience';
 
 function CandidateDetails() {
     const { id } = useParams();
-    const { data: { user = {} } = {} } = useGetSingleUserQuery(id);
+    const { data: { user = {} } = {} } = useGetUserQuery(id);
 
     return (
         <div className="max-w-[1115px] mx-auto">

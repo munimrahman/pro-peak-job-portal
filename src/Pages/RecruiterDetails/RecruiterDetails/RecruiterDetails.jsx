@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollRestoration, useParams } from 'react-router-dom';
 // import CompanyDetailsSidebar from '../../CompanyDetails/CompanyInfoSideBar/CompanyInfoSideBar';
-import { useGetSingleUserQuery } from '../../../features/users/usersApi';
+import { useGetUserQuery } from '../../../features/users/usersApi';
 import LatestCompanyJobs from '../../CompanyDetails/LatestCompanyJobs/LatestCompanyJobs';
 import CompanyInfo from '../../JobDetails/CompanyInfo/CompanyInfo';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
@@ -10,7 +10,7 @@ import RecruiterDetailsHeader from '../RecruiterDetailsHeader/RecruiterDetailsHe
 
 function RecruiterDetails() {
     const { id } = useParams();
-    const { data: { user = {} } = {} } = useGetSingleUserQuery(id);
+    const { data: { user = {} } = {} } = useGetUserQuery(id);
     const { company } = user;
     return (
         <div className="max-w-[1115px] mx-auto">

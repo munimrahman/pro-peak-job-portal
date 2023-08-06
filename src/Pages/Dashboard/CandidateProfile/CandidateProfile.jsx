@@ -2,7 +2,7 @@
 import React from 'react';
 import coverPhotoDemo from '../../../assets/company-cover.png';
 import profilePhotoDemo from '../../../assets/company.png';
-import { useGetSingleUserQuery } from '../../../features/users/usersApi';
+import { useGetUserQuery } from '../../../features/users/usersApi';
 import ProfileHeader from './ProfileHeader';
 
 function CandidateProfile() {
@@ -21,7 +21,7 @@ function CandidateProfile() {
                 website,
             } = {},
         } = {},
-    } = useGetSingleUserQuery(id);
+    } = useGetUserQuery(id);
 
     return (
         <div className="p-8">
