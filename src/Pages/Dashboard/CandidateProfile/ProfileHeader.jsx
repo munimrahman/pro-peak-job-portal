@@ -22,6 +22,16 @@ function ProfileHeader({ title }) {
                 </li>
                 <li>
                     <NavLink
+                        to="/dashboard/candidate-profile/add-experience"
+                        className={({ isActive }) =>
+                            isActive ? activeClassName : inActiveClassName
+                        }
+                    >
+                        Work Experience
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
                         to="/dashboard/candidate-profile/change-password"
                         className={({ isActive }) =>
                             isActive ? activeClassName : inActiveClassName

@@ -48,7 +48,7 @@ export const usersApi = apiSlice.injectEndpoints({
             async onQueryStarted({ id, data }, { queryFulfilled, dispatch }) {
                 try {
                     const { data: res } = await queryFulfilled;
-
+                    console.log(res);
                     if (size(res)) {
                         console.log(res);
                         dispatch(

@@ -19,6 +19,7 @@ import AppliedJobs from '../../Pages/Dashboard/AppliedJobs/AppliedJobs';
 import BlogDashboard from '../../Pages/Dashboard/BlogDashboard/BlogDashboard';
 import PostBlog from '../../Pages/Dashboard/BlogDashboard/PostBlog';
 import UpdateBlog from '../../Pages/Dashboard/BlogDashboard/UpdateBlog';
+import AddWorkExperience from '../../Pages/Dashboard/CandidateProfile/AddWorkExperience';
 import CandidateProfile from '../../Pages/Dashboard/CandidateProfile/CandidateProfile';
 import ChangePassword from '../../Pages/Dashboard/CandidateProfile/ChangePassword';
 import EditProfile from '../../Pages/Dashboard/CandidateProfile/EditProfile';
@@ -153,6 +154,10 @@ const router = createBrowserRouter([
                     {
                         path: '/dashboard/candidate-profile/change-password',
                         element: <ChangePassword />,
+                    },
+                    {
+                        path: '/dashboard/candidate-profile/add-experience',
+                        element: <AddWorkExperience />,
                     },
                 ],
             },
