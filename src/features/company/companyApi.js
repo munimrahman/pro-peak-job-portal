@@ -37,24 +37,26 @@ export const companyApi = apiSlice.injectEndpoints({
             },
         }),
 
-        // TODO: edit company
         editCompany: builder.mutation({
-            query: ({ id, data }) => ({
+            query: ({ id, data, hrId }) => ({
                 url: `/companies/${id}`,
                 method: 'PUT',
                 body: data,
             }),
 
-            async onQueryStarted({ id, data }, { queryFulfilled, dispatch }) {
-                const res = await queryFulfilled;
+            async onQueryStarted({ id, data, hrId }, { queryFulfilled, dispatch }) {
+                try {
+                    const { data: res } = await queryFulfilled;
 
-                if (res.data.data._id) {
-                    dispatch(
-                        apiSlice.util.updateQueryData('getCustomers', undefined, (draft) => {
-                            const updateIndex = draft.data.customers.findIndex((v) => v._id == id);
-                            draft.data.customers[updateIndex] = res.data.data;
-                        })
-                    );
+                    if (res.data._id) {
+                        dispatch(
+                            apiSlice.util.updateQueryData('getCompanies', hrId, (draft) => {
+                                draft.data.companies[0] = res.data;
+                            })
+                        );
+                    }
+                } catch (error) {
+                    console.log(error);
                 }
             },
         }),
