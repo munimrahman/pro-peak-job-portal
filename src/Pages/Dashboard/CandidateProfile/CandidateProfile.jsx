@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { ScrollRestoration } from 'react-router-dom';
 import coverPhotoDemo from '../../../assets/company-cover.png';
 import profilePhotoDemo from '../../../assets/company.png';
 import { useGetUserQuery } from '../../../features/users/usersApi';
@@ -108,6 +109,7 @@ function CandidateProfile() {
                     </div>
                 </div>
             </div>
+            <ScrollRestoration />
         </div>
     );
 }

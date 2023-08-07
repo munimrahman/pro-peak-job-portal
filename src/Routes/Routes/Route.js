@@ -5,7 +5,6 @@ import Main from '../../Layout/Main';
 import NestedLayout from '../../Layout/NestedLayout';
 import RecruiterDashboardLayout from '../../Layout/RecruiterDashboardLayout';
 import About from '../../Pages/About/About/About';
-import EditAssignment from '../../Pages/About/FormTest/EditAssignment';
 import FormTest from '../../Pages/About/FormTest/FormTest';
 import AssessmentQuiz from '../../Pages/AssessmentQuiz/AssessmentQuiz.jsx/AssessmentQuiz';
 import AssessmentResult from '../../Pages/AssessmentResult/AssessmentResult';
@@ -114,14 +113,12 @@ const router = createBrowserRouter([
                 path: '/about',
                 element: <About />,
             },
+            // TODO: delete
             {
                 path: '/file-upload',
                 element: <FormTest />,
             },
-            {
-                path: '/edit-assignment/:id',
-                element: <EditAssignment />,
-            },
+            // TODO: delete
             {
                 path: '/contact',
                 element: <ContactUs />,

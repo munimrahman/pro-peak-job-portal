@@ -19,39 +19,6 @@ export const usersApi = apiSlice.injectEndpoints({
             query: (id) => `/users/${id}`,
         }),
 
-        // TODO: delete
-        getAssignments: builder.query({
-            query: () => '/assignments',
-        }),
-
-        getAssignment: builder.query({
-            query: (id) => `/assignments/${id}`,
-        }),
-
-        editAssignment: builder.mutation({
-            query: ({ id, data }) => ({
-                url: `/assignments/${id}`,
-                method: 'PATCH',
-                body: data,
-            }),
-            async onQueryStarted({ id, data }, { queryFulfilled, dispatch }) {
-                const res = await queryFulfilled;
-                if (res?.data?.id) {
-                    dispatch(
-                        apiSlice.util.updateQueryData('getAssignments', undefined, (draft) => {
-                            console.log(draft);
-                            const updateIndex = draft.findIndex((v) => v.id == id);
-                            draft[updateIndex] = res.data;
-                        })
-                    );
-                    dispatch(
-                        apiSlice.util.updateQueryData('getAssignment', id, (draft) => res.data)
-                    );
-                }
-            },
-        }),
-        // TODO: delete
-
         // TODO: add user
         addUser: builder.mutation({
             query: (data) => ({
@@ -72,7 +39,6 @@ export const usersApi = apiSlice.injectEndpoints({
             },
         }),
 
-        // TODO: edit user
         editUser: builder.mutation({
             query: ({ id, data }) => ({
                 url: `/users/${id}`,
@@ -87,7 +53,7 @@ export const usersApi = apiSlice.injectEndpoints({
                         console.log(res);
                         dispatch(
                             apiSlice.util.updateQueryData('getUser', id, (draft) => {
-                                Object.assign(draft, { ...res, user: res.data });
+                                Object.assign(draft, { user: res.data });
                             })
                         );
                     }
@@ -97,12 +63,5 @@ export const usersApi = apiSlice.injectEndpoints({
     }),
 });
 
-export const {
-    useGetUsersQuery,
-    useGetUserQuery,
-    useAddUserMutation,
-    useEditUserMutation,
-    useGetAssignmentQuery,
-    useGetAssignmentsQuery,
-    useEditAssignmentMutation,
-} = usersApi;
+export const { useGetUsersQuery, useGetUserQuery, useAddUserMutation, useEditUserMutation } =
+    usersApi;

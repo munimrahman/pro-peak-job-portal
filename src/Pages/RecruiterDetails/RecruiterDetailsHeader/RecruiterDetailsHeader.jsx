@@ -3,7 +3,7 @@ import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import companyCover from '../../../assets/company-cover.png';
 
 function RecruiterDetailsHeader({ user }) {
-    const { name, profilePhoto, coverPhoto, location, designation } = user || {};
+    const { name, profilePhoto, coverPhoto, address, designation } = user || {};
     return (
         <div className="my-10">
             <div className="relative">
@@ -21,7 +21,7 @@ function RecruiterDetailsHeader({ user }) {
                         <h1 className="text-secondary text-3xl font-bold">{name}</h1>
                         <p className="text-sm text-accent pb-1 ml-2">
                             <i className="fas fa-map-marker-alt mr-1" />
-                            {location || 'Dhaka, Bangladesh'}
+                            {address || 'Dhaka, Bangladesh'}
                         </p>
                     </div>
                     <h3 className="text-neutral">{designation}</h3>

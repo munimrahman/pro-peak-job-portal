@@ -1,11 +1,91 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
-import { Link } from 'react-router-dom';
+
+import React, { useEffect, useState } from 'react';
+import { Link, ScrollRestoration, useNavigate } from 'react-router-dom';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import ButtonSecondary from '../../../Components/ButtonSecondary/ButtonSecondary';
+import { useEditUserMutation, useGetUserQuery } from '../../../features/users/usersApi';
 import RecruiterProfileHeader from './RecruiterProfileHeader';
 
+const initialState = {
+    name: '',
+    mobile: '',
+    profilePhoto: '',
+    coverPhoto: '',
+    bio: '',
+    designation: '',
+    facebook: '',
+    linkedin: '',
+    twitter: '',
+    github: '',
+    address: '',
+};
+
 function EditRecruiterProfile() {
+    const id = '64c32ff4bbcc3f56eec1c98c';
+    const { data: { user = {} } = {} } = useGetUserQuery(id);
+    const [profileData, setProfileData] = useState(initialState);
+    const [image, setImage] = useState('');
+    const [editUser] = useEditUserMutation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user.name) setProfileData((pre) => ({ ...pre, name: user.name }));
+        if (user.mobile) setProfileData((pre) => ({ ...pre, mobile: user.mobile }));
+        if (user.profilePhoto)
+            setProfileData((pre) => ({ ...pre, profilePhoto: user.profilePhoto }));
+        if (user.coverPhoto) setProfileData((pre) => ({ ...pre, coverPhoto: user.coverPhoto }));
+        if (user.bio) setProfileData((pre) => ({ ...pre, bio: user.bio }));
+        if (user.designation) setProfileData((pre) => ({ ...pre, designation: user.designation }));
+        if (user.socialMedia?.facebook)
+            setProfileData((pre) => ({
+                ...pre,
+                facebook: user.socialMedia.facebook,
+            }));
+        if (user.socialMedia?.linkedin)
+            setProfileData((pre) => ({
+                ...pre,
+                linkedin: user.socialMedia.linkedin,
+            }));
+        if (user.socialMedia?.twitter)
+            setProfileData((pre) => ({
+                ...pre,
+                twitter: user.socialMedia.twitter,
+            }));
+        if (user.socialMedia?.github)
+            setProfileData((pre) => ({
+                ...pre,
+                github: user.socialMedia.github,
+            }));
+        if (user.address) setProfileData((pre) => ({ ...pre, address: user.address }));
+    }, [user]);
+
+    const handleChange = (e) => {
+        const userData = { ...profileData };
+        userData[e.target.name] = e.target.value;
+        setProfileData(userData);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // Create Form Data
+        const formData = new FormData();
+        formData.append('profilePhoto', image);
+
+        const fields = Object.keys(profileData);
+        fields.forEach((field) => {
+            if (field === 'profilePhoto') return;
+            formData.append(`${field}`, profileData[field]);
+        });
+
+        try {
+            await editUser({ id, data: formData });
+            navigate('/recruiter-dashboard/recruiter-profile');
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     return (
         <div className="p-8">
             <RecruiterProfileHeader title="Edit Profile" />
@@ -19,16 +99,9 @@ function EditRecruiterProfile() {
                             type="text"
                             placeholder="Jhon Snow"
                             className="input input-bordered focus:outline-none w-full"
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="text-secondary">Email:</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="jhon@email.com"
-                            className="input input-bordered focus:outline-none w-full"
+                            name="name"
+                            value={profileData.name}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="form-control">
@@ -39,16 +112,9 @@ function EditRecruiterProfile() {
                             type="text"
                             placeholder="01XXXXXXXXX"
                             className="input input-bordered focus:outline-none w-full"
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="text-secondary">Portfolio:</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="https://www.portfolio.com"
-                            className="input input-bordered focus:outline-none w-full"
+                            name="mobile"
+                            value={profileData.mobile}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="form-control">
@@ -58,15 +124,9 @@ function EditRecruiterProfile() {
                         <input
                             type="file"
                             className="file-input file-input-bordered focus:outline-none w-full"
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="text-secondary">Cover Photo:</span>
-                        </label>
-                        <input
-                            type="file"
-                            className="file-input file-input-bordered focus:outline-none w-full"
+                            alt="Profile Photo"
+                            name="image"
+                            onChange={(e) => setImage(e.target.files[0])}
                         />
                     </div>
                 </div>
@@ -74,68 +134,41 @@ function EditRecruiterProfile() {
                 <div className="col-span-6">
                     <div className="form-control">
                         <label className="label">
-                            <span className="text-secondary">Job Title:</span>
+                            <span className="text-secondary">Designation:</span>
                         </label>
                         <input
                             type="text"
                             placeholder="MERN Stack Developer"
                             className="input input-bordered focus:outline-none w-full"
+                            name="designation"
+                            value={profileData.designation}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="text-secondary">Experience:</span>
-                        </label>
-                        <select className="select select-bordered focus:outline-none w-full">
-                            <option>Fresher</option>
-                            <option>1 Year</option>
-                            <option>2 Years</option>
-                            <option>3 Years</option>
-                            <option>4 Years</option>
-                            <option>5 Years+</option>
-                        </select>
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="text-secondary">Hourly Rate in Dollar:</span>
+                            <span className="text-secondary">Address:</span>
                         </label>
                         <input
                             type="text"
-                            placeholder="25"
+                            placeholder="Dhaka, Bangladesh"
                             className="input input-bordered focus:outline-none w-full"
+                            name="address"
+                            value={profileData.address}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="text-secondary">Language:</span>
+                            <span className="text-secondary">Cover Photo:</span>
                         </label>
                         <input
                             type="text"
-                            placeholder="Bangla, English"
+                            placeholder="Cover Photo Link"
                             className="input input-bordered focus:outline-none w-full"
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="text-secondary">Industry:</span>
-                        </label>
-                        <select className="select select-bordered focus:outline-none w-full">
-                            <option>Web Development</option>
-                            <option>Graphic Designer</option>
-                            <option>Product Designer</option>
-                            <option>UI/UX Designer</option>
-                            <option>Video Editor</option>
-                            <option>App Developer</option>
-                        </select>
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="text-secondary">Skills:</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="React, Nodejs"
-                            className="input input-bordered focus:outline-none w-full"
+                            name="coverPhoto"
+                            value={profileData.coverPhoto}
+                            onChange={handleChange}
                         />
                     </div>
                 </div>
@@ -146,6 +179,9 @@ function EditRecruiterProfile() {
                     <textarea
                         className="textarea textarea-bordered w-full h-40 focus:outline-none"
                         placeholder="Bio . . ."
+                        name="bio"
+                        value={profileData.bio}
+                        onChange={handleChange}
                     />
                 </div>
             </div>
@@ -159,8 +195,11 @@ function EditRecruiterProfile() {
                         </label>
                         <input
                             type="text"
-                            placeholder="https://facebook.com/username"
+                            placeholder="https://facebook.com/useruser.name"
                             className="input input-bordered focus:outline-none w-full"
+                            name="facebook"
+                            value={profileData.facebook}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="form-control">
@@ -169,8 +208,11 @@ function EditRecruiterProfile() {
                         </label>
                         <input
                             type="text"
-                            placeholder="https://www.linkedin.com/in/username"
+                            placeholder="https://www.linkedin.com/in/useruser.name"
                             className="input input-bordered focus:outline-none w-full"
+                            name="linkedin"
+                            value={profileData.linkedin}
+                            onChange={handleChange}
                         />
                     </div>
                 </div>
@@ -182,8 +224,11 @@ function EditRecruiterProfile() {
                         </label>
                         <input
                             type="text"
-                            placeholder="https://twitter.com/username"
+                            placeholder="https://twitter.com/useruser.name"
                             className="input input-bordered focus:outline-none w-full"
+                            name="twitter"
+                            value={profileData.twitter}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="form-control">
@@ -192,18 +237,24 @@ function EditRecruiterProfile() {
                         </label>
                         <input
                             type="text"
-                            placeholder="https://github.com/username"
+                            placeholder="https://github.com/useruser.name"
                             className="input input-bordered focus:outline-none w-full"
+                            name="github"
+                            value={profileData.github}
+                            onChange={handleChange}
                         />
                     </div>
                 </div>
             </div>
             <div className="mt-5">
-                <ButtonInfo className="px-5 py-3 rounded-lg text-base">Save</ButtonInfo>
+                <ButtonInfo onClick={handleSubmit} className="px-5 py-3 rounded-lg text-base">
+                    Save
+                </ButtonInfo>
                 <ButtonSecondary className="ml-2">
                     <Link to="/dashboard/candidate-profile">Back</Link>
                 </ButtonSecondary>
             </div>
+            <ScrollRestoration />
         </div>
     );
 }

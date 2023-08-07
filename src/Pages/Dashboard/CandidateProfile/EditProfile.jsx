@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, ScrollRestoration, useNavigate } from 'react-router-dom';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import ButtonSecondary from '../../../Components/ButtonSecondary/ButtonSecondary';
 import { useEditUserMutation, useGetUserQuery } from '../../../features/users/usersApi';
@@ -24,7 +24,6 @@ const initialState = {
     address: '',
     skills: '',
     hourlyRate: '',
-    workExperience: '',
 };
 
 function EditProfile() {
@@ -352,6 +351,7 @@ function EditProfile() {
                     <Link to="/dashboard/candidate-profile">Back</Link>
                 </ButtonSecondary>
             </div>
+            <ScrollRestoration />
         </div>
     );
 }
