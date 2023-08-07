@@ -37,7 +37,6 @@ function AddWorkExperience() {
         setExperience(initialState);
     };
 
-    console.log(workExperience);
     return (
         <div className="p-8">
             <ProfileHeader title="Work Experience" />
@@ -150,11 +149,15 @@ function AddWorkExperience() {
                         <h2 className="text-center font-semibold text-lg mb-2 underline">
                             Work Experience
                         </h2>
-                        <div className="grid gap-3">
-                            {workExperience.map((exp, i) => (
-                                <WorkExperienceCard key={i} experience={exp} />
-                            ))}
-                        </div>
+                        {workExperience.length > 0 ? (
+                            <div className="grid gap-3">
+                                {workExperience.map((exp, i) => (
+                                    <WorkExperienceCard key={i} experience={exp} />
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="text-center my-3">No Work Experience Found</p>
+                        )}
                     </div>
                 </div>
             </div>

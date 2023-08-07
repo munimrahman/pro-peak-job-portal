@@ -17,20 +17,21 @@ export const jobPostApi = apiSlice.injectEndpoints({
             query: (id) => `/jobs/${id}`,
         }),
 
-        // TODO: add Job
         addJob: builder.mutation({
-            query: (data) => ({
+            query: ({ id, data }) => ({
                 url: '/jobs',
                 method: 'POST',
                 body: data,
             }),
-            async onQueryStarted({ id, data }, { queryFulfilled, dispatch }) {
-                const res = await queryFulfilled;
 
-                if (res.data.data._id) {
+            async onQueryStarted({ id, data }, { queryFulfilled, dispatch }) {
+                const { data: res } = await queryFulfilled;
+
+                if (res.data._id) {
+                    console.log(res.data);
                     dispatch(
-                        apiSlice.util.updateQueryData('getCustomers', undefined, (draft) => {
-                            draft.data.customers.push(res.data.data);
+                        apiSlice.util.updateQueryData('getJobs', id, (draft) => {
+                            draft.data.jobs.push(res.data);
                         })
                     );
                 }

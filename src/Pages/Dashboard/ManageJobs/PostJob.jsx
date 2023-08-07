@@ -1,11 +1,62 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import ButtonSecondary from '../../../Components/ButtonSecondary/ButtonSecondary';
+import { useGetCompaniesQuery } from '../../../features/company/companyApi';
+import { useAddJobMutation } from '../../../features/jobPosts/jobPostApi';
 import ManageJobHeader from './ManageJobHeader';
 
+const initialState = {
+    title: '',
+    industry: '',
+    salary: '',
+    jobLevel: '',
+    experience: '',
+    jobType: '',
+    workPlace: '',
+    deadline: '',
+    tags: '',
+    description: '',
+    location: '',
+    featuredPhoto: '',
+    coverPhoto: '',
+    hiringManagerId: '',
+    company: '',
+};
+
 function PostJob() {
+    const { data: { data: { companies = [] } = {} } = {} } = useGetCompaniesQuery(
+        'hiringManager=64c32ff4bbcc3f56eec1c98c'
+    );
+
+    const companyInfo = useMemo(() => companies[0] || {}, [companies]);
+    const [jobData, setJobData] = useState(initialState);
+    const [addJob] = useAddJobMutation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (companyInfo._id) setJobData((pre) => ({ ...pre, company: companyInfo._id }));
+        if (companyInfo.location) setJobData((pre) => ({ ...pre, location: companyInfo.location }));
+        if (companyInfo.workPlace)
+            setJobData((pre) => ({ ...pre, workPlace: companyInfo.workPlace }));
+        if (companyInfo.coverPhoto)
+            setJobData((pre) => ({ ...pre, coverPhoto: companyInfo.coverPhoto }));
+    }, [companyInfo]);
+
+    const handleChange = (e) => {
+        const userData = { ...jobData };
+        userData[e.target.name] = e.target.value;
+        setJobData(userData);
+    };
+
+    const handleSubmit = () => {
+        const data = { ...jobData };
+        data.hiringManagerId = '64c32ff4bbcc3f56eec1c98c';
+        addJob({ data, id: 'hiringManagerId=64c32ff4bbcc3f56eec1c98c&limit=20' });
+        navigate('/recruiter-dashboard/manage-jobs');
+    };
+
     return (
         <div className="p-8">
             <ManageJobHeader title="Post a New Job" />
@@ -20,19 +71,35 @@ function PostJob() {
                             placeholder="Senior MERN Stack Developer
                             "
                             className="input input-bordered focus:outline-none w-full"
+                            name="title"
+                            value={jobData.title}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="text-secondary">Industry:</span>
                         </label>
-                        <select className="select select-bordered focus:outline-none w-full">
-                            <option>Web Development</option>
-                            <option>Graphic Designer</option>
-                            <option>Product Designer</option>
-                            <option>UI/UX Designer</option>
-                            <option>Video Editor</option>
-                            <option>App Developer</option>
+                        <select
+                            className="select select-bordered focus:outline-none w-full"
+                            name="industry"
+                            value={jobData.industry}
+                            onChange={handleChange}
+                        >
+                            <option value="" disabled>
+                                Select Industry
+                            </option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Software">Software Development</option>
+                            <option value="App Development">App Development</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Retail & Products">Retail & Products</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                            <option value="Video Editor">Video Editor</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Human Resource">Human Resource</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Others">Others</option>
                         </select>
                     </div>
                     <div className="form-control">
@@ -43,41 +110,48 @@ function PostJob() {
                             type="text"
                             placeholder="2500"
                             className="input input-bordered focus:outline-none w-full"
+                            name="salary"
+                            value={jobData.salary}
+                            onChange={handleChange}
                         />
+                    </div>
+
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="text-secondary">Job Type:</span>
+                        </label>
+                        <select
+                            className="select select-bordered focus:outline-none w-full"
+                            name="jobType"
+                            value={jobData.jobType}
+                            onChange={handleChange}
+                        >
+                            <option value="" disabled>
+                                Select Job Type
+                            </option>
+                            <option value="Full Time">Full Time</option>
+                            <option value="Part Time">Part Time</option>
+                            <option value="Freelancer">Freelancer</option>
+                        </select>
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="text-secondary">Job Level:</span>
                         </label>
-                        <select className="select select-bordered focus:outline-none w-full">
-                            <option>Intern</option>
-                            <option>Junior Level</option>
-                            <option>Mid Level</option>
-                            <option>Senior Level</option>
-                            <option>Team Lead</option>
-                        </select>
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="text-secondary">Experience:</span>
-                        </label>
-                        <select className="select select-bordered focus:outline-none w-full">
-                            <option>Fresher</option>
-                            <option>1 Year</option>
-                            <option>2 Years</option>
-                            <option>3 Years</option>
-                            <option>4 Years</option>
-                            <option>5 Years+</option>
-                        </select>
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="text-secondary">Job Type:</span>
-                        </label>
-                        <select className="select select-bordered focus:outline-none w-full">
-                            <option>Full Time</option>
-                            <option>Part Time</option>
-                            <option>Freelancer</option>
+                        <select
+                            className="select select-bordered focus:outline-none w-full"
+                            name="jobLevel"
+                            value={jobData.jobLevel}
+                            onChange={handleChange}
+                        >
+                            <option value="" disabled>
+                                Select Job Level
+                            </option>
+                            <option value="Intern Level">Intern Level</option>
+                            <option value="Entry Level">Entry Level</option>
+                            <option value="Junior Level">Junior Level</option>
+                            <option value="Mid Level">Mid Level</option>
+                            <option value="Senior Level">Senior Level</option>
                         </select>
                     </div>
                 </div>
@@ -85,12 +159,23 @@ function PostJob() {
                 <div className="col-span-6">
                     <div className="form-control">
                         <label className="label">
-                            <span className="text-secondary">Work Place:</span>
+                            <span className="text-secondary">Experience:</span>
                         </label>
-                        <select className="select select-bordered focus:outline-none w-full">
-                            <option>On Site</option>
-                            <option>Remote</option>
-                            <option>Hybrid</option>
+                        <select
+                            className="select select-bordered focus:outline-none w-full"
+                            name="experience"
+                            value={jobData.experience}
+                            onChange={handleChange}
+                        >
+                            <option value="" disabled>
+                                Select Experience
+                            </option>
+                            <option value="0 Year">0 Year</option>
+                            <option value="1 Year">1 Year</option>
+                            <option value="2 Years">2 Years</option>
+                            <option value="3 Years">3 Years</option>
+                            <option value="4 Years">4 Years</option>
+                            <option value="5 Years+">5 Years+</option>
                         </select>
                     </div>
                     <div className="form-control">
@@ -101,6 +186,9 @@ function PostJob() {
                             type="date"
                             placeholder="MERN Stack Developer"
                             className="input input-bordered focus:outline-none w-full"
+                            name="deadline"
+                            value={jobData.deadline}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="form-control">
@@ -111,34 +199,22 @@ function PostJob() {
                             type="text"
                             placeholder="React, Node, JavaScript"
                             className="input input-bordered focus:outline-none w-full"
+                            name="tags"
+                            value={jobData.tags}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="text-secondary">Language:</span>
+                            <span className="text-secondary">Featured Photo Link:</span>
                         </label>
                         <input
                             type="text"
-                            placeholder="Bangla, English"
                             className="input input-bordered focus:outline-none w-full"
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="text-secondary">Featured Photo:</span>
-                        </label>
-                        <input
-                            type="file"
-                            className="file-input file-input-bordered focus:outline-none w-full"
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="text-secondary">Cover Photo:</span>
-                        </label>
-                        <input
-                            type="file"
-                            className="file-input file-input-bordered focus:outline-none w-full"
+                            placeholder="https://placehold.co/500"
+                            name="featuredPhoto"
+                            value={jobData.featuredPhoto}
+                            onChange={handleChange}
                         />
                     </div>
                 </div>
@@ -149,13 +225,22 @@ function PostJob() {
                     <textarea
                         className="textarea textarea-bordered w-full h-40 focus:outline-none"
                         placeholder="Job Description . . ."
+                        name="description"
+                        value={jobData.description}
+                        onChange={handleChange}
                     />
                 </div>
             </div>
 
             <div className="mt-5">
-                <ButtonInfo className="px-5 py-3 rounded-lg text-base">Save</ButtonInfo>
-                <ButtonSecondary className="ml-2">
+                <ButtonInfo
+                    onClick={handleSubmit}
+                    type="submit"
+                    className="px-5 py-3 rounded-lg text-base"
+                >
+                    Save
+                </ButtonInfo>
+                <ButtonSecondary type="button" className="ml-2">
                     <Link to="/dashboard/candidate-profile">Back</Link>
                 </ButtonSecondary>
             </div>

@@ -251,7 +251,7 @@ const router = createBrowserRouter([
                         element: <PostJob />,
                     },
                     {
-                        path: '/recruiter-dashboard/manage-jobs/update-job',
+                        path: '/recruiter-dashboard/manage-jobs/update-job/:id',
                         element: <UpdateJob />,
                     },
                 ],
