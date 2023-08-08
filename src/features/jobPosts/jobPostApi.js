@@ -29,7 +29,6 @@ export const jobPostApi = apiSlice.injectEndpoints({
                     const { data: res } = await queryFulfilled;
 
                     if (res.data._id) {
-                        console.log(res.data);
                         dispatch(
                             apiSlice.util.updateQueryData('getJobs', id, (draft) => {
                                 draft.data.jobs.push(res.data);
@@ -54,7 +53,6 @@ export const jobPostApi = apiSlice.injectEndpoints({
                     const { data: res } = await queryFulfilled;
 
                     if (res.data._id) {
-                        console.log(res.data);
                         dispatch(
                             apiSlice.util.updateQueryData('getJobs', hrId, (draft) => {
                                 const updateIndex = draft.data.jobs.findIndex((v) => v._id == id);

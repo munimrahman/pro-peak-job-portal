@@ -1,9 +1,11 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useState } from 'react';
 import { ScrollRestoration, useParams } from 'react-router-dom';
-import ButtonPrimary from '../../../Components/ButtonPrimary/ButtonPrimary';
 import ButtonSecondary from '../../../Components/ButtonSecondary/ButtonSecondary';
 import { useGetSingleJobQuery } from '../../../features/jobPosts/jobPostApi';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
+import ApplyModal from '../ApplyModal/ApplyModal';
 import CompanyInfo from '../CompanyInfo/CompanyInfo';
 import EmploymentInfo from '../EmploymentInfo/EmploymentInfo';
 import FeaturedJobs from '../FeaturedJobs/FeaturedJobs';
@@ -15,16 +17,27 @@ function JobDetails() {
     const { id } = useParams();
     const { data: { jobPost = {} } = {} } = useGetSingleJobQuery(id);
     const { company } = jobPost || {};
+    const [modalCheck, setModalCheck] = useState(false);
 
     return (
         <div className="max-w-[1115px] mx-auto">
-            <JobDetailsHeader jobPost={jobPost} />
+            <JobDetailsHeader
+                setModalCheck={setModalCheck}
+                modalCheck={modalCheck}
+                jobPost={jobPost}
+            />
             <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
                 <div className="col-span-8">
                     <EmploymentInfo jobPost={jobPost} />
                     <JobDescription jobPost={jobPost} />
                     <div>
-                        <ButtonPrimary>Apply Now</ButtonPrimary>
+                        <button
+                            onClick={() => setModalCheck(!modalCheck)}
+                            className="btn btn-primary"
+                        >
+                            Apply Now
+                        </button>
+
                         <ButtonSecondary className="ml-5">Save Job</ButtonSecondary>
                     </div>
                 </div>
@@ -35,6 +48,7 @@ function JobDetails() {
             </div>
             <FeaturedJobs jobPost={jobPost} />
             <SubscribeBox />
+            <ApplyModal id={id} isChecked={modalCheck} setModalCheck={setModalCheck} />
             <ScrollRestoration />
         </div>
     );

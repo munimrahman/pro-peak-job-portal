@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import moment from 'moment';
 import React from 'react';
-import ButtonPrimary from '../../../Components/ButtonPrimary/ButtonPrimary';
 import jobDetailsImg from '../../../assets/job-details.png';
 
-function JobDetailsHeader({ jobPost = {} }) {
+function JobDetailsHeader({ jobPost = {}, setModalCheck, modalCheck }) {
     const { title, coverPhoto, jobType, createdAt } = jobPost;
 
     return (
@@ -24,7 +25,13 @@ function JobDetailsHeader({ jobPost = {} }) {
                         </span>
                     </div>
                 </div>
-                <ButtonPrimary>Apply Now</ButtonPrimary>
+                <label
+                    onClick={() => setModalCheck(!modalCheck)}
+                    htmlFor="my_modal_6"
+                    className="btn btn-primary"
+                >
+                    Apply Now
+                </label>
             </div>
             <div className="divider" />
         </div>

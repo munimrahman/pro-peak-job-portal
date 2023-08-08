@@ -20,16 +20,6 @@ function ManageJobHeader({ title }) {
                         Post New Job
                     </NavLink>
                 </li>
-                <li>
-                    <NavLink
-                        to="/recruiter-dashboard/manage-jobs/update-job"
-                        className={({ isActive }) =>
-                            isActive ? activeClassName : inActiveClassName
-                        }
-                    >
-                        Update Job
-                    </NavLink>
-                </li>
             </ul>
             <div className="divider my-3" />
         </>
