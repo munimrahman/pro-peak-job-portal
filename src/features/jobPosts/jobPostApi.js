@@ -42,7 +42,6 @@ export const jobPostApi = apiSlice.injectEndpoints({
             },
         }),
 
-        // TODO: edit Job
         editJob: builder.mutation({
             query: ({ id, data }) => ({
                 url: `/jobs/${id}`,
@@ -69,18 +68,17 @@ export const jobPostApi = apiSlice.injectEndpoints({
             },
         }),
 
-        // TODO: delete Job
         deleteJob: builder.mutation({
-            query: (id) => ({
+            query: ({ id, queryId }) => ({
                 url: `/jobs/${id}`,
                 method: 'DELETE',
             }),
 
-            async onQueryStarted(id, { queryFulfilled, dispatch }) {
+            async onQueryStarted({ id, queryId }, { queryFulfilled, dispatch }) {
                 const patchResult = dispatch(
-                    apiSlice.util.updateQueryData('getCustomers', undefined, (draft) => {
-                        const deletedTaskIndex = draft.data.customers.findIndex((v) => v._id == id);
-                        draft.data.customers.splice(deletedTaskIndex, 1);
+                    apiSlice.util.updateQueryData('getJobs', queryId, (draft) => {
+                        const deletedTaskIndex = draft.data.jobs.findIndex((v) => v._id == id);
+                        draft.data.jobs.splice(deletedTaskIndex, 1);
                     })
                 );
 

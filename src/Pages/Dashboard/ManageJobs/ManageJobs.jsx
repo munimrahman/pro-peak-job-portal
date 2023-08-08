@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import moment from 'moment';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useGetJobsQuery } from '../../../features/jobPosts/jobPostApi';
+import { useDeleteJobMutation, useGetJobsQuery } from '../../../features/jobPosts/jobPostApi';
 import ManageJobHeader from './ManageJobHeader';
 
 function ManageJobs() {
@@ -9,6 +10,12 @@ function ManageJobs() {
     const { data: { data: { jobs = [] } = {} } = {} } = useGetJobsQuery(
         `hiringManagerId=${id}&limit=20`
     );
+
+    const [deleteJob] = useDeleteJobMutation();
+
+    const handleDelete = (jobId) => {
+        deleteJob({ id: jobId, queryId: `hiringManagerId=${id}&limit=20` });
+    };
 
     return (
         <div className="p-8">
@@ -61,7 +68,10 @@ function ManageJobs() {
                                         >
                                             <i className="fas fa-edit text-accent" />
                                         </Link>
-                                        <span className="py-2 px-3 rounded bg-red-200 hover:cursor-pointer">
+                                        <span
+                                            onClick={() => handleDelete(_id)}
+                                            className="py-2 px-3 rounded bg-red-200 hover:cursor-pointer"
+                                        >
                                             <i className="fas fa-trash-alt text-red-600" />
                                         </span>
                                     </th>
