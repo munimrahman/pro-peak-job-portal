@@ -17,9 +17,17 @@ export const quizSlice = createSlice({
         quizResult: (state, action) => {
             state.result = action.payload;
         },
+        clearQuizResult: (state) => {
+            state.result = {
+                testName: '',
+                score: 0,
+                correct: 0,
+                wrong: 0,
+            };
+        },
     },
 });
 
 export default quizSlice.reducer;
 
-export const { quizResult } = quizSlice.actions;
+export const { quizResult, clearQuizResult } = quizSlice.actions;

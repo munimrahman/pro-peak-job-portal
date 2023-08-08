@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Pagination({ totalPage, currentPage, setPage }) {
+    const [scrollTop, setScrollTop] = useState(false);
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, [scrollTop]);
+
+    const handleSetPage = () => {
+        setPage(currentPage + 1);
+        setScrollTop((pre) => !pre);
+    };
+
     return (
-        // <!-- Component: Primary basic pagination -->
         <nav>
             <ul className="flex items-center justify-center text-sm list-none md:gap-1 text-slate-700">
                 <li>
                     <button
-                        onClick={() => setPage(currentPage - 1)}
+                        onClick={handleSetPage}
                         className={`inline-flex items-center justify-center h-10 gap-4 px-4 text-sm font-medium transition duration-300 rounded text-secondary active:bg-primary active:text-white ${
                             currentPage === 1
                                 ? 'cursor-not-allowed'
@@ -37,7 +47,7 @@ function Pagination({ totalPage, currentPage, setPage }) {
                     {[...Array(totalPage).keys()].map((p, i) => (
                         <button
                             key={i}
-                            onClick={() => setPage(i + 1)}
+                            onClick={handleSetPage}
                             className={`items-center justify-center h-10 px-4 py-3 text-sm font-medium transition duration-300 rounded text-secondary hover:bg-info hover:text-primary active:bg-primary active:text-white ${
                                 currentPage === i + 1 && 'bg-primary text-white'
                             }`}
@@ -49,7 +59,7 @@ function Pagination({ totalPage, currentPage, setPage }) {
 
                 <li>
                     <button
-                        onClick={() => setPage(currentPage + 1)}
+                        onClick={handleSetPage}
                         className={`inline-flex items-center justify-center h-10 gap-4 px-4 text-sm font-medium transition duration-300 rounded text-secondary active:bg-primary active:text-white ${
                             totalPage === currentPage
                                 ? 'cursor-not-allowed'
@@ -72,7 +82,6 @@ function Pagination({ totalPage, currentPage, setPage }) {
                 </li>
             </ul>
         </nav>
-        // <!-- End Primary basic pagination -->
     );
 }
 

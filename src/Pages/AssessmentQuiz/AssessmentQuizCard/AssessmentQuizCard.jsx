@@ -85,4 +85,4 @@ function AssessmentQuizCard({ que, i, setAns }) {
     );
 }
 
-export default AssessmentQuizCard;
+export default React.memo(AssessmentQuizCard);

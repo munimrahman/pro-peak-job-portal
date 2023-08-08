@@ -5,14 +5,17 @@ import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import QuestionSkeleton from '../../../Components/LoadingElements/QuestionSkeleton';
 import { useGetSingleQuizQuery } from '../../../features/quiz/quizApi';
 import { quizResult } from '../../../features/quiz/quizSlice';
+import { useEditUserMutation } from '../../../features/users/usersApi';
 import AssessmentQuizCard from '../AssessmentQuizCard/AssessmentQuizCard';
 
 function AssessmentQuiz() {
     const { id } = useParams();
+    const userId = '64c331d8bbcc3f56eec1c99f';
     const {
         data: { quiz: { title, totalQuestions, times, questions = [] } = {} } = {},
         isLoading,
     } = useGetSingleQuizQuery(id);
+    const [editUser] = useEditUserMutation();
     const [ans, setAns] = useState([]);
     const dispatch = useDispatch();
 
@@ -21,14 +24,19 @@ function AssessmentQuiz() {
         .reduce((pre, next) => pre + next, 0);
 
     const resultObj = {
+        testId: id,
         testName: title,
         score: result,
         correct: result,
         wrong: questions.length - result,
+        result: result >= totalQuestions / 2 ? 'Passed' : 'Failed',
     };
 
     const handleSubmit = () => {
         dispatch(quizResult(resultObj));
+        const formData = new FormData();
+        formData.append('skillTest', JSON.stringify(resultObj));
+        editUser({ id: userId, data: formData });
     };
 
     let heading = null;

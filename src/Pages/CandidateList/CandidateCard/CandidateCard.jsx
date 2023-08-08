@@ -48,14 +48,16 @@ function CandidateCard({ user }) {
                     </span>
                 </div>
                 <h4 className="font-bold text-secondary mt-3 text-sm">ProPeak Certifications</h4>
-                {certifications ? (
+                {certifications.length > 0 ? (
                     <div className="mt-1 flex flex-wrap">
-                        <span className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
-                            English
-                        </span>
-                        <span className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1">
-                            JavaScript
-                        </span>
+                        {certifications.map((c, i) => (
+                            <span
+                                key={i}
+                                className="capitalize text-xs bg-info text-secondary hover:text-primary hover:cursor-pointer px-3 py-2 rounded mr-1 my-1"
+                            >
+                                {c}
+                            </span>
+                        ))}
                     </div>
                 ) : (
                     <div className="mt-1 flex flex-wrap">
