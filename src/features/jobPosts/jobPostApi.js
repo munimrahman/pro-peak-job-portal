@@ -25,15 +25,19 @@ export const jobPostApi = apiSlice.injectEndpoints({
             }),
 
             async onQueryStarted({ id, data }, { queryFulfilled, dispatch }) {
-                const { data: res } = await queryFulfilled;
+                try {
+                    const { data: res } = await queryFulfilled;
 
-                if (res.data._id) {
-                    console.log(res.data);
-                    dispatch(
-                        apiSlice.util.updateQueryData('getJobs', id, (draft) => {
-                            draft.data.jobs.push(res.data);
-                        })
-                    );
+                    if (res.data._id) {
+                        console.log(res.data);
+                        dispatch(
+                            apiSlice.util.updateQueryData('getJobs', id, (draft) => {
+                                draft.data.jobs.push(res.data);
+                            })
+                        );
+                    }
+                } catch (err) {
+                    //
                 }
             },
         }),
@@ -46,16 +50,21 @@ export const jobPostApi = apiSlice.injectEndpoints({
                 body: data,
             }),
 
-            async onQueryStarted({ id, data }, { queryFulfilled, dispatch }) {
-                const res = await queryFulfilled;
+            async onQueryStarted({ id, data, hrId }, { queryFulfilled, dispatch }) {
+                try {
+                    const { data: res } = await queryFulfilled;
 
-                if (res.data.data._id) {
-                    dispatch(
-                        apiSlice.util.updateQueryData('getCustomers', undefined, (draft) => {
-                            const updateIndex = draft.data.customers.findIndex((v) => v._id == id);
-                            draft.data.customers[updateIndex] = res.data.data;
-                        })
-                    );
+                    if (res.data._id) {
+                        console.log(res.data);
+                        dispatch(
+                            apiSlice.util.updateQueryData('getJobs', hrId, (draft) => {
+                                const updateIndex = draft.data.jobs.findIndex((v) => v._id == id);
+                                draft.data.jobs[updateIndex] = res.data;
+                            })
+                        );
+                    }
+                } catch (error) {
+                    //
                 }
             },
         }),
