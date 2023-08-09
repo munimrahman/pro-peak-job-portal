@@ -1,12 +1,15 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/ProPeak.png';
 // import ButtonPrimary from '../../../Components/ButtonPrimary/ButtonPrimary';
 import avatar from '../../../assets/avatar.jpg';
+import { userLoggedOut } from '../../../features/auth/authSlice';
 
 function Navbar({ stickyNav }) {
+    const dispatch = useDispatch();
     const activeClassName = 'text-sm bg-info text-primary active:text-secondary';
     const inActiveClassName =
         'text-sm text-secondary active:bg-info active:text-secondary hover:bg-info';
@@ -132,7 +135,7 @@ function Navbar({ stickyNav }) {
                                 <Link to="/recruiter-dashboard/recruiter">Recruiter Dashboard</Link>
                             </li>
                             <li>
-                                <Link to="/">Logout</Link>
+                                <button onClick={() => dispatch(userLoggedOut())}>Logout</button>
                             </li>
                         </ul>
                     </div>

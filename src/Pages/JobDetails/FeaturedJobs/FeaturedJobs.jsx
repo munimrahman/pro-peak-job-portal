@@ -21,7 +21,7 @@ function FeaturedJobs({ jobPost }) {
     let content = null;
     if (isLoading) {
         content = (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 <JobGridSkeleton />
                 <JobGridSkeleton />
                 <JobGridSkeleton />
@@ -41,7 +41,7 @@ function FeaturedJobs({ jobPost }) {
     }
 
     return (
-        <div className="mt-16">
+        <div className="mt-8">
             <h1 className="text-3xl text-secondary font-bold">Similar Jobs</h1>
             <p className="text-lg text-neutral my-2">Similar Jobs That You Can Apply For</p>
             {content}

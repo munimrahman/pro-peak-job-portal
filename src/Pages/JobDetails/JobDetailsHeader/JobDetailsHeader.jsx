@@ -2,10 +2,37 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import moment from 'moment';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
 import jobDetailsImg from '../../../assets/job-details.png';
+import useAuth from '../../../hooks/useAuth';
 
 function JobDetailsHeader({ jobPost = {}, setModalCheck, modalCheck }) {
     const { title, coverPhoto, jobType, createdAt } = jobPost;
+    const isLoggedIn = useAuth();
+    const { role } = useSelector((state) => state.auth);
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log(isLoggedIn, role);
+    let applyButton = null;
+    if (isLoggedIn && role === 'candidate') {
+        applyButton = (
+            <button onClick={() => setModalCheck(!modalCheck)} className="btn btn-primary">
+                Apply Now
+            </button>
+        );
+    } else if (isLoggedIn && (role === 'recruiter' || 'admin')) {
+        applyButton = null;
+    } else {
+        const handleRedirect = () => {
+            navigate('/log-in', { state: { from: location } });
+        };
+        applyButton = (
+            <button onClick={handleRedirect} className="btn btn-primary">
+                Log In To Apply
+            </button>
+        );
+    }
 
     return (
         <div className="my-10">
@@ -25,13 +52,7 @@ function JobDetailsHeader({ jobPost = {}, setModalCheck, modalCheck }) {
                         </span>
                     </div>
                 </div>
-                <label
-                    onClick={() => setModalCheck(!modalCheck)}
-                    htmlFor="my_modal_6"
-                    className="btn btn-primary"
-                >
-                    Apply Now
-                </label>
+                {applyButton}
             </div>
             <div className="divider" />
         </div>

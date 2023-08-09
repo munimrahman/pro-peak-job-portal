@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable prettier/prettier */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
     CartesianGrid,
     Legend,
@@ -23,6 +24,7 @@ function DashboardCandidate() {
         { name: 'May', views: 80, pv: 2400, amt: 2400 },
         { name: 'Jun', views: 50, pv: 2400, amt: 2400 },
     ];
+    
     return (
         <div className="p-8">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
@@ -32,7 +34,7 @@ function DashboardCandidate() {
                         Welcome, Your profile is <strong>100%</strong> completed.
                     </p>
                     <p className="text-neutral text-sm mb-3">Take skill tests and get certified.</p>
-                    <ButtonInfo className="px-3">Take Test</ButtonInfo>
+                    <Link to="/skill-assessment"><ButtonInfo className="px-3">Take Test</ButtonInfo></Link>
                 </div>
                 <div className="md:col-span-3">
                     <div className="stats shadow text-center w-full h-full">

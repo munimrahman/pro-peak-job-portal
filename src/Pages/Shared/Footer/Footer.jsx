@@ -118,10 +118,10 @@ function Footer() {
                             <Link to="/contact">Contact Us</Link>
                         </span>
                         <span className="text-accent text-sm hover:text-primary hover:cursor-pointer my-1">
-                            <Link to="/pricing">Pricing</Link>
+                            <Link to="/log-in">Log In</Link>
                         </span>
                         <span className="text-accent text-sm hover:text-primary hover:cursor-pointer">
-                            Nothing
+                            <Link to="/sign-up">Sign Up</Link>
                         </span>
                     </div>
                 </div>

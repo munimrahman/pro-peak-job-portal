@@ -38,10 +38,15 @@ import SkillTest from '../../Pages/Dashboard/SkillTest/SkillTest';
 import Home from '../../Pages/Home/Home/Home';
 import JobDetails from '../../Pages/JobDetails/JobDetails/JobDetails';
 import JobList from '../../Pages/JobList/JobList/JobList';
+import LogIn from '../../Pages/LogIn/LogIn';
 import ProPricing from '../../Pages/ProPricing/ProPricing/ProPricing';
 import RecruiterDetails from '../../Pages/RecruiterDetails/RecruiterDetails/RecruiterDetails';
 import DisplayError from '../../Pages/Shared/ErrorPage/DisplayError';
+import SignUp from '../../Pages/SignUp/SignUp';
 import SkillAssessment from '../../Pages/SkillAssessment/SkillAssessment/SkillAssessment';
+import CandidateRoute from '../CandidateRoute/CandidateRoute';
+import PublicRoute from '../PublicRoute/PublicRoute';
+import RecruiterRoute from '../RecruiterRoute/RecruiterRoute';
 
 const router = createBrowserRouter([
     {
@@ -55,8 +60,20 @@ const router = createBrowserRouter([
         errorElement: <DisplayError />,
         children: [
             {
-                path: '/about',
-                element: <About />,
+                path: '/log-in',
+                element: (
+                    <PublicRoute>
+                        <LogIn />
+                    </PublicRoute>
+                ),
+            },
+            {
+                path: '/sign-up',
+                element: (
+                    <PublicRoute>
+                        <SignUp />
+                    </PublicRoute>
+                ),
             },
             {
                 path: '/find-jobs',
@@ -132,7 +149,11 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout />,
+        element: (
+            <CandidateRoute>
+                <DashboardLayout />
+            </CandidateRoute>
+        ),
         errorElement: <DisplayError />,
         children: [
             {
@@ -195,7 +216,11 @@ const router = createBrowserRouter([
     },
     {
         path: '/recruiter-dashboard',
-        element: <RecruiterDashboardLayout />,
+        element: (
+            <RecruiterRoute>
+                <RecruiterDashboardLayout />
+            </RecruiterRoute>
+        ),
         errorElement: <DisplayError />,
         children: [
             {
