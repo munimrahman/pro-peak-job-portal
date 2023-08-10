@@ -36,14 +36,14 @@ export const authApi = apiSlice.injectEndpoints({
 
         logIn: builder.mutation({
             query: (data) => ({
-                url: '/login',
+                url: '/log-in',
                 method: 'POST',
                 body: data,
             }),
 
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
                 try {
-                    const res = await queryFulfilled;
+                    const { data: res } = await queryFulfilled;
                     localStorage.setItem(
                         'auth',
                         JSON.stringify({

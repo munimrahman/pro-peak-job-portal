@@ -21,7 +21,7 @@ function JobDetails() {
     const { company } = jobPost || {};
     const [modalCheck, setModalCheck] = useState(false);
     const isLoggedIn = useAuth();
-    const { role } = useSelector((state) => state.auth);
+    const { user: { role } = {} } = useSelector((state) => state.auth);
     const location = useLocation();
     const navigate = useNavigate();
 

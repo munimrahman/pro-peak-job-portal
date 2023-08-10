@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/ProPeak.png';
 import { useRegisterMutation } from '../../features/auth/authApi';
 
 function SignUp() {
-    // const navigate = useNavigate();
-    // const location = useLocation();
+    const navigate = useNavigate();
+    const location = useLocation();
     const [name, setName] = useState('');
     const [role, setRole] = useState('');
     const [companyName, setCompanyName] = useState('');
@@ -20,13 +20,13 @@ function SignUp() {
         email: '',
         password: '',
     });
-    // const from = location?.state?.from || '/';
+    const from = location?.state?.from || '/';
 
     const handleSignUp = (e) => {
         e.preventDefault();
         const userObj = { name, email, password, role, companyName };
         register(userObj);
-        // navigate(from);
+        navigate(from);
     };
 
     useEffect(() => {

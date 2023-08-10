@@ -1,33 +1,38 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/ProPeak.png';
-import { userLoggedIn } from '../../features/auth/authSlice';
+import { useLogInMutation } from '../../features/auth/authApi';
 
 function LogIn() {
-    const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const from = location.state?.from?.pathname || '/';
+    const [login, { error }] = useLogInMutation();
+    const [errorText, setErrorText] = useState('');
 
-    const handleLogIn = (user, role) => {
-        const authObj = {
-            accessToken: 'sldkfjlsdkjfiseyt038947hfskdjnfvlk',
-            user,
-            role,
-        };
-        dispatch(userLoggedIn(authObj));
-        navigate(from);
+    const handleLogIn = (e) => {
+        e.preventDefault();
+        login({ email, password });
+        // navigate(from);
     };
+
+    useEffect(() => {
+        const { data: { message } = {} } = error || {};
+        if (message) {
+            setErrorText('Invalid Email or Password');
+        } else {
+            setErrorText('');
+        }
+    }, [error]);
 
     const toSignUp = () => {
         navigate('/sign-up', { state: { from } });
     };
-    console.log(handleLogIn, toSignUp);
 
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center h-[80vh] px-6 lg:px-8">
@@ -39,7 +44,7 @@ function LogIn() {
             </div>
 
             <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form className="space-y-6">
+                <form onSubmit={handleLogIn} className="space-y-4">
                     <div>
                         <label
                             htmlFor="email"
@@ -89,8 +94,8 @@ function LogIn() {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
+                        <p className="text-red-500 text-sm">{errorText && errorText}</p>
                     </div>
-
                     <div>
                         <button
                             type="submit"
@@ -103,12 +108,12 @@ function LogIn() {
 
                 <p className="mt-2 text-center text-sm text-gray-500">
                     Not a member?{' '}
-                    <Link
-                        to="/sign-up"
-                        className="font-semibold leading-6 text-primary hover:text-blue-500"
+                    <span
+                        onClick={toSignUp}
+                        className="font-semibold leading-6 text-primary hover:text-blue-500 hover:cursor-pointer"
                     >
                         Sign Up Here
-                    </Link>
+                    </span>
                 </p>
             </div>
         </div>

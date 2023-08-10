@@ -10,7 +10,7 @@ import useAuth from '../../../hooks/useAuth';
 function JobDetailsHeader({ jobPost = {}, setModalCheck, modalCheck }) {
     const { title, coverPhoto, jobType, createdAt } = jobPost;
     const isLoggedIn = useAuth();
-    const { role } = useSelector((state) => state.auth);
+    const { user: { role } = {} } = useSelector((state) => state.auth);
     const location = useLocation();
     const navigate = useNavigate();
     console.log(isLoggedIn, role);
