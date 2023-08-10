@@ -1,15 +1,13 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import logo from '../../../assets/ProPeak.png';
 // import ButtonPrimary from '../../../Components/ButtonPrimary/ButtonPrimary';
-import avatar from '../../../assets/avatar.jpg';
-import { userLoggedOut } from '../../../features/auth/authSlice';
+import ButtonPrimary from '../../../Components/ButtonPrimary/ButtonPrimary';
 
 function Navbar({ stickyNav }) {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const activeClassName = 'text-sm bg-info text-primary active:text-secondary';
     const inActiveClassName =
         'text-sm text-secondary active:bg-info active:text-secondary hover:bg-info';
@@ -104,19 +102,19 @@ function Navbar({ stickyNav }) {
 
                 <div className="navbar-end">
                     {/* show this if user not logged in */}
-                    {/* <NavLink className="mr-3 sm:hidden" to="/">
+                    <NavLink className="mr-3 sm:hidden" to="/log-in">
                         <ButtonPrimary className="btn-outline btn-md">Get Started</ButtonPrimary>
                     </NavLink>
-                    <NavLink className="mr-3 hidden sm:block" to="/">
+                    <NavLink className="mr-3 hidden sm:block" to="/sign-up">
                         <ButtonPrimary className="btn-outline">Register</ButtonPrimary>
                     </NavLink>
-                    <NavLink className="hidden sm:block" to="/">
+                    <NavLink className="hidden sm:block" to="/log-in">
                         <ButtonPrimary>LogIn</ButtonPrimary>
-                    </NavLink> */}
+                    </NavLink>
 
                     {/* show this if user logged in */}
 
-                    <div className="dropdown dropdown-end">
+                    {/* <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-16 rounded-full">
                                 <img src={avatar} alt="" />
@@ -138,7 +136,7 @@ function Navbar({ stickyNav }) {
                                 <button onClick={() => dispatch(userLoggedOut())}>Logout</button>
                             </li>
                         </ul>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@ export const blogsApi = apiSlice.injectEndpoints({
         getSingleBlog: builder.query({
             query: (id) => `/blogs/${id}`,
         }),
-
+        // create comment
         createComment: builder.mutation({
             query: ({ blogId, data, cacheData }) => ({
                 url: `/blogs/${blogId}/comments`,

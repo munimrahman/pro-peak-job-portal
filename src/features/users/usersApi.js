@@ -19,26 +19,6 @@ export const usersApi = apiSlice.injectEndpoints({
             query: (id) => `/users/${id}`,
         }),
 
-        // TODO: add user
-        addUser: builder.mutation({
-            query: (data) => ({
-                url: '/users',
-                method: 'POST',
-                body: data,
-            }),
-            async onQueryStarted({ id, data }, { queryFulfilled, dispatch }) {
-                const res = await queryFulfilled;
-
-                if (res.data.data._id) {
-                    dispatch(
-                        apiSlice.util.updateQueryData('getCustomers', undefined, (draft) => {
-                            draft.data.customers.push(res.data.data);
-                        })
-                    );
-                }
-            },
-        }),
-
         editUser: builder.mutation({
             query: ({ id, data }) => ({
                 url: `/users/${id}`,
