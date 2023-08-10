@@ -1,9 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import avatar from '../../../assets/avatar.jpg';
+import { useCreateCommentMutation, useCreateReplyMutation } from '../../../features/blogs/blogsApi';
 
-function CommentBox({ isFocused, commentId, from, blogId, setShow }) {
+function CommentBox({ isFocused, commentId, from, blogId, setShow = () => {} }) {
+    const author = {
+        _id: '64c331d8bbcc3f56eec1c99f',
+        name: 'Taskin Ahamed',
+        profilePhoto:
+            'https://res.cloudinary.com/dmxm9rl23/image/upload/v1691325104/zg2z02n0lwpbx2rigvhv.jpg',
+    };
+
     const [text, setText] = useState('');
+    const [createComment] = useCreateCommentMutation();
+    const [createReply] = useCreateReplyMutation();
 
     const ref = useRef();
 
@@ -14,9 +24,22 @@ function CommentBox({ isFocused, commentId, from, blogId, setShow }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (from === 'blog') {
-            console.log(`Comment of Blog ID:${blogId}= ${text}`);
+            const comment = {
+                author: author._id,
+                content: text,
+            };
+            createComment({
+                blogId,
+                data: comment,
+                cacheData: { author, content: text, _id: Date.now() },
+            });
         } else {
-            console.log(`Comment Reply ID:${commentId}= ${text}`);
+            const reply = {
+                author: author._id,
+                content: text,
+                commentId,
+            };
+            createReply({ blogId, data: reply, cacheData: { author, content: text, commentId } });
         }
         setText('');
         setShow(() => ({ status: false, id: '' }));

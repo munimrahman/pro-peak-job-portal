@@ -35,8 +35,10 @@ function JobDetails() {
                 <ButtonSecondary className="ml-5">Save Job</ButtonSecondary>
             </div>
         );
-    } else if (isLoggedIn && (role === 'recruiter' || 'admin')) {
-        applyButton = <span className="font-bold">Log In As Candidate To Apply</span>;
+    } else if (isLoggedIn && (role === 'recruiter' || role === 'admin')) {
+        applyButton = (
+            <span className="font-bold text-secondary">Log In As Candidate To Apply</span>
+        );
     } else {
         const handleRedirect = () => {
             navigate('/log-in', { state: { from: location } });

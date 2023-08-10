@@ -17,6 +17,60 @@ export const blogsApi = apiSlice.injectEndpoints({
             query: (id) => `/blogs/${id}`,
         }),
 
+        createComment: builder.mutation({
+            query: ({ blogId, data, cacheData }) => ({
+                url: `/blogs/${blogId}/comments`,
+                method: 'POST',
+                body: data,
+            }),
+
+            async onQueryStarted({ blogId, data, cacheData }, { queryFulfilled, dispatch }) {
+                const patchResult = dispatch(
+                    apiSlice.util.updateQueryData('getSingleBlog', blogId, (draft) => {
+                        draft.blog.comments.push(cacheData);
+                    })
+                );
+
+                try {
+                    const { data: res } = await queryFulfilled;
+                    if (res.data._id) {
+                        console.log(res.data, blogId);
+                        dispatch(
+                            apiSlice.util.updateQueryData('getSingleBlog', blogId, (draft) => {
+                                Object.assign(draft, { blog: res.data });
+                            })
+                        );
+                    }
+                } catch (error) {
+                    patchResult.undo();
+                }
+            },
+        }),
+
+        // create reply
+        createReply: builder.mutation({
+            query: ({ blogId, data, cacheData }) => ({
+                url: `/blogs/${blogId}/comments`,
+                method: 'PUT',
+                body: data,
+            }),
+
+            async onQueryStarted({ blogId, data, cacheData }, { queryFulfilled, dispatch }) {
+                const patchResult = dispatch(
+                    apiSlice.util.updateQueryData('getSingleBlog', blogId, (draft) => {
+                        const comment = draft.blog.comments.find((c) => c._id === data.commentId);
+                        comment.replies.push(cacheData);
+                    })
+                );
+
+                try {
+                    await queryFulfilled;
+                } catch (error) {
+                    patchResult.undo();
+                }
+            },
+        }),
+
         // TODO: add Blog
         addBlog: builder.mutation({
             query: (data) => ({
@@ -87,6 +141,8 @@ export const blogsApi = apiSlice.injectEndpoints({
 export const {
     useGetBlogsQuery,
     useGetSingleBlogQuery,
+    useCreateCommentMutation,
+    useCreateReplyMutation,
     useAddBlogMutation,
     useEditBlogMutation,
     useDeleteBlogMutation,

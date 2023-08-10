@@ -8,7 +8,7 @@ function RecruiterRoute({ children }) {
     const { role } = useSelector((state) => state.auth);
     const isLoggedIn = useAuth();
 
-    const isRecruiter = role === 'recruiter' || 'admin';
+    const isRecruiter = role === 'recruiter' || role === 'admin';
 
     if (isLoggedIn && isRecruiter) return children;
     return <Navigate to="/log-in" state={{ from: location }} replace />;

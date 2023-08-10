@@ -29,14 +29,15 @@ function DashboardLayout() {
                     My Profile
                 </NavLink>
             </li>
-            <li>
+            {/* TODO: Implement Chat Feature */}
+            {/* <li>
                 <NavLink
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
                     to="/dashboard/inbox"
                 >
                     Inbox
                 </NavLink>
-            </li>
+            </li> */}
             <li>
                 <NavLink
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
@@ -53,14 +54,15 @@ function DashboardLayout() {
                     Skill Assessment
                 </NavLink>
             </li>
-            <li>
+            {/* TODO: Implement Blog Feature */}
+            {/* <li>
                 <NavLink
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
                     to="/dashboard/blog"
                 >
                     Blog
                 </NavLink>
-            </li>
+            </li> */}
             <li>
                 <NavLink
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}

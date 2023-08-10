@@ -31,6 +31,7 @@ function BlogComments({ comments = [], blogId }) {
                                         />
                                     ))}
                                 </div>
+
                                 <div className="ml-8">
                                     {show.status && show.id === comment._id && (
                                         <CommentBox
@@ -38,6 +39,7 @@ function BlogComments({ comments = [], blogId }) {
                                             isFocused={show.status}
                                             from="comment"
                                             setShow={setShow}
+                                            blogId={blogId}
                                         />
                                     )}
                                 </div>
@@ -60,6 +62,7 @@ function BlogComments({ comments = [], blogId }) {
                                         isFocused={show.status}
                                         from="comment"
                                         setShow={setShow}
+                                        blogId={blogId}
                                     />
                                 )}
                             </div>

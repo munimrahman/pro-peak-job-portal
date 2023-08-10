@@ -34,14 +34,15 @@ function RecruiterDashboardLayout() {
                     Company Profile
                 </NavLink>
             </li>
-            <li>
+            {/* TODO: Implement Chat Feature */}
+            {/* <li>
                 <NavLink
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
                     to="/recruiter-dashboard/inbox"
                 >
                     Inbox
                 </NavLink>
-            </li>
+            </li> */}
             <li>
                 <NavLink
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
@@ -50,14 +51,15 @@ function RecruiterDashboardLayout() {
                     Manage Jobs
                 </NavLink>
             </li>
-            <li>
+            {/* TODO: Implement BLog Feature */}
+            {/* <li>
                 <NavLink
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
                     to="/recruiter-dashboard/blog"
                 >
                     Blog
                 </NavLink>
-            </li>
+            </li> */}
             <li>
                 <NavLink
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
