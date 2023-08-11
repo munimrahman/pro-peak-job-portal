@@ -2,6 +2,7 @@
 import React from 'react';
 
 import { ScrollRestoration } from 'react-router-dom';
+import useTitle from '../../../hooks/useTitle';
 import Footer from '../../Shared/Footer/Footer';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
 import CategorySlide from '../CategorySlide/CategorySlide/CategorySlide';
@@ -15,6 +16,7 @@ import TopRecruiters from '../TopRecruiters/TopRecruiters';
 import WeHiringBox from '../WeHiringBox/WeHiringBox';
 
 function Home() {
+    useTitle('Pro Peak | Find Your Dream Job');
     return (
         <section>
             <Hero />

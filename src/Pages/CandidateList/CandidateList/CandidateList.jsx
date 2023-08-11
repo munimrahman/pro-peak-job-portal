@@ -7,6 +7,7 @@ import JobGridSkeleton from '../../../Components/LoadingElements/JobGridSkeleton
 import NoDataFound from '../../../Components/NoDataFound/NoDataFound';
 import { resetFilter } from '../../../features/filter/filterSlice';
 import { useGetUsersQuery } from '../../../features/users/usersApi';
+import useTitle from '../../../hooks/useTitle';
 import NewsBlogsJ from '../../JobList/NewsBlogs/NewsBlogsJL';
 import HeaderBrowseSearch from '../../Shared/HeaderBrowseSearch/HeaderBrowseSearch';
 import Pagination from '../../Shared/Pagination/Pagination';
@@ -19,7 +20,7 @@ function CandidateList() {
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(6);
     const dispatch = useDispatch();
-
+    useTitle('Candidate List | Pro Peak');
     const { skillFilter, hourlyRateFilter, certificationFilter, candidateSearch } = useSelector(
         (state) => state.filter.candidate
     );

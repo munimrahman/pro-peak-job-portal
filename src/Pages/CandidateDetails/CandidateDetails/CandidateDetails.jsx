@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollRestoration, useParams } from 'react-router-dom';
 import { useGetUserQuery } from '../../../features/users/usersApi';
+import useTitle from '../../../hooks/useTitle';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
 import WeHiring from '../../Shared/WeHiring/WeHiring';
 import CandidateDescription from '../CandidateDescription/CandidateDescription';
@@ -11,7 +12,8 @@ import WorkExperience from '../WorkExperience/WorkExperience';
 function CandidateDetails() {
     const { id } = useParams();
     const { data: { user = {} } = {} } = useGetUserQuery(id);
-
+    const { name } = user;
+    useTitle(`${name} | Pro Peak`);
     return (
         <div className="max-w-[1115px] mx-auto">
             <CandidateDetailsHeader user={user} />

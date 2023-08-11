@@ -2,14 +2,16 @@ import React from 'react';
 import { ScrollRestoration, useParams } from 'react-router-dom';
 import blogCover from '../../../assets/blog-cover.png';
 import { useGetSingleBlogQuery } from '../../../features/blogs/blogsApi';
+import useTitle from '../../../hooks/useTitle';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
 import BlogPost from '../BlogPost/BlogPost';
 
 function BlogDetails() {
     const { id } = useParams();
     const { data: { blog } = {} } = useGetSingleBlogQuery(id);
+    const { coverPhoto, title } = blog || {};
+    useTitle(`${title}`);
 
-    const { coverPhoto } = blog || {};
     return (
         <div className="">
             <div className="blog-details">

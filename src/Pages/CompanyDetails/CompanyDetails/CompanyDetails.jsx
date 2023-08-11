@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollRestoration, useParams } from 'react-router-dom';
 import { useGetSingleCompanyQuery } from '../../../features/company/companyApi';
+import useTitle from '../../../hooks/useTitle';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
 import WeHiring from '../../Shared/WeHiring/WeHiring';
 import CompanyDescription from '../CompanyDescription/CompanyDescription';
@@ -11,7 +12,8 @@ import LatestCompanyJobs from '../LatestCompanyJobs/LatestCompanyJobs';
 function CompanyDetails() {
     const { id } = useParams();
     const { data: { company = {} } = {} } = useGetSingleCompanyQuery(id);
-
+    const { name } = company;
+    useTitle(`${name} | Pro Peak`);
     return (
         <div className="max-w-[1115px] mx-auto">
             <CompanyDetailsHeader company={company} />

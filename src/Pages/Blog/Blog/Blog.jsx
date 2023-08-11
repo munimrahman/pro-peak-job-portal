@@ -4,6 +4,7 @@ import { ScrollRestoration } from 'react-router-dom';
 import FeaturedBlogSkeleton from '../../../Components/LoadingElements/FeaturedBlogSkeleton';
 import { useGetSingleBlogQuery } from '../../../features/blogs/blogsApi';
 import { blogSearch } from '../../../features/filter/filterSlice';
+import useTitle from '../../../hooks/useTitle';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
 import WeHiring from '../../Shared/WeHiring/WeHiring';
 import BlogHeader from '../BlogHeader/BlogHeader';
@@ -15,6 +16,7 @@ import './Blog.css';
 function Blog() {
     const [inputText, setInputText] = useState('');
     const dispatch = useDispatch();
+    useTitle('Blogs | Pro Peak');
     const {
         data: { blog = {} } = {},
         isLoading,

@@ -6,6 +6,7 @@ import QuestionSkeleton from '../../../Components/LoadingElements/QuestionSkelet
 import { useGetSingleQuizQuery } from '../../../features/quiz/quizApi';
 import { quizResult } from '../../../features/quiz/quizSlice';
 import { useEditUserMutation } from '../../../features/users/usersApi';
+import useTitle from '../../../hooks/useTitle';
 import AssessmentQuizCard from '../AssessmentQuizCard/AssessmentQuizCard';
 
 function AssessmentQuiz() {
@@ -18,6 +19,7 @@ function AssessmentQuiz() {
     const [editUser] = useEditUserMutation();
     const [ans, setAns] = useState([]);
     const dispatch = useDispatch();
+    useTitle(`${title} Skill Assessment`);
 
     const result = ans
         .map((a, i) => a.ans === questions[i]?.options[0]?.option)

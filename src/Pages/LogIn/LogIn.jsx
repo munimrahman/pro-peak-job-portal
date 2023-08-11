@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/ProPeak.png';
 import { useLogInMutation } from '../../features/auth/authApi';
+import useTitle from '../../hooks/useTitle';
 
 function LogIn() {
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ function LogIn() {
     const [login, { error }] = useLogInMutation();
     // const { accessToken } = useSelector((state) => state.auth);
     const [errorText, setErrorText] = useState('');
-    // console.log('out->', from);
+    useTitle('Log In | Pro Peak');
 
     const handleLogIn = (e) => {
         e.preventDefault();

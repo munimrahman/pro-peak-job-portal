@@ -5,6 +5,7 @@ import FetchError from '../../../Components/FetchError/FetchError';
 import QuizSkeleton from '../../../Components/LoadingElements/QuizSkeleton';
 import NoDataFound from '../../../Components/NoDataFound/NoDataFound';
 import { useGetQuizzesQuery } from '../../../features/quiz/quizApi';
+import useTitle from '../../../hooks/useTitle';
 import HeaderBrowseSearch from '../../Shared/HeaderBrowseSearch/HeaderBrowseSearch';
 import Pagination from '../../Shared/Pagination/Pagination';
 import SkillTestCard from '../SkillTestCard/SkillTestCard';
@@ -12,7 +13,7 @@ import SkillTestCard from '../SkillTestCard/SkillTestCard';
 function SkillAssessment() {
     const [page, setPage] = useState(1);
     const limit = 6;
-
+    useTitle('Skill Assessment | Pro Peak');
     const { quizSearchText } = useSelector((state) => state.filter.quiz);
 
     // setup query for fetch data from api
@@ -73,6 +74,7 @@ function SkillAssessment() {
     } else if (isError) {
         content = <FetchError />;
     }
+
     return (
         <div className="max-w-[1115px] mx-auto">
             <HeaderBrowseSearch

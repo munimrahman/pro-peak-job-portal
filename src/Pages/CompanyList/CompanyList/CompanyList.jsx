@@ -7,6 +7,7 @@ import RecruiterSkeleton from '../../../Components/LoadingElements/RecruiterSkel
 import NoDataFound from '../../../Components/NoDataFound/NoDataFound';
 import { useGetCompaniesQuery } from '../../../features/company/companyApi';
 import { resetFilter } from '../../../features/filter/filterSlice';
+import useTitle from '../../../hooks/useTitle';
 import NewsBlogsJL from '../../JobList/NewsBlogs/NewsBlogsJL';
 import HeaderBrowseSearch from '../../Shared/HeaderBrowseSearch/HeaderBrowseSearch';
 import Pagination from '../../Shared/Pagination/Pagination';
@@ -19,6 +20,7 @@ function CompanyList() {
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(6);
     const dispatch = useDispatch();
+    useTitle('Company List | Pro Peak');
 
     const { industryFilter, companySizeFilter, workPlaceFilter, companySearch } = useSelector(
         (state) => state.filter.company

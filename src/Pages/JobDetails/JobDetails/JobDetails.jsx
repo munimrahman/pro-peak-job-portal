@@ -6,6 +6,7 @@ import { ScrollRestoration, useLocation, useNavigate, useParams } from 'react-ro
 import ButtonSecondary from '../../../Components/ButtonSecondary/ButtonSecondary';
 import { useGetSingleJobQuery } from '../../../features/jobPosts/jobPostApi';
 import useAuth from '../../../hooks/useAuth';
+import useTitle from '../../../hooks/useTitle';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
 import ApplyModal from '../ApplyModal/ApplyModal';
 import CompanyInfo from '../CompanyInfo/CompanyInfo';
@@ -18,7 +19,8 @@ import MeetHiringTeam from '../MeetHiringTeam/MeetHiringTeam';
 function JobDetails() {
     const { id } = useParams();
     const { data: { jobPost = {} } = {} } = useGetSingleJobQuery(id);
-    const { company } = jobPost || {};
+    const { company, title } = jobPost || {};
+    useTitle(`${title}`);
     const [modalCheck, setModalCheck] = useState(false);
     const isLoggedIn = useAuth();
     const { user: { role } = {} } = useSelector((state) => state.auth);

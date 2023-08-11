@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollRestoration, useParams } from 'react-router-dom';
 // import CompanyDetailsSidebar from '../../CompanyDetails/CompanyInfoSideBar/CompanyInfoSideBar';
 import { useGetUserQuery } from '../../../features/users/usersApi';
+import useTitle from '../../../hooks/useTitle';
 import LatestCompanyJobs from '../../CompanyDetails/LatestCompanyJobs/LatestCompanyJobs';
 import CompanyInfo from '../../JobDetails/CompanyInfo/CompanyInfo';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
@@ -11,7 +12,8 @@ import RecruiterDetailsHeader from '../RecruiterDetailsHeader/RecruiterDetailsHe
 function RecruiterDetails() {
     const { id } = useParams();
     const { data: { user = {} } = {} } = useGetUserQuery(id);
-    const { company } = user;
+    const { company, name } = user;
+    useTitle(`${name} | Pro Peak`);
     return (
         <div className="max-w-[1115px] mx-auto">
             <RecruiterDetailsHeader user={user} />

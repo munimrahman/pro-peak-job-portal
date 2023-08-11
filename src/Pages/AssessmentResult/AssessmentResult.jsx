@@ -8,10 +8,12 @@ import passImg from '../../assets/quiz-result-pass.png';
 import quizShow from '../../assets/quiz-show.png';
 import { clearQuizResult } from '../../features/quiz/quizSlice';
 import { useEditUserMutation } from '../../features/users/usersApi';
+import useTitle from '../../hooks/useTitle';
 
 function AssessmentResult() {
     const id = '64c331d8bbcc3f56eec1c99f';
     const { score, correct, wrong, testName, result } = useSelector((state) => state.quiz.result);
+    useTitle(`${testName} Test Result`);
     const [editUser] = useEditUserMutation();
     const navigate = useNavigate();
     const dispatch = useDispatch();

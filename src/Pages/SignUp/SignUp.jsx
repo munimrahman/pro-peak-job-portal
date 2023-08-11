@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/ProPeak.png';
 import { useRegisterMutation } from '../../features/auth/authApi';
+import useTitle from '../../hooks/useTitle';
 
 function SignUp() {
     const navigate = useNavigate();
@@ -12,6 +13,7 @@ function SignUp() {
     const [companyName, setCompanyName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    useTitle('Sign Up | Pro Peak');
     const [register, { error, isError, isSuccess }] = useRegisterMutation();
     const [errorObj, setErrorObj] = useState({
         name: '',

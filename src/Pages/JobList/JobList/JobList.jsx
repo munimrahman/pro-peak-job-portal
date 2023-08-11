@@ -12,6 +12,7 @@ import JobRowSkeleton from '../../../Components/LoadingElements/JobRowSkeleton';
 import NoDataFound from '../../../Components/NoDataFound/NoDataFound';
 import { resetFilter } from '../../../features/filter/filterSlice';
 import { useGetJobsQuery } from '../../../features/jobPosts/jobPostApi';
+import useTitle from '../../../hooks/useTitle';
 import JobCardThree from '../../Shared/JobCardThree/JobCardThree';
 import JobCardTwo from '../../Shared/JobCardTwo/JobCardTwo';
 import Pagination from '../../Shared/Pagination/Pagination';
@@ -27,6 +28,7 @@ function JobList() {
     const [limit, setLimit] = useState(5);
     const [sort, setSort] = useState('');
     const dispatch = useDispatch();
+    useTitle('Find Jobs | Pro Peak');
     const {
         industryFilter,
         salaryFilter,
