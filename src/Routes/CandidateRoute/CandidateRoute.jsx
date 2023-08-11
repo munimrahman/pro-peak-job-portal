@@ -5,9 +5,9 @@ import useAuth from '../../hooks/useAuth';
 
 function CandidateRoute({ children }) {
     const location = useLocation();
-    const { user: { role } = {} } = useSelector((state) => state.auth);
     const isLoggedIn = useAuth();
-
+    const { user: { role } = {} } = useSelector((state) => state.auth);
+    console.log(location);
     const isCandidate = role === 'candidate';
 
     if (isLoggedIn && isCandidate) return children;

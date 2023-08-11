@@ -1,13 +1,18 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import logo from '../../../assets/ProPeak.png';
-// import ButtonPrimary from '../../../Components/ButtonPrimary/ButtonPrimary';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, NavLink } from 'react-router-dom';
 import ButtonPrimary from '../../../Components/ButtonPrimary/ButtonPrimary';
+import logo from '../../../assets/ProPeak.png';
+import avatar from '../../../assets/avatar.png';
+import { userLoggedOut } from '../../../features/auth/authSlice';
+import useAuth from '../../../hooks/useAuth';
 
 function Navbar({ stickyNav }) {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const isLoggedIn = useAuth();
+    const { user: { profilePhoto } = {} } = useSelector((state) => state.auth);
     const activeClassName = 'text-sm bg-info text-primary active:text-secondary';
     const inActiveClassName =
         'text-sm text-secondary active:bg-info active:text-secondary hover:bg-info';
@@ -102,41 +107,53 @@ function Navbar({ stickyNav }) {
 
                 <div className="navbar-end">
                     {/* show this if user not logged in */}
-                    <NavLink className="mr-3 sm:hidden" to="/log-in">
-                        <ButtonPrimary className="btn-outline btn-md">Get Started</ButtonPrimary>
-                    </NavLink>
-                    <NavLink className="mr-3 hidden sm:block" to="/sign-up">
-                        <ButtonPrimary className="btn-outline">Register</ButtonPrimary>
-                    </NavLink>
-                    <NavLink className="hidden sm:block" to="/log-in">
-                        <ButtonPrimary>LogIn</ButtonPrimary>
-                    </NavLink>
+                    {!isLoggedIn && (
+                        <>
+                            <NavLink className="mr-3 sm:hidden" to="/log-in">
+                                <ButtonPrimary className="btn-outline btn-md">
+                                    Get Started
+                                </ButtonPrimary>
+                            </NavLink>
+                            <NavLink className="mr-3 hidden sm:block" to="/sign-up">
+                                <ButtonPrimary className="btn-outline">Register</ButtonPrimary>
+                            </NavLink>
+                            <NavLink className="hidden sm:block" to="/log-in">
+                                <ButtonPrimary>LogIn</ButtonPrimary>
+                            </NavLink>
+                        </>
+                    )}
 
                     {/* show this if user logged in */}
 
-                    {/* <div className="dropdown dropdown-end">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-16 rounded-full">
-                                <img src={avatar} alt="" />
-                            </div>
-                        </label>
-                        <ul
-                            tabIndex={0}
-                            className="menu menu-compact dropdown-content mt- p-2 shadow bg-base-100 rounded-box w-52"
-                        >
-                            <li>
-                                <Link to="/dashboard/candidate" className="justify-between">
-                                    Candidate Dashboard
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/recruiter-dashboard/recruiter">Recruiter Dashboard</Link>
-                            </li>
-                            <li>
-                                <button onClick={() => dispatch(userLoggedOut())}>Logout</button>
-                            </li>
-                        </ul>
-                    </div> */}
+                    {isLoggedIn && (
+                        <div className="dropdown dropdown-end">
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div className="w-16 rounded-full">
+                                    <img src={profilePhoto || avatar} alt="" />
+                                </div>
+                            </label>
+                            <ul
+                                tabIndex={0}
+                                className="menu menu-compact dropdown-content mt- p-2 shadow bg-base-100 rounded-box w-52"
+                            >
+                                <li>
+                                    <Link to="/dashboard/candidate" className="justify-between">
+                                        Candidate Dashboard
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/recruiter-dashboard/recruiter">
+                                        Recruiter Dashboard
+                                    </Link>
+                                </li>
+                                <li>
+                                    <button onClick={() => dispatch(userLoggedOut())}>
+                                        Logout
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

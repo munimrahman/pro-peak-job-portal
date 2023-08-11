@@ -5,8 +5,8 @@ import useAuth from '../../hooks/useAuth';
 
 function RecruiterRoute({ children }) {
     const location = useLocation();
-    const { role } = useSelector((state) => state.auth);
     const isLoggedIn = useAuth();
+    const { user: { role } = {} } = useSelector((state) => state.auth);
 
     const isRecruiter = role === 'recruiter' || role === 'admin';
 

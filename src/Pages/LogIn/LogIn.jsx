@@ -18,7 +18,6 @@ function LogIn() {
     const handleLogIn = (e) => {
         e.preventDefault();
         login({ email, password });
-        // navigate(from);
     };
 
     useEffect(() => {

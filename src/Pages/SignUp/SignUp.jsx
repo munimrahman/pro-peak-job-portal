@@ -12,7 +12,7 @@ function SignUp() {
     const [companyName, setCompanyName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [register, { error }] = useRegisterMutation();
+    const [register, { error, isError, isSuccess }] = useRegisterMutation();
     const [errorObj, setErrorObj] = useState({
         name: '',
         role: '',
@@ -26,8 +26,12 @@ function SignUp() {
         e.preventDefault();
         const userObj = { name, email, password, role, companyName };
         register(userObj);
-        navigate(from);
     };
+
+    if (!isError && isSuccess) {
+        console.log('in login', from);
+        navigate(from, { replace: true });
+    }
 
     useEffect(() => {
         const { data: { message, errors = {} } = {} } = error || {};
