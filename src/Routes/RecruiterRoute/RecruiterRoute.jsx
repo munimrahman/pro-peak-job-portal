@@ -11,6 +11,7 @@ function RecruiterRoute({ children }) {
     const isRecruiter = role === 'recruiter' || role === 'admin';
 
     if (isLoggedIn && isRecruiter) return children;
+    if (isLoggedIn && !isRecruiter) return <Navigate to="/" />;
     return <Navigate to="/log-in" state={{ from: location }} replace />;
 }
 

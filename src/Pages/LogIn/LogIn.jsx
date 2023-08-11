@@ -13,12 +13,21 @@ function LogIn() {
     const [password, setPassword] = useState('');
     const from = location.state?.from?.pathname || '/';
     const [login, { error }] = useLogInMutation();
+    // const { accessToken } = useSelector((state) => state.auth);
     const [errorText, setErrorText] = useState('');
+    // console.log('out->', from);
 
     const handleLogIn = (e) => {
         e.preventDefault();
         login({ email, password });
     };
+
+    // isError, isSuccess, isLoading
+    // if (!isError && isSuccess && !isLoading && accessToken) {
+    //     console.log('in login->', from);
+    //     console.log(accessToken);
+    //     navigate(from);
+    // }
 
     useEffect(() => {
         const { data: { message } = {} } = error || {};

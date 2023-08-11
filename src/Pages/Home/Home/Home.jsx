@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 
-import { ScrollRestoration, useLocation } from 'react-router-dom';
+import { ScrollRestoration } from 'react-router-dom';
 import Footer from '../../Shared/Footer/Footer';
 import SubscribeBox from '../../Shared/SubscribeBox/SubscribeBox';
 import CategorySlide from '../CategorySlide/CategorySlide/CategorySlide';
@@ -15,8 +15,6 @@ import TopRecruiters from '../TopRecruiters/TopRecruiters';
 import WeHiringBox from '../WeHiringBox/WeHiringBox';
 
 function Home() {
-    const location = useLocation();
-    console.log('home->', location);
     return (
         <section>
             <Hero />
