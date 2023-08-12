@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable prettier/prettier */
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
     CartesianGrid,
@@ -16,6 +17,7 @@ import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import './DashboardCandidate.css';
 
 function DashboardCandidate() {
+    const { user: { name } = {} } = useSelector((state) => state.auth);
     const data = [
         { name: 'Jan', views: 40, pv: 2400, amt: 2400 },
         { name: 'Feb', views: 30, pv: 2400, amt: 2400 },
@@ -29,7 +31,7 @@ function DashboardCandidate() {
         <div className="p-8">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
                 <div className="md:col-span-6 rounded-xl bg-white welcome p-4 shadow">
-                    <h1 className="text-secondary text-xl mb-2">Howdy, Jhon Snow! 🎉</h1>
+                    <h1 className="text-secondary text-xl mb-2">Howdy, {name}! 🎉</h1>
                     <p className="text-neutral text-sm">
                         Welcome, Your profile is <strong>100%</strong> completed.
                     </p>

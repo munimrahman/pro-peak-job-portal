@@ -12,7 +12,7 @@ import useAuth from '../../../hooks/useAuth';
 function Navbar({ stickyNav }) {
     const dispatch = useDispatch();
     const isLoggedIn = useAuth();
-    const { user: { profilePhoto, role } = {} } = useSelector((state) => state.auth);
+    const { user: { profilePhoto, role, name } = {} } = useSelector((state) => state.auth);
     const activeClassName = 'text-sm bg-info text-primary active:text-secondary';
     const inActiveClassName =
         'text-sm text-secondary active:bg-info active:text-secondary hover:bg-info';
@@ -136,19 +136,52 @@ function Navbar({ stickyNav }) {
                                 tabIndex={0}
                                 className="menu menu-compact dropdown-content mt- p-2 shadow bg-base-100 rounded-box w-52"
                             >
+                                <div className="text-center pt-3 pb-1">
+                                    <p className="font-bold">{name}</p>
+                                </div>
                                 {role === 'candidate' && (
-                                    <li>
-                                        <Link to="/dashboard/candidate" className="justify-between">
-                                            Candidate Dashboard
-                                        </Link>
-                                    </li>
+                                    <>
+                                        <li>
+                                            <Link
+                                                to="/dashboard/candidate"
+                                                className="justify-between"
+                                            >
+                                                Dashboard
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
+                                                to="/dashboard/candidate-profile/edit"
+                                                className="justify-between"
+                                            >
+                                                Edit Profile
+                                            </Link>
+                                        </li>
+                                    </>
                                 )}
                                 {(role === 'recruiter' || role === 'admin') && (
-                                    <li>
-                                        <Link to="/recruiter-dashboard/recruiter">
-                                            Recruiter Dashboard
-                                        </Link>
-                                    </li>
+                                    <>
+                                        <li>
+                                            <Link to="/recruiter-dashboard/recruiter">
+                                                Dashboard
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/recruiter-dashboard/recruiter-profile/edit">
+                                                Edit Profile
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/recruiter-dashboard/company-profile/edit">
+                                                Edit Company
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/recruiter-dashboard/manage-jobs/post-new-job">
+                                                Post a Job
+                                            </Link>
+                                        </li>
+                                    </>
                                 )}
                                 <li>
                                     <button onClick={() => dispatch(userLoggedOut())}>
