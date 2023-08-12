@@ -1,6 +1,7 @@
 import React from 'react';
 import FetchError from '../../../Components/FetchError/FetchError';
 import JobGridSkeleton from '../../../Components/LoadingElements/JobGridSkeleton';
+import noData from '../../../assets/no-data.png';
 import { useGetJobsQuery } from '../../../features/jobPosts/jobPostApi';
 import JobCardTwo from '../../Shared/JobCardTwo/JobCardTwo';
 
@@ -26,6 +27,15 @@ function FeaturedJobs({ jobPost }) {
                 <JobGridSkeleton />
                 <JobGridSkeleton />
                 <JobGridSkeleton />
+            </div>
+        );
+    } else if (isSuccess && !isError && jobs.length === 0) {
+        content = (
+            <div className="text-center">
+                <figure className="flex justify-center">
+                    <img src={noData} className="w-2/3 md:w-1/5" alt="no-data-found" />
+                </figure>
+                <h2 className="text-2xl text-secondary font-bold">No Similar Jobs Found!</h2>
             </div>
         );
     } else if (isSuccess && !isError && jobs.length > 0) {
