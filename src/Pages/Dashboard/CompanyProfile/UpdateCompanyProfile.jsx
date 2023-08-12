@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, ScrollRestoration, useNavigate } from 'react-router-dom';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import ButtonSecondary from '../../../Components/ButtonSecondary/ButtonSecondary';
@@ -24,8 +25,9 @@ const initialState = {
 };
 
 function UpdateCompanyProfile() {
+    const { user: { _id } = {} } = useSelector((state) => state.auth);
     const { data: { data: { companies = [] } = {} } = {} } = useGetCompaniesQuery(
-        'hiringManager=64d0b287116fcabdd7021495'
+        `hiringManager=${_id}`
     );
     const companyInfo = useMemo(() => companies[0] || {}, [companies]);
     const [companyData, setCompanyData] = useState(initialState);

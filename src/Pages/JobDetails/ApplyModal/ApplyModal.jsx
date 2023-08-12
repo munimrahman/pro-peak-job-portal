@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import { useApplyJobMutation } from '../../../features/jobApplication/jobApplicationApi';
 
@@ -10,7 +11,7 @@ const initialState = {
 };
 
 function ApplyModal({ id, isChecked, setModalCheck }) {
-    const candidate = '64c331d8bbcc3f56eec1c99f';
+    const { user: { _id } = {} } = useSelector((state) => state.auth);
     const [applyData, setApplyData] = useState(initialState);
     const [applyJob] = useApplyJobMutation();
 
@@ -23,7 +24,7 @@ function ApplyModal({ id, isChecked, setModalCheck }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = { ...applyData };
-        data.candidate = candidate;
+        data.candidate = _id;
         data.jobPostId = id;
         console.log(data);
         applyJob({ data });

@@ -1,12 +1,13 @@
 /* eslint-disable radix */
 import moment from 'moment';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useGetUserQuery } from '../../../features/users/usersApi';
 
 function SkillTest() {
-    const id = '64c331d8bbcc3f56eec1c99f';
-    const { data: { user: { skillTests = [] } = {} } = {} } = useGetUserQuery(id);
+    const { user: { _id } = {} } = useSelector((state) => state.auth);
+    const { data: { user: { skillTests = [] } = {} } = {} } = useGetUserQuery(_id);
     return (
         <div className="p-8">
             <h2 className="text-secondary text-3xl">Skill Assessment Results</h2>

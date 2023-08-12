@@ -1,9 +1,13 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
+import { userLoggedOut } from '../features/auth/authSlice';
 
 function RecruiterDashboardLayout() {
+    const dispatch = useDispatch();
     const activeClassName =
         'text-sm bg-info border-l-4 border-primary text-primary active:text-secondary';
     const inActiveClassName =
@@ -61,12 +65,12 @@ function RecruiterDashboardLayout() {
                 </NavLink>
             </li> */}
             <li>
-                <NavLink
+                <span
+                    onClick={() => dispatch(userLoggedOut())}
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
-                    to="/"
                 >
                     Log Out
-                </NavLink>
+                </span>
             </li>
         </>
     );

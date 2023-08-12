@@ -1,11 +1,15 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-unreachable */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 // import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
+import { userLoggedOut } from '../features/auth/authSlice';
 
 function DashboardLayout() {
+    const dispatch = useDispatch();
     const activeClassName =
         'text-sm bg-info border-l-4 border-primary text-primary active:text-secondary';
     const inActiveClassName =
@@ -64,12 +68,12 @@ function DashboardLayout() {
                 </NavLink>
             </li> */}
             <li>
-                <NavLink
+                <span
+                    onClick={() => dispatch(userLoggedOut())}
                     className={({ isActive }) => (isActive ? activeClassName : inActiveClassName)}
-                    to="/"
                 >
                     Log Out
-                </NavLink>
+                </span>
             </li>
         </>
     );

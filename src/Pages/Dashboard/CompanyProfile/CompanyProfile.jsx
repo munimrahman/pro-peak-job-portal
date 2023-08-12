@@ -1,10 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink, ScrollRestoration } from 'react-router-dom';
 import { useGetCompaniesQuery } from '../../../features/company/companyApi';
 
 function CompanyProfile() {
+    const { user: { _id } = {} } = useSelector((state) => state.auth);
     const { data: { data: { companies = [] } = {} } = {} } = useGetCompaniesQuery(
-        'hiringManager=64d0b287116fcabdd7021495'
+        `hiringManager=${_id}`
     );
     const companyInfo = companies[0];
 

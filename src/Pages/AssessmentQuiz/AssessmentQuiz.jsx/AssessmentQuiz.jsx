@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link, ScrollRestoration, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { ScrollRestoration, useLocation, useNavigate, useParams } from 'react-router-dom';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import QuestionSkeleton from '../../../Components/LoadingElements/QuestionSkeleton';
 import { useGetSingleQuizQuery } from '../../../features/quiz/quizApi';
 import { quizResult } from '../../../features/quiz/quizSlice';
 import { useEditUserMutation } from '../../../features/users/usersApi';
+import useAuth from '../../../hooks/useAuth';
 import useTitle from '../../../hooks/useTitle';
 import AssessmentQuizCard from '../AssessmentQuizCard/AssessmentQuizCard';
 
 function AssessmentQuiz() {
     const { id } = useParams();
-    const userId = '64c331d8bbcc3f56eec1c99f';
+    const { user: { _id, role } = {} } = useSelector((state) => state.auth);
+    const isLoggedIn = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const {
         data: { quiz: { title, totalQuestions, times, questions = [] } = {} } = {},
         isLoading,
@@ -38,7 +43,8 @@ function AssessmentQuiz() {
         dispatch(quizResult(resultObj));
         const formData = new FormData();
         formData.append('skillTest', JSON.stringify(resultObj));
-        editUser({ id: userId, data: formData });
+        editUser({ id: _id, data: formData });
+        navigate('/quiz-result');
     };
 
     let heading = null;
@@ -69,6 +75,24 @@ function AssessmentQuiz() {
         );
     }
 
+    let submitButton = null;
+    if (isLoggedIn && role === 'candidate') {
+        submitButton = (
+            <ButtonInfo onClick={handleSubmit} className="px-4 py-3">
+                Submit
+            </ButtonInfo>
+        );
+    } else if (isLoggedIn && (role === 'recruiter' || role === 'admin')) {
+        submitButton = (
+            <span className="font-bold text-secondary">Log In As Candidate To Participate</span>
+        );
+    } else {
+        const handleRedirect = () => {
+            navigate('/log-in', { state: { from: location } });
+        };
+        submitButton = <ButtonInfo onClick={handleRedirect}>Log In To Participate</ButtonInfo>;
+    }
+
     return (
         <div className="max-w-[1115px] mx-auto">
             <div className="max-w-3xl mx-auto mt-10">
@@ -87,13 +111,7 @@ function AssessmentQuiz() {
                     </div>
                 )}
 
-                <div className="flex justify-center mt-5">
-                    <Link to="/quiz-result">
-                        <ButtonInfo onClick={handleSubmit} className="px-4 py-3">
-                            Submit
-                        </ButtonInfo>
-                    </Link>
-                </div>
+                <div className="flex justify-center mt-5">{submitButton}</div>
             </div>
 
             <ScrollRestoration />

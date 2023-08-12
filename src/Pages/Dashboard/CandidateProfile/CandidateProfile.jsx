@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { ScrollRestoration } from 'react-router-dom';
 import coverPhotoDemo from '../../../assets/company-cover.png';
 import profilePhotoDemo from '../../../assets/company.png';
@@ -7,7 +8,7 @@ import { useGetUserQuery } from '../../../features/users/usersApi';
 import ProfileHeader from './ProfileHeader';
 
 function CandidateProfile() {
-    const id = '64c331d8bbcc3f56eec1c99f';
+    const { user: { _id } = {} } = useSelector((state) => state.auth);
     const {
         data: {
             user: {
@@ -22,7 +23,7 @@ function CandidateProfile() {
                 website,
             } = {},
         } = {},
-    } = useGetUserQuery(id);
+    } = useGetUserQuery(_id);
 
     return (
         <div className="p-8">

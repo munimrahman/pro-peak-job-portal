@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, ScrollRestoration, useNavigate } from 'react-router-dom';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import ButtonSecondary from '../../../Components/ButtonSecondary/ButtonSecondary';
@@ -27,8 +28,8 @@ const initialState = {
 };
 
 function EditProfile() {
-    const id = '64c331d8bbcc3f56eec1c99f';
-    const { data: { user = {} } = {} } = useGetUserQuery(id);
+    const { user: { _id } = {} } = useSelector((state) => state.auth);
+    const { data: { user = {} } = {} } = useGetUserQuery(_id);
     const [profileData, setProfileData] = useState(initialState);
     const [image, setImage] = useState('');
     const [editUser] = useEditUserMutation();
@@ -90,7 +91,7 @@ function EditProfile() {
         });
 
         try {
-            await editUser({ id, data: formData });
+            await editUser({ id: _id, data: formData });
             navigate('/dashboard/candidate-profile');
         } catch (err) {
             console.log(err);

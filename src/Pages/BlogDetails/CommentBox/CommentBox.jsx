@@ -1,15 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import avatar from '../../../assets/avatar.jpg';
 import { useCreateCommentMutation, useCreateReplyMutation } from '../../../features/blogs/blogsApi';
 
 function CommentBox({ isFocused, commentId, from, blogId, setShow = () => {} }) {
-    const author = {
-        _id: '64c331d8bbcc3f56eec1c99f',
-        name: 'Taskin Ahamed',
-        profilePhoto:
-            'https://res.cloudinary.com/dmxm9rl23/image/upload/v1691325104/zg2z02n0lwpbx2rigvhv.jpg',
-    };
+    const { user: { _id, name, profilePhoto } = {} } = useSelector((state) => state.auth);
+    const author = { _id, name, profilePhoto };
 
     const [text, setText] = useState('');
     const [createComment] = useCreateCommentMutation();

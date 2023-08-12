@@ -1,14 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { ScrollRestoration } from 'react-router-dom';
 import { useGetUserQuery } from '../../../features/users/usersApi';
 import RecruiterProfileHeader from './RecruiterProfileHeader';
 
 function RecruiterProfile() {
-    const id = '64c32ff4bbcc3f56eec1c98c';
-
+    const { user: { _id } = {} } = useSelector((state) => state.auth);
     const {
         data: { user: { name, designation, address, profilePhoto, coverPhoto, bio } = {} } = {},
-    } = useGetUserQuery(id);
+    } = useGetUserQuery(_id);
 
     return (
         <div className="p-8">

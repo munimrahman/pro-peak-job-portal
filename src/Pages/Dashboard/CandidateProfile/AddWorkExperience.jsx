@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import ButtonSecondary from '../../../Components/ButtonSecondary/ButtonSecondary';
@@ -18,8 +19,8 @@ const initialState = {
 };
 
 function AddWorkExperience() {
-    const id = '64c331d8bbcc3f56eec1c99f';
-    const { data: { user: { workExperience = [] } = {} } = {} } = useGetUserQuery(id);
+    const { user: { _id } = {} } = useSelector((state) => state.auth);
+    const { data: { user: { workExperience = [] } = {} } = {} } = useGetUserQuery(_id);
     const [experience, setExperience] = useState(initialState);
     const [editUser] = useEditUserMutation();
 
@@ -33,7 +34,7 @@ function AddWorkExperience() {
         e.preventDefault();
         const formData = new FormData();
         formData.append('workExperience', JSON.stringify(experience));
-        editUser({ id, data: formData });
+        editUser({ id: _id, data: formData });
         setExperience(initialState);
     };
 

@@ -1,20 +1,21 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import moment from 'moment';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import {
     useDeleteJobApplicationMutation,
     useGetJobApplicationsQuery,
 } from '../../../features/jobApplication/jobApplicationApi';
 
 function AppliedJobs() {
-    const id = '64c331d8bbcc3f56eec1c99f';
+    const { user: { _id } = {} } = useSelector((state) => state.auth);
     const { data: { data: { applications = [] } = {} } = {} } = useGetJobApplicationsQuery(
-        `candidate=${id}&limit=20`
+        `candidate=${_id}&limit=20`
     );
     const [deleteJob] = useDeleteJobApplicationMutation();
 
     const handleDelete = (applicationId) => {
-        deleteJob({ id: applicationId, queryId: `candidate=${id}&limit=20` });
+        deleteJob({ id: applicationId, queryId: `candidate=${_id}&limit=20` });
     };
 
     return (
@@ -36,10 +37,14 @@ function AppliedJobs() {
                         <tbody>
                             {applications.map(
                                 (
-                                    { _id, createdAt, jobPostId: { title, salary, location } = {} },
+                                    {
+                                        _id: id,
+                                        createdAt,
+                                        jobPostId: { title, salary, location } = {},
+                                    },
                                     i
                                 ) => (
-                                    <tr key={_id}>
+                                    <tr key={id}>
                                         <th>{i + 1}</th>
                                         <td>
                                             <div className="flex items-center space-x-3">
