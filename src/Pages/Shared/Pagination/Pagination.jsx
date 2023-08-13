@@ -7,7 +7,12 @@ function Pagination({ totalPage, currentPage, setPage }) {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, [scrollTop]);
 
-    const handleSetPage = () => {
+    const handleSetPage = (value) => {
+        if (value) {
+            setPage(value);
+            setScrollTop((pre) => !pre);
+            return;
+        }
         setPage(currentPage + 1);
         setScrollTop((pre) => !pre);
     };
@@ -47,7 +52,7 @@ function Pagination({ totalPage, currentPage, setPage }) {
                     {[...Array(totalPage).keys()].map((p, i) => (
                         <button
                             key={i}
-                            onClick={handleSetPage}
+                            onClick={() => handleSetPage(i + 1)}
                             className={`items-center justify-center h-10 px-4 py-3 text-sm font-medium transition duration-300 rounded text-secondary hover:bg-info hover:text-primary active:bg-primary active:text-white ${
                                 currentPage === i + 1 && 'bg-primary text-white'
                             }`}

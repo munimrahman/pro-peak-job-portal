@@ -1,18 +1,18 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useState } from 'react';
+import React from 'react';
 import JobCardSkeleton from '../../../Components/LoadingElements/JobCardSkeleton';
-import img from '../../../assets/human.svg';
+// import img from '../../../assets/human.svg';
 import { useGetJobsQuery } from '../../../features/jobPosts/jobPostApi';
 import JobCardOne from '../../Shared/JobCardOne/JobCardOne';
 
 function LatestJobs() {
-    const [category, setCategory] = useState('Software Development');
+    // const [category, setCategory] = useState('Software Development');
     const {
         data: { data: { jobs = [] } = {} } = {},
         isLoading,
         isSuccess,
         isError,
-    } = useGetJobsQuery(`industry=${category}&limit=6`);
+    } = useGetJobsQuery(`&limit=6&sortBy=-createdAt`);
 
     let listContent = null;
 
@@ -42,7 +42,7 @@ function LatestJobs() {
                 you.
             </p>
             {/* category */}
-            <div className="flex flex-wrap md:justify-center mt-5">
+            {/* <div className="flex flex-wrap md:justify-center mt-5">
                 <div
                     className={`flex items-center border hover:border-primary rounded-lg py-2 px-3 mx-1 my-1 hover:cursor-pointer hover:text-primary hover:shadow ${
                         category === 'Software Development' && 'border-primary text-primary'
@@ -98,7 +98,7 @@ function LatestJobs() {
                     <img src={img} alt="" className="w-5" />
                     <span className="ml-2 text-xs font-bold">listContent Writer</span>
                 </div>
-            </div>
+            </div> */}
 
             {listContent}
         </div>

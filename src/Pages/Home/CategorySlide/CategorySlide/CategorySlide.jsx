@@ -19,59 +19,42 @@ const categories = [
     },
     {
         _id: 2,
-        name: 'Customer Help',
-        value: 'Customer Help',
-        jobCount: 456,
-    },
-    {
-        _id: 3,
         name: 'Finance',
         value: 'Finance',
         jobCount: 234,
     },
     {
-        _id: 4,
+        _id: 3,
         name: 'Software',
         value: 'Software Development',
         jobCount: 654,
     },
     {
-        _id: 5,
-        name: 'Human Resource',
-        value: 'Human Resource',
-        jobCount: 675,
-    },
-    {
-        _id: 6,
+        _id: 4,
         name: 'Management',
         value: 'Management',
         jobCount: 231,
     },
     {
-        _id: 7,
-        name: 'Retail & Products',
-        value: 'Retail & Products',
-        jobCount: 345,
-    },
-    {
-        _id: 8,
-        name: 'Security Analyst',
-        value: 'Security Analyst',
+        _id: 5,
+        name: 'Web',
+        value: 'Web Development',
         jobCount: 543,
     },
     {
-        _id: 9,
+        _id: 6,
         name: 'Content Writer',
         value: 'Content Writer',
         jobCount: 123,
     },
     {
-        _id: 10,
-        name: 'Market Research',
-        value: 'Market Research',
-        jobCount: 654,
+        _id: 7,
+        name: 'Others',
+        value: 'Others',
+        jobCount: 123,
     },
 ];
+
 function CategorySlide() {
     return (
         <div className="mt-16">

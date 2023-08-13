@@ -65,7 +65,7 @@ function LogIn() {
                             <input
                                 type="email"
                                 id="email"
-                                placeholder="Jhon Snow"
+                                placeholder="John Snow"
                                 className="input input-bordered focus:outline-none w-full"
                                 name="email"
                                 value={email}

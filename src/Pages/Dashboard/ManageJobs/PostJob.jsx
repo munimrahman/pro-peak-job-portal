@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
 import ButtonSecondary from '../../../Components/ButtonSecondary/ButtonSecondary';
@@ -26,8 +27,9 @@ const initialState = {
 };
 
 function PostJob() {
+    const { user: { _id } = {} } = useSelector((state) => state.auth);
     const { data: { data: { companies = [] } = {} } = {} } = useGetCompaniesQuery(
-        'hiringManager=64c32ff4bbcc3f56eec1c98c'
+        `hiringManager=${_id}`
     );
 
     const companyInfo = useMemo(() => companies[0] || {}, [companies]);
@@ -52,8 +54,9 @@ function PostJob() {
 
     const handleSubmit = () => {
         const data = { ...jobData };
-        data.hiringManagerId = '64c32ff4bbcc3f56eec1c98c';
-        addJob({ data, id: 'hiringManagerId=64c32ff4bbcc3f56eec1c98c&limit=20' });
+        data.hiringManagerId = _id;
+        console.log(data);
+        addJob({ data, id: `hiringManager=${_id}` });
         navigate('/recruiter-dashboard/manage-jobs');
     };
 
@@ -90,7 +93,7 @@ function PostJob() {
                                 Select Industry
                             </option>
                             <option value="Web Development">Web Development</option>
-                            <option value="Software">Software Development</option>
+                            <option value="Software Development">Software Development</option>
                             <option value="App Development">App Development</option>
                             <option value="Graphic Design">Graphic Design</option>
                             <option value="Retail & Products">Retail & Products</option>

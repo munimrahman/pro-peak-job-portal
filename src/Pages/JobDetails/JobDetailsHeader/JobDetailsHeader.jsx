@@ -8,7 +8,8 @@ import jobDetailsImg from '../../../assets/job-details.png';
 import useAuth from '../../../hooks/useAuth';
 
 function JobDetailsHeader({ jobPost = {}, setModalCheck, modalCheck }) {
-    const { title, coverPhoto, jobType, createdAt } = jobPost;
+    const { title, jobType, createdAt, company: { coverPhoto } = {} } = jobPost;
+    console.log(coverPhoto);
     const isLoggedIn = useAuth();
     const { user: { role } = {} } = useSelector((state) => state.auth);
     const location = useLocation();

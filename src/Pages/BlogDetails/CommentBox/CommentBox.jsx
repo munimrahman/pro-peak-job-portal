@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import ButtonInfo from '../../../Components/ButtonInfo/ButtonInfo';
-import avatar from '../../../assets/avatar.jpg';
+import avatar from '../../../assets/avatar.png';
 import { useCreateCommentMutation, useCreateReplyMutation } from '../../../features/blogs/blogsApi';
 
 function CommentBox({ isFocused, commentId, from, blogId, setShow = () => {} }) {
@@ -47,7 +47,7 @@ function CommentBox({ isFocused, commentId, from, blogId, setShow = () => {} }) 
             <div className="hidden md:block md:col-span-1">
                 <div className="avatar">
                     <div className="w-16 rounded-full">
-                        <img src={avatar} alt="" />
+                        <img src={profilePhoto || avatar} alt="" />
                     </div>
                 </div>
             </div>

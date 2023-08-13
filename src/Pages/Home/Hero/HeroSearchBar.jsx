@@ -81,7 +81,7 @@ function HeroSearchBar() {
                         <input
                             value="Search"
                             type="submit"
-                            className="flex justify-center items-center h-10 w-20 text-white rounded-xl bg-primary hover:bg-secondary"
+                            className="flex justify-center items-center h-10 w-20 text-white rounded-xl bg-primary hover:bg-secondary hover:cursor-pointer"
                         />
                     </div>
                 </div>

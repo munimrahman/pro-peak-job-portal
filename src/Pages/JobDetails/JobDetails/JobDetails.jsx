@@ -20,7 +20,8 @@ import MeetHiringTeam from '../MeetHiringTeam/MeetHiringTeam';
 
 function JobDetails() {
     const { id } = useParams();
-    const { data: { jobPost = {} } = {}, isLoading } = useGetSingleJobQuery(id);
+    const { data: { jobPost = {} } = {}, isLoading, isSuccess } = useGetSingleJobQuery(id);
+
     const { company, title } = jobPost || {};
     useTitle(`${title || 'Job Details | Pro Peak'}`);
     const [modalCheck, setModalCheck] = useState(false);
@@ -28,7 +29,7 @@ function JobDetails() {
     const { user: { role } = {} } = useSelector((state) => state.auth);
     const location = useLocation();
     const navigate = useNavigate();
-
+    console.log(isLoading, isSuccess);
     let applyButton = null;
     if (isLoggedIn && role === 'candidate') {
         applyButton = (

@@ -14,7 +14,7 @@ function JobCardTwo({ job }) {
         createdAt,
         company: { name, logo, location } = {},
     } = job || {};
-
+    console.log(tags);
     return (
         <div className="border bg-[#F8FAFA] rounded-lg p-3">
             <div className="flex mt-5 mb-4">

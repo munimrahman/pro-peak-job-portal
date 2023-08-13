@@ -77,7 +77,7 @@ function SignUp() {
                             <input
                                 type="text"
                                 id="name"
-                                placeholder="Jhon Snow"
+                                placeholder="John Snow"
                                 className="input input-bordered focus:outline-none w-full"
                                 name="name"
                                 value={name}

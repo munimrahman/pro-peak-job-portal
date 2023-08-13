@@ -19,7 +19,9 @@ function JobCardOne({ job }) {
     return (
         <div className="border rounded-xl p-2 bg-[#F8FAFF] shadow-md">
             <div className="relative">
-                <img src={featuredPhoto} alt="" className="rounded-xl w-full" />
+                <figure className="">
+                    <img src={featuredPhoto} alt="" className="rounded-xl w-full h-52" />
+                </figure>
                 <div className="absolute top-0 m-2">
                     <span className="capitalize text-xs bg-primary text-white hover:cursor-pointer px-2 py-1 rounded">
                         {jobType}
@@ -51,7 +53,7 @@ function JobCardOne({ job }) {
                     </span>
                 ))}
             </div>
-            <p className="text-sm text-accent my-3">{description}</p>
+            <p className="text-sm text-accent my-3">{description?.slice(0, 100)}...</p>
             <div className="flex justify-between items-center mb-3">
                 <p className="text-sm text-accent">
                     <span className="text-xl text-primary font-bold">${salary}</span>/Month
