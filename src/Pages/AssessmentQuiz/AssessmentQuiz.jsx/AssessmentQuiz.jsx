@@ -24,7 +24,7 @@ function AssessmentQuiz() {
     const [editUser] = useEditUserMutation();
     const [ans, setAns] = useState([]);
     const dispatch = useDispatch();
-    useTitle(`${title} Skill Assessment`);
+    useTitle(`${title || ''} Skill Assessment`);
 
     const result = ans
         .map((a, i) => a.ans === questions[i]?.options[0]?.option)

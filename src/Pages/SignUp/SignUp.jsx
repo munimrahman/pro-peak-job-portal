@@ -14,7 +14,7 @@ function SignUp() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     useTitle('Sign Up | Pro Peak');
-    const [register, { error, isError, isSuccess }] = useRegisterMutation();
+    const [register, { error, isError, isSuccess, isLoading }] = useRegisterMutation();
     const [errorObj, setErrorObj] = useState({
         name: '',
         role: '',
@@ -49,7 +49,7 @@ function SignUp() {
         }
         if (message?.includes('email_1 dup key')) {
             console.log('object');
-            setErrorObj((pre) => ({ ...pre, email: 'Email Already Used, Try With Another' }));
+            setErrorObj((pre) => ({ ...pre, email: 'Email Already Used, Try With Another Email' }));
         } else {
             setErrorObj((pre) => ({ ...pre, email: '' }));
         }
@@ -182,9 +182,12 @@ function SignUp() {
                     <div>
                         <button
                             type="submit"
-                            className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            className={`flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${
+                                isLoading && 'cursor-wait'
+                            }`}
+                            disabled={isLoading}
                         >
-                            Sign Up
+                            {!isLoading ? 'Sign Up' : 'Loading...'}
                         </button>
                     </div>
                 </form>

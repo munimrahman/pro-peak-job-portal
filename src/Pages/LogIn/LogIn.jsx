@@ -13,7 +13,7 @@ function LogIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const from = location.state?.from?.pathname || '/';
-    const [login, { error }] = useLogInMutation();
+    const [login, { error, isLoading }] = useLogInMutation();
     // const { accessToken } = useSelector((state) => state.auth);
     const [errorText, setErrorText] = useState('');
     useTitle('Log In | Pro Peak');
@@ -108,9 +108,12 @@ function LogIn() {
                     <div>
                         <button
                             type="submit"
-                            className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            className={`flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${
+                                isLoading && 'cursor-wait'
+                            }`}
+                            disabled={isLoading}
                         >
-                            Log In
+                            {!isLoading ? 'Log In' : 'Loading...'}
                         </button>
                     </div>
                 </form>

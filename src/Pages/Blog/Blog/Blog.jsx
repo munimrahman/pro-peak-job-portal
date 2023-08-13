@@ -23,7 +23,7 @@ function Blog() {
         isSuccess,
         isError,
     } = useGetSingleBlogQuery('64ca24d277173d6c4bd8f69a');
-
+    // TODO: change static blog id
     useEffect(() => {
         const delayId = setTimeout(() => {
             dispatch(blogSearch(inputText));
