@@ -5,6 +5,7 @@ import authSlice from '../features/auth/authSlice';
 import filterReducer from '../features/filter/filterSlice';
 import quizReducer from '../features/quiz/quizSlice';
 
+// create store
 export const store = configureStore({
     reducer: {
         [apiSlice.reducerPath]: apiSlice.reducer,
